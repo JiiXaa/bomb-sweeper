@@ -41,3 +41,15 @@ Class based project (OOP) seem to be good choice because: - Code is cleaner, fun
 
 - used Coolors for color scheme <br>
   temporary pallette: https://coolors.co/2b2d42-f7b32b-edf2f4-6ac8c6-d90429
+- Google fonts: main font - Ubuntu
+
+### Main Menu:
+
+- Selecting text changes it to red color to match "exploding" theme.
+
+## development
+
+CSS Reset shared by [Andy Bell](https://piccalil.li/blog/a-modern-css-reset/).
+CSS custom properties (variables) to avoid DRY principle.
+CSS Desktop first as the game is targeted mostly to PC gamers (that might change).
+Used [Dash Border Generator](https://kovart.github.io/dashed-border-generator/) to generate custom styled border for main wrapper.

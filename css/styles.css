@@ -1,9 +1,14 @@
 :root {
   --main-bg-color: #2b2d42;
   --white-color: #edf2f4;
+  --white-color-10: rgba(237, 242, 244, 0.1);
+  --black-color: rgb(17, 17, 17);
   --success-color: #42b3b1;
   --alert-color: #f7b32b;
   --danger-color: #d90429;
+  --danger-color-50: rgba(223, 17, 34, 0.8);
+
+  --font-main: 'Ubuntu', sans-serif;
 }
 
 /* Box sizing rules */
@@ -14,7 +19,7 @@
 }
 
 *:focus {
-  outline: 1px solid var(--white-color);
+  outline: 3px solid var(--danger-color-50);
 }
 
 /*
@@ -92,6 +97,129 @@ select {
 
 body {
   background-color: var(--main-bg-color);
-  margin: 0;
-  padding: 0;
+  font-family: var(--font-main);
+}
+
+/* Typography */
+h1::selection,
+h2::selection,
+h3::selection,
+h4::selection,
+h5::selection,
+p::selection {
+  /* background: #fff; */
+  color: var(--danger-color-50);
+}
+
+/* Main */
+
+.game {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.game__wrapper {
+  position: absolute;
+  height: 80vh;
+  width: 60vw;
+  /* background-color: var(--alert-color); */
+  /* border: 5px dashed var(--white-color); */
+  background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='%23EDF2F4FF' stroke-width='12' stroke-dasharray='8%2c 45' stroke-dashoffset='47' stroke-linecap='square'/%3e%3c/svg%3e");
+}
+
+.game__layer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--white-color-10);
+}
+
+.main--menu {
+  display: flex;
+  flex-direction: column;
+  padding-top: 15%;
+  align-items: center;
+}
+
+.menu__header {
+  color: var(--alert-color);
+  padding-bottom: 2rem;
+}
+
+.menu__header h1 {
+  font-size: 4rem;
+}
+
+/* .menu__header h1 .letter-b {
+  display: inline;
+  position: relative;
+  left: 18px;
+  user-select: none;
+} */
+
+.menu__header .bomb-emoji {
+  position: relative;
+  font-size: 3rem;
+  top: 85px;
+  left: 412px;
+  user-select: none;
+}
+
+/* Buttons */
+
+.btn-group {
+  width: 700px;
+  height: 250px;
+  display: grid;
+  grid-template-columns: 2.5fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 20px;
+  grid-template-areas:
+    'play settings settings'
+    'rules settings settings';
+}
+.play--btn {
+  grid-area: play;
+}
+.rules--btn {
+  grid-area: rules;
+}
+.settings--btn {
+  grid-area: settings;
+}
+
+.menu__btn {
+  border: 3px solid var(--white-color);
+  border-radius: 1rem;
+  background-color: var(--alert-color);
+  color: var(--white-color);
+  -webkit-text-stroke: 2px var(--black-color);
+  cursor: pointer;
+  font-size: 3rem;
+  font-weight: bold;
+  transition: all 0.2s ease-in;
+}
+
+.menu__btn:hover {
+  color: var(--danger-color-50);
+  border-color: var(--danger-color-50);
+  background-color: var(--main-bg-color);
+}
+
+.menu__btn:focus {
+  border: none;
+}
+
+.menu__btn:nth-child(3) {
+  font-size: 5rem;
 }
