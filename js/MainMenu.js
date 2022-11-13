@@ -24,24 +24,24 @@ class MainMenu extends LayerControl {
     const rulesButton = this.bindElementById(GAME_RULES_BUTTON_ID);
     const settingsButton = this.bindElementById(GAME_SETTINGS_BUTTON_ID);
 
-    playButton.addEventListener('click', () => this.loadGame());
-    rulesButton.addEventListener('click', () => this.loadRules());
-    settingsButton.addEventListener('click', () => this.loadSettings());
+    playButton.addEventListener('click', () => this.loadGameScreen());
+    rulesButton.addEventListener('click', () => this.loadRulesScreen());
+    settingsButton.addEventListener('click', () => this.loadSettingsScreen());
   }
 
-  loadGame() {
+  loadGameScreen() {
     console.log('loading game screen');
     this.visibilityToggle(this.elementById, SCREEN_HIDDEN);
     this.visibilityToggle(gameBoard.elementById, SCREEN_VISIBLE);
   }
 
-  loadRules() {
+  loadRulesScreen() {
     console.log('loading game rules screen');
     this.visibilityToggle(this.elementById, SCREEN_HIDDEN);
     this.visibilityToggle(gameRules.elementById, SCREEN_VISIBLE);
   }
 
-  loadSettings() {
+  loadSettingsScreen() {
     console.log('loading game settings screen');
     this.visibilityToggle(this.elementById, SCREEN_HIDDEN);
     this.visibilityToggle(gameSettings.elementById, SCREEN_VISIBLE);
