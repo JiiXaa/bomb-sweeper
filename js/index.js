@@ -1,1 +1,1 @@
-console.log('Initial testing');
+import { mainMenu } from './MainMenu.js';

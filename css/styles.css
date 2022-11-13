@@ -7,7 +7,6 @@
   --alert-color: #f7b32b;
   --danger-color: #d90429;
   --danger-color-50: rgba(223, 17, 34, 0.8);
-
   --font-main: 'Ubuntu', sans-serif;
 }
 
@@ -190,14 +189,12 @@ p::selection {
 }
 
 .menu__btn {
-  border: 3px solid var(--white-color);
+  border: 3px solid var(--black-color);
   border-radius: 1rem;
   background-color: var(--alert-color);
-  color: var(--white-color);
-  -webkit-text-stroke: 2px var(--black-color);
+  color: var(--black-color);
   cursor: pointer;
   font-size: 3rem;
-  font-weight: bold;
   transition: all 0.2s ease-in;
 }
 
@@ -222,4 +219,8 @@ p::selection {
   -khtml-user-select: none; /* Konqueror HTML */
   -moz-user-select: none; /* Firefox */
   -ms-user-select: none; /* Internet Explorer/Edge */
+}
+
+.hidden {
+  display: none;
 }

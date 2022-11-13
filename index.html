@@ -23,22 +23,32 @@
   <body>
     <main class="game">
       <div class="game__wrapper">
-        <div class="game__layer main--menu" id="main-menu">
+        <!-- Main Menu Layer -->
+        <div class="game__layer main--menu" id="js-main-menu">
           <header class="menu__header">
             <span class="bomb-emoji disable-select">💣</span>
             <h1>Welcome to B&nbsp;&nbsp; mb Sweeper</h1>
           </header>
           <div class="btn-group">
-            <button class="menu__btn play--btn" id="game-start">Play</button>
-            <button class="menu__btn rules--btn" id="game-rules">Rules</button>
-            <button class="menu__btn settings--btn" id="game-settings">
+            <button class="menu__btn play--btn" id="js-game-start">Play</button>
+            <button class="menu__btn rules--btn" id="js-game-rules">
+              Rules
+            </button>
+            <button class="menu__btn settings--btn" id="js-game-settings">
               <i class="fa-solid fa-gear"></i>
             </button>
           </div>
         </div>
+        <!-- End Main Menu Layer -->
+
+        <!-- Game Layer -->
+        <div class="game__layer game-board hidden" id="js-game-board">
+          <h1>This will be a game board</h1>
+        </div>
+        <!-- End Game Layer -->
       </div>
     </main>
 
-    <script src="js/index.js"></script>
+    <script src="js/index.js" type="module"></script>
   </body>
 </html>
