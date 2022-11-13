@@ -30,11 +30,11 @@
             <h1>Welcome to B&nbsp;&nbsp; mb Sweeper</h1>
           </header>
           <div class="btn-group">
-            <button class="menu__btn play--btn" id="js-game-start">Play</button>
-            <button class="menu__btn rules--btn" id="js-game-rules">
+            <button class="menu__btn play--btn" id="js-play-btn">Play</button>
+            <button class="menu__btn rules--btn" id="js-rules-btn">
               Rules
             </button>
-            <button class="menu__btn settings--btn" id="js-game-settings">
+            <button class="menu__btn settings--btn" id="js-settings-btn">
               <i class="fa-solid fa-gear"></i>
             </button>
           </div>
@@ -42,10 +42,22 @@
         <!-- End Main Menu Layer -->
 
         <!-- Game Layer -->
-        <div class="game__layer game-board hidden" id="js-game-board">
+        <div class="game__layer game-board hidden" id="js-game-screen">
           <h1>This will be a game board</h1>
         </div>
         <!-- End Game Layer -->
+
+        <!-- Rules Layer -->
+        <div class="game__layer game-rules hidden" id="js-rules-screen">
+          <h1>This will be a game rules screen</h1>
+        </div>
+        <!-- End Rules Layer -->
+
+        <!-- Settings Layer -->
+        <div class="game__layer game-settings hidden" id="js-settings-screen">
+          <h1>This will be a game settings screen</h1>
+        </div>
+        <!-- End Settings Layer -->
       </div>
     </main>
 
