@@ -5,6 +5,9 @@ export const SCREEN_HIDDEN = false;
 
 export class LayerControl {
   constructor(elementId) {
+    if (typeof elementId === 'undefined') {
+      return;
+    }
     this.elementById = this.bindElementById(elementId);
   }
 
