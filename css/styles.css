@@ -127,8 +127,6 @@ p::selection {
   position: absolute;
   height: 80vh;
   width: 60vw;
-  /* background-color: var(--alert-color); */
-  /* border: 5px dashed var(--white-color); */
   background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='%23EDF2F4FF' stroke-width='12' stroke-dasharray='8%2c 45' stroke-dashoffset='47' stroke-linecap='square'/%3e%3c/svg%3e");
 }
 
@@ -210,6 +208,27 @@ p::selection {
 
 .menu__btn:nth-child(3) {
   font-size: 5rem;
+}
+
+/* Board */
+.game-board {
+  display: grid;
+  padding: 10px;
+  grid-template-columns: repeat(8, 50px);
+  grid-template-rows: repeat(8, 50px);
+  gap: 2px;
+  background-color: #42b3b1;
+}
+
+.cell {
+  width: 50px;
+  height: 50px;
+  border: 1px solid var(--black-color);
+  background-color: var(--white-color);
+}
+
+.cell--bomb {
+  background-color: var(--danger-color);
 }
 
 /* Utility Classes */
