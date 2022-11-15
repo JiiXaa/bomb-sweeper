@@ -6,6 +6,5 @@ export class Cell extends LayerControl {
     this.cellElement = cellElement;
     this.x = x;
     this.y = y;
-    this.mine = false;
   }
 }

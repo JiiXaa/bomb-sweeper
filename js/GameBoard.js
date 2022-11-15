@@ -1,7 +1,7 @@
 import { LayerControl } from './LayerControl.js';
 import { Cell } from './Cell.js';
 
-const GAME_BOARD_ID = 'js-game-screen';
+const GAME_SCREEN_ID = 'js-game-screen';
 const TILE_STATE = {
   HIDDEN: 'hidden',
   MINE: 'mine',
@@ -28,13 +28,13 @@ class GameBoard extends LayerControl {
     },
   };
 
-  board = [];
+  boardArray = [];
   colsCount = null;
   rowsCount = null;
   minesCount = null;
 
   constructor() {
-    super(GAME_BOARD_ID);
+    super(GAME_SCREEN_ID);
     this.initializeGameBoard();
   }
 
@@ -55,7 +55,9 @@ class GameBoard extends LayerControl {
   }
 
   generateBoard() {
-    this.board.length = 0;
+    const gameBoard = this.bindElementById('js-game-board');
+    gameBoard.innerHTML = '';
+    this.boardArray.length = 0;
     for (let x = 0; x < this.rowsCount; x++) {
       const row = [];
       for (let y = 0; y < this.colsCount; y++) {
@@ -64,16 +66,21 @@ class GameBoard extends LayerControl {
         cellElement.dataset.status = TILE_STATE.HIDDEN;
         cellElement.dataset.x = x;
         cellElement.dataset.y = y;
+        cellElement.dataset.mine = false;
         cellElement.addEventListener('click', this.handleCellClick);
         row.push(new Cell(x, y, cellElement));
       }
-      this.board.push(row);
+      this.boardArray.push(row);
     }
-    // console.log(this.board);
-    this.board.flat().forEach((cell) => {
+    // console.log(this.boardArray);
+    this.boardArray.flat().forEach((cell) => {
       // console.log(cell.cellElement);
-      this.elementById.appendChild(cell.cellElement);
+      gameBoard.appendChild(cell.cellElement);
     });
+
+    // Change the size of the game board
+    gameBoard.style.setProperty('--rows', this.rowsCount);
+    gameBoard.style.setProperty('--cols', this.colsCount);
   }
 
   handleCellClick = (e) => {

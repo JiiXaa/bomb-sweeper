@@ -1,4 +1,5 @@
 :root {
+  /* Colors */
   --main-bg-color: #2b2d42;
   --white-color: #edf2f4;
   --white-color-10: rgba(237, 242, 244, 0.1);
@@ -7,7 +8,13 @@
   --alert-color: #f7b32b;
   --danger-color: #d90429;
   --danger-color-50: rgba(223, 17, 34, 0.8);
+
+  /* Font */
   --font-main: 'Ubuntu', sans-serif;
+
+  /* Board */
+  --rows: 8;
+  --columns: 8;
 }
 
 /* Box sizing rules */
@@ -211,13 +218,24 @@ p::selection {
 }
 
 /* Board */
+.game-screen {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .game-board {
   display: grid;
   padding: 10px;
-  grid-template-columns: repeat(8, 50px);
-  grid-template-rows: repeat(8, 50px);
+  grid-template-columns: repeat(var(--cols), 50px);
+  grid-template-rows: repeat(var(--rows), 50px);
   gap: 2px;
-  background-color: #42b3b1;
+  /* background-color: #42b3b1; */
 }
 
 .cell {
