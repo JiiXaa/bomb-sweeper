@@ -4,17 +4,24 @@
   --white-color: #edf2f4;
   --white-color-10: rgba(237, 242, 244, 0.1);
   --black-color: rgb(17, 17, 17);
+  --black-color-50: rgba(17, 17, 17, 0.5);
+  --grey-color: #c1c1c1;
   --success-color: #42b3b1;
   --alert-color: #f7b32b;
   --danger-color: #d90429;
   --danger-color-50: rgba(223, 17, 34, 0.8);
+  --selected-color: #ecece3;
 
   /* Font */
   --font-main: 'Ubuntu', sans-serif;
 
   /* Board */
   --rows: 8;
+  --cols: 8;
   --columns: 8;
+  --cell-width: 50px;
+  --cell-height: 50px;
+  --border-width: 0.2rem;
 }
 
 /* Box sizing rules */
@@ -171,7 +178,7 @@ p::selection {
   left: 412px;
 }
 
-/* Buttons */
+/* MainMenu Buttons */
 .btn-group {
   width: 700px;
   height: 250px;
@@ -206,7 +213,7 @@ p::selection {
 .menu__btn:hover {
   color: var(--danger-color-50);
   border-color: var(--danger-color-50);
-  background-color: var(--main-bg-color);
+  background-color: var(--white-color-10);
 }
 
 .menu__btn:focus {
@@ -231,22 +238,40 @@ p::selection {
 
 .game-board {
   display: grid;
-  padding: 10px;
-  grid-template-columns: repeat(var(--cols), 50px);
-  grid-template-rows: repeat(var(--rows), 50px);
-  gap: 2px;
+  grid-template-rows: repeat(var(--rows), var(--cell-height));
+  grid-template-columns: repeat(var(--cols), var(--cell-width));
+  border: 2px solid var(--black-color);
+
   /* background-color: #42b3b1; */
 }
 
 .cell {
-  width: 50px;
-  height: 50px;
-  border: 1px solid var(--black-color);
+  cursor: pointer;
+  width: var(--cell-width);
+  height: var(--cell-height);
+  border: 1px solid var(--black-color-50);
+}
+
+.game-board > [data-cell-state='hidden'] {
   background-color: var(--white-color);
 }
 
-.cell--bomb {
-  background-color: var(--danger-color);
+.game-board > [data-cell-state='revealed'] {
+  background-color: var(--selected-color);
+  border: 1px solid var(--black-color);
+  -webkit-box-shadow: inset 0px 0px 5px var(--grey-color);
+  -moz-box-shadow: inset 0px 0px 5px var(--grey-color);
+  box-shadow: inset 0px 0px 5px var(--grey-color);
+  outline: none;
+}
+
+.game-board > [data-cell-state='flagged'] {
+  background-color: var(--alert-color);
+  border: 1px solid var(--black-color);
+  -webkit-box-shadow: inset 0px 0px 5px var(--grey-color);
+  -moz-box-shadow: inset 0px 0px 5px var(--grey-color);
+  box-shadow: inset 0px 0px 5px var(--grey-color);
+  outline: none;
 }
 
 /* Utility Classes */

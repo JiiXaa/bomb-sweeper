@@ -1,13 +1,7 @@
 import { LayerControl } from './LayerControl.js';
-import { Cell } from './Cell.js';
+import { Cell, CELL_STATE } from './Cell.js';
 
 const GAME_SCREEN_ID = 'js-game-screen';
-export const CELL_STATE = {
-  HIDDEN: 'hidden',
-  MINE: 'mine',
-  NUMBER: 'number',
-  MARKED: 'marked',
-};
 
 class GameBoard extends LayerControl {
   difficulties = {
@@ -28,7 +22,7 @@ class GameBoard extends LayerControl {
     },
   };
 
-  boardArray = [];
+  cells = [];
   colsCount = null;
   rowsCount = null;
   minesCount = null;
@@ -51,24 +45,28 @@ class GameBoard extends LayerControl {
     this.colsCount = cols;
     this.minesCount = mines;
 
+    this.generateCells();
     this.generateBoard();
   }
 
-  generateBoard() {
-    const gameBoard = this.bindElementById('js-game-board');
-    gameBoard.innerHTML = '';
-    this.boardArray.length = 0;
+  generateCells() {
+    this.cells.length = 0;
     for (let x = 0; x < this.rowsCount; x++) {
       const row = [];
       for (let y = 0; y < this.colsCount; y++) {
         row.push(new Cell(x, y));
       }
-      this.boardArray.push(row);
+      this.cells.push(row);
     }
-    // console.log(this.boardArray);
-    this.boardArray.flat().forEach((cell) => {
-      // console.log(cell.cellElement);
+    console.log('GameBoard cells: ', this.cells);
+  }
+
+  generateBoard() {
+    const gameBoard = this.bindElementById('js-game-board');
+    gameBoard.innerHTML = '';
+    this.cells.flat().forEach((cell) => {
       gameBoard.appendChild(cell.generateCells());
+      // cell.cellState = CELL_STATE.REVEALED;
     });
 
     // Change the size of the game board
@@ -76,5 +74,28 @@ class GameBoard extends LayerControl {
     gameBoard.style.setProperty('--cols', this.colsCount);
   }
 }
+
+// generateBoard() {
+//   const gameBoard = this.bindElementById('js-game-board');
+//   gameBoard.innerHTML = '';
+//   this.boardArray.length = 0;
+//   for (let x = 0; x < this.rowsCount; x++) {
+//     const row = [];
+//     for (let y = 0; y < this.colsCount; y++) {
+//       row.push(new Cell(x, y));
+//     }
+//     this.boardArray.push(row);
+//   }
+//   // console.log(this.boardArray);
+//   this.boardArray.flat().forEach((cell) => {
+//     // console.log(cell.cellElement);
+//     gameBoard.appendChild(cell.generateCells());
+//   });
+
+// Change the size of the game board
+//     gameBoard.style.setProperty('--rows', this.rowsCount);
+//     gameBoard.style.setProperty('--cols', this.colsCount);
+//   }
+// }
 
 export const gameBoard = new GameBoard();
