@@ -2,7 +2,7 @@ import { LayerControl } from './LayerControl.js';
 import { Cell } from './Cell.js';
 
 const GAME_SCREEN_ID = 'js-game-screen';
-const TILE_STATE = {
+export const CELL_STATE = {
   HIDDEN: 'hidden',
   MINE: 'mine',
   NUMBER: 'number',
@@ -61,36 +61,20 @@ class GameBoard extends LayerControl {
     for (let x = 0; x < this.rowsCount; x++) {
       const row = [];
       for (let y = 0; y < this.colsCount; y++) {
-        const cellElement = document.createElement('div');
-        cellElement.classList.add('cell');
-        cellElement.dataset.status = TILE_STATE.HIDDEN;
-        cellElement.dataset.x = x;
-        cellElement.dataset.y = y;
-        cellElement.dataset.mine = false;
-        cellElement.addEventListener('click', this.handleCellClick);
-        row.push(new Cell(x, y, cellElement));
+        row.push(new Cell(x, y));
       }
       this.boardArray.push(row);
     }
     // console.log(this.boardArray);
     this.boardArray.flat().forEach((cell) => {
       // console.log(cell.cellElement);
-      gameBoard.appendChild(cell.cellElement);
+      gameBoard.appendChild(cell.generateCells());
     });
 
     // Change the size of the game board
     gameBoard.style.setProperty('--rows', this.rowsCount);
     gameBoard.style.setProperty('--cols', this.colsCount);
   }
-
-  handleCellClick = (e) => {
-    console.log(e.target.dataset);
-    if (e.target.classList.contains('cell--bomb')) {
-      e.target.classList.remove('cell--bomb');
-    } else {
-      e.target.classList.add('cell--bomb');
-    }
-  };
 }
 
 export const gameBoard = new GameBoard();
