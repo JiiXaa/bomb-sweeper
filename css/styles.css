@@ -258,6 +258,7 @@ p::selection {
 
 .game-board > [data-cell-state='revealed'] {
   background-color: var(--selected-color);
+  /* background-color: red; */
   border: 1px solid var(--black-color);
   -webkit-box-shadow: inset 0px 0px 5px var(--grey-color);
   -moz-box-shadow: inset 0px 0px 5px var(--grey-color);
@@ -265,13 +266,48 @@ p::selection {
   outline: none;
 }
 
-.game-board > [data-cell-state='flagged'] {
-  background-color: var(--alert-color);
+/* Bomb  */
+.game-board > [data-cell-state='bomb'] {
+  background-color: var(--selected-color);
   border: 1px solid var(--black-color);
   -webkit-box-shadow: inset 0px 0px 5px var(--grey-color);
   -moz-box-shadow: inset 0px 0px 5px var(--grey-color);
   box-shadow: inset 0px 0px 5px var(--grey-color);
   outline: none;
+}
+
+.game-board > [data-cell-state='bomb']::after {
+  content: '\f1e2';
+  font-family: FontAwesome;
+  color: var(--danger-color);
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: var(--black-color-50);
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Flag */
+.game-board > [data-cell-state='flagged'] {
+  background-color: var(--white-color);
+  border: 1px solid var(--black-color);
+  -webkit-box-shadow: inset 0px 0px 5px var(--grey-color);
+  -moz-box-shadow: inset 0px 0px 5px var(--grey-color);
+  box-shadow: inset 0px 0px 5px var(--grey-color);
+  outline: none;
+}
+
+.game-board > [data-cell-state='flagged']::after {
+  content: '\f024';
+  font-family: FontAwesome;
+  color: var(--alert-color);
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: var(--black-color-50);
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Utility Classes */

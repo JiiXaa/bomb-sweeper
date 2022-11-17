@@ -8,24 +8,24 @@ class GameBoard extends LayerControl {
     beginner: {
       rows: 8,
       cols: 8,
-      mines: 10,
+      bombs: 10,
     },
     intermediate: {
       rows: 16,
       cols: 16,
-      mines: 40,
+      bombs: 40,
     },
     expert: {
       rows: 16,
       cols: 30,
-      mines: 99,
+      bombs: 99,
     },
   };
 
   cells = [];
   colsCount = null;
   rowsCount = null;
-  minesCount = null;
+  bombsCount = null;
 
   constructor() {
     super(GAME_SCREEN_ID);
@@ -39,14 +39,16 @@ class GameBoard extends LayerControl {
   startNewGame(
     rows = this.difficulties.beginner.rows,
     cols = this.difficulties.beginner.cols,
-    mines = this.difficulties.beginner.mines
+    bombs = this.difficulties.beginner.bombs
   ) {
     this.rowsCount = rows;
     this.colsCount = cols;
-    this.minesCount = mines;
+    this.bombsCount = bombs;
 
     this.generateCells();
     this.generateBoard();
+    // setter tests
+    this.cells[0][0].cellState = CELL_STATE.BOMB;
   }
 
   generateCells() {
@@ -66,7 +68,6 @@ class GameBoard extends LayerControl {
     gameBoard.innerHTML = '';
     this.cells.flat().forEach((cell) => {
       gameBoard.appendChild(cell.generateCells());
-      // cell.cellState = CELL_STATE.REVEALED;
     });
 
     // Change the size of the game board
@@ -74,28 +75,5 @@ class GameBoard extends LayerControl {
     gameBoard.style.setProperty('--cols', this.colsCount);
   }
 }
-
-// generateBoard() {
-//   const gameBoard = this.bindElementById('js-game-board');
-//   gameBoard.innerHTML = '';
-//   this.boardArray.length = 0;
-//   for (let x = 0; x < this.rowsCount; x++) {
-//     const row = [];
-//     for (let y = 0; y < this.colsCount; y++) {
-//       row.push(new Cell(x, y));
-//     }
-//     this.boardArray.push(row);
-//   }
-//   // console.log(this.boardArray);
-//   this.boardArray.flat().forEach((cell) => {
-//     // console.log(cell.cellElement);
-//     gameBoard.appendChild(cell.generateCells());
-//   });
-
-// Change the size of the game board
-//     gameBoard.style.setProperty('--rows', this.rowsCount);
-//     gameBoard.style.setProperty('--cols', this.colsCount);
-//   }
-// }
 
 export const gameBoard = new GameBoard();

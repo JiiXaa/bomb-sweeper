@@ -2,7 +2,7 @@ import { LayerControl } from './LayerControl.js';
 
 export const CELL_STATE = {
   HIDDEN: 'hidden',
-  MINE: 'mine',
+  BOMB: 'bomb',
   REVEALED: 'revealed',
   FLAGGED: 'flagged',
 };
@@ -22,7 +22,7 @@ export class Cell extends LayerControl {
     this.cellElement.setAttribute('data-cell-state', CELL_STATE.HIDDEN);
     this.cellElement.dataset.x = this.x;
     this.cellElement.dataset.y = this.y;
-    this.cellElement.dataset.mine = false;
+    this.cellElement.dataset.bomb = false;
     this.cellElement.addEventListener('click', this.handleCellLeftClick);
     this.cellElement.addEventListener('contextmenu', this.handleCellRightClick);
 
@@ -30,6 +30,8 @@ export class Cell extends LayerControl {
   }
 
   handleCellLeftClick = (e) => {
+    // console.log(e.target.getAttribute('data-x'));
+    // console.log(e.target.getAttribute('data-y'));
     this.revealCell(e.target);
   };
 
@@ -43,8 +45,8 @@ export class Cell extends LayerControl {
       return;
     }
 
-    if (cell.dataset.mine === 'true') {
-      cell.dataset.cellState = CELL_STATE.MINE;
+    if (cell.dataset.bomb === 'true') {
+      cell.dataset.cellState = CELL_STATE.BOMB;
       return;
     }
 
