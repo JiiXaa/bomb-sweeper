@@ -1,6 +1,8 @@
 # Bomb Sweeper
 
-## design choices
+## Work in progress (for the Code Institute as second Milestone Project)
+
+## Design choices
 
 #### Class based over Functional ?
 
