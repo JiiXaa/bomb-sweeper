@@ -47,6 +47,8 @@ class GameBoard extends LayerControl {
 
     this.generateCells();
     this.generateBoard();
+    this.addCellsListeners();
+    console.log(this.cells);
     // setter tests
     this.cells[0][0].cellState = CELL_STATE.BOMB;
   }
@@ -73,6 +75,52 @@ class GameBoard extends LayerControl {
     // Change the size of the game board
     gameBoard.style.setProperty('--rows', this.rowsCount);
     gameBoard.style.setProperty('--cols', this.colsCount);
+  }
+
+  addCellsListeners() {
+    this.cells.flat().forEach(({ cellElement }) => {
+      cellElement.addEventListener('click', this.handleCellLeftClick);
+      cellElement.addEventListener('contextmenu', this.handleCellRightClick);
+    });
+  }
+
+  handleCellLeftClick = (e) => {
+    // console.log(e.target.getAttribute('data-x'));
+    // console.log(e.target.getAttribute('data-y'));
+    this.revealCell(e.target);
+  };
+
+  handleCellRightClick = (e) => {
+    e.preventDefault();
+    this.markCell(e.target);
+  };
+
+  revealCell(cell) {
+    if (cell.dataset.cellState !== CELL_STATE.HIDDEN) {
+      return;
+    }
+
+    if (cell.dataset.bomb === 'true') {
+      cell.dataset.cellState = CELL_STATE.BOMB;
+      return;
+    }
+
+    cell.dataset.cellState = CELL_STATE.REVEALED;
+  }
+
+  markCell(cell) {
+    if (
+      cell.dataset.cellState !== CELL_STATE.HIDDEN &&
+      cell.dataset.cellState !== CELL_STATE.FLAGGED
+    ) {
+      return;
+    }
+
+    if (cell.dataset.cellState === CELL_STATE.FLAGGED) {
+      cell.dataset.cellState = CELL_STATE.HIDDEN;
+    } else {
+      cell.dataset.cellState = CELL_STATE.FLAGGED;
+    }
   }
 }
 
