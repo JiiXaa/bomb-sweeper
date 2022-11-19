@@ -26,11 +26,4 @@ export class Cell extends LayerControl {
 
     return this.cellElement;
   }
-
-  get cellState() {
-    return this.cellElement.dataset.cellState;
-  }
-  set cellState(value) {
-    this.cellElement.dataset.cellState = value;
-  }
 }

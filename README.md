@@ -53,3 +53,9 @@ CSS Reset shared by [Andy Bell](https://piccalil.li/blog/a-modern-css-reset/).
 CSS custom properties (variables) to avoid DRY principle.
 CSS Desktop first as the game is targeted mostly to PC gamers (that might change).
 Used [Dash Border Generator](https://kovart.github.io/dashed-border-generator/) to generate custom styled border for main wrapper.
+
+### **Things to implement/fix:**
+
+- **First click never can be a bomb hit:** <br>
+  (description found in this [Reddit](https://www.reddit.com/r/AskReddit/comments/djnck/minesweeper_debate_can_you_can_lose_on_the_first/) post.) <br>
+  In Windows, the Minesweeper board is generated randomly before the player clicks any squares.[citation needed] If the player happens to click a mine square on their very first click, the mine at this square is removed and a new mine is placed in the upper left corner. If there is already a mine in the upper left corner (or it was the square that the player clicked), a new mine is placed in the first (starting in the upper left corner then proceeding left->right, top->bottom) available empty spot of the board. Once this change is made, the game proceeds as if the initial clicked square was empty. This is done to ensure that the player will not lose on their very first click.

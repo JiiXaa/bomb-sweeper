@@ -26,6 +26,7 @@ class GameBoard extends LayerControl {
   colsCount = null;
   rowsCount = null;
   bombsCount = null;
+  bombsLocation = [];
 
   constructor() {
     super(GAME_SCREEN_ID);
@@ -48,9 +49,10 @@ class GameBoard extends LayerControl {
     this.generateCells();
     this.generateBoard();
     this.addCellsListeners();
+    this.findBombsLocation();
     console.log(this.cells);
     // setter tests
-    this.cells[0][0].cellState = CELL_STATE.BOMB;
+    // this.cells[0][0].cellState = CELL_STATE.BOMB;
   }
 
   generateCells() {
@@ -62,7 +64,6 @@ class GameBoard extends LayerControl {
       }
       this.cells.push(row);
     }
-    console.log('GameBoard cells: ', this.cells);
   }
 
   generateBoard() {
@@ -75,6 +76,21 @@ class GameBoard extends LayerControl {
     // Change the size of the game board
     gameBoard.style.setProperty('--rows', this.rowsCount);
     gameBoard.style.setProperty('--cols', this.colsCount);
+  }
+
+  findBombsLocation() {
+    let bombsToRelocate = this.bombsCount;
+    while (bombsToRelocate > 0) {
+      const x = this.getRandomInt(0, this.rowsCount - 1);
+      const y = this.getRandomInt(0, this.colsCount - 1);
+      if (this.cells[x][y].cellElement.dataset.bomb === 'true') {
+        continue;
+      }
+      // bomb location test
+      console.log(this.cells[x][y]);
+      this.cells[x][y].cellElement.dataset.bomb = 'true';
+      bombsToRelocate--;
+    }
   }
 
   addCellsListeners() {
@@ -121,6 +137,10 @@ class GameBoard extends LayerControl {
     } else {
       cell.dataset.cellState = CELL_STATE.FLAGGED;
     }
+  }
+
+  getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 }
 
