@@ -93,6 +93,21 @@ class GameBoard extends LayerControl {
     }
   }
 
+  cellsAround(cell) {
+    const x = parseInt(cell.dataset.x);
+    const y = parseInt(cell.dataset.y);
+    const cells = [];
+    for (let i = x - 1; i <= x + 1; i++) {
+      for (let j = y - 1; j <= y + 1; j++) {
+        if (i < 0 || i >= this.rowsCount || j < 0 || j >= this.colsCount) {
+          continue;
+        }
+        cells.push(this.cells[i][j].cellElement);
+      }
+    }
+    return cells;
+  }
+
   addCellsListeners() {
     this.cells.flat().forEach(({ cellElement }) => {
       cellElement.addEventListener('click', this.handleCellLeftClick);
@@ -122,6 +137,8 @@ class GameBoard extends LayerControl {
     }
 
     cell.dataset.cellState = CELL_STATE.REVEALED;
+    const adjacentCells = this.cellsAround(cell);
+    console.log(adjacentCells);
   }
 
   markCell(cell) {
