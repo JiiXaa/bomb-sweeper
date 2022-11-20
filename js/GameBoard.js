@@ -138,7 +138,11 @@ class GameBoard extends LayerControl {
 
     cell.dataset.cellState = CELL_STATE.REVEALED;
     const adjacentCells = this.cellsAround(cell);
-    console.log(adjacentCells);
+    // console.log(adjacentCells);
+    const adjacentBombs = adjacentCells.filter(
+      (cell) => cell.dataset.bomb === 'true'
+    );
+    console.log(adjacentBombs);
   }
 
   markCell(cell) {
