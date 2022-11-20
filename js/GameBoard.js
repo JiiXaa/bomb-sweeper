@@ -22,6 +22,7 @@ class GameBoard extends LayerControl {
     },
   };
 
+  userFirstClick = true;
   cells = [];
   colsCount = null;
   rowsCount = null;
@@ -51,7 +52,6 @@ class GameBoard extends LayerControl {
     this.addCellsListeners();
     this.findBombsLocation();
     console.log(this.cells);
-    // setter tests
     // this.cells[0][0].cellState = CELL_STATE.BOMB;
   }
 
@@ -93,21 +93,6 @@ class GameBoard extends LayerControl {
     }
   }
 
-  cellsAround(cell) {
-    const x = parseInt(cell.dataset.x);
-    const y = parseInt(cell.dataset.y);
-    const cells = [];
-    for (let i = x - 1; i <= x + 1; i++) {
-      for (let j = y - 1; j <= y + 1; j++) {
-        if (i < 0 || i >= this.rowsCount || j < 0 || j >= this.colsCount) {
-          continue;
-        }
-        cells.push(this.cells[i][j].cellElement);
-      }
-    }
-    return cells;
-  }
-
   addCellsListeners() {
     this.cells.flat().forEach(({ cellElement }) => {
       cellElement.addEventListener('click', this.handleCellLeftClick);
@@ -127,6 +112,14 @@ class GameBoard extends LayerControl {
   };
 
   revealCell(cell) {
+    // Check user's first click and if it is a bomb. If it is a bomb, relocate it.
+    if (this.userFirstClick) {
+      if (cell.dataset.bomb === 'true') {
+        this.relocateBomb(cell);
+      }
+      this.userFirstClick = false;
+    }
+
     if (cell.dataset.cellState !== CELL_STATE.HIDDEN) {
       return;
     }
@@ -138,11 +131,44 @@ class GameBoard extends LayerControl {
 
     cell.dataset.cellState = CELL_STATE.REVEALED;
     const adjacentCells = this.cellsAround(cell);
-    // console.log(adjacentCells);
+    console.log('adjacentCells ', adjacentCells);
     const adjacentBombs = adjacentCells.filter(
       (cell) => cell.dataset.bomb === 'true'
     );
-    console.log(adjacentBombs);
+    console.log('adjacentBombs ', adjacentBombs);
+  }
+
+  cellsAround(cell) {
+    const x = parseInt(cell.dataset.x);
+    const y = parseInt(cell.dataset.y);
+    const cells = [];
+    for (let i = x - 1; i <= x + 1; i++) {
+      for (let j = y - 1; j <= y + 1; j++) {
+        if (i < 0 || i >= this.rowsCount || j < 0 || j >= this.colsCount) {
+          continue;
+        }
+        cells.push(this.cells[i][j].cellElement);
+      }
+    }
+    return cells;
+  }
+
+  relocateBomb(cell) {
+    const x = parseInt(cell.dataset.x);
+    const y = parseInt(cell.dataset.y);
+    cell.dataset.bomb = 'false';
+    let newX = x;
+    let newY = y;
+    // Relocate the bomb to a random cell that is not the same as the first click, and not a bomb already
+    while (
+      (newX === x && newY === y) ||
+      this.cells[newX][newY].cellElement.dataset.bomb === 'true'
+    ) {
+      newX = this.getRandomInt(0, this.rowsCount - 1);
+      newY = this.getRandomInt(0, this.colsCount - 1);
+    }
+    this.cells[newX][newY].cellElement.dataset.bomb = 'true';
+    console.log('relocated bomb', this.cells[newX][newY]);
   }
 
   markCell(cell) {
