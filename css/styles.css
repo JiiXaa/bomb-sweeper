@@ -22,6 +22,16 @@
   --cell-width: 50px;
   --cell-height: 50px;
   --border-width: 0.2rem;
+
+  /* Cell Numbers */
+  --color-1: green;
+  --color-2: blue;
+  --color-3: red;
+  --color-4: purple;
+  --color-5: orange;
+  --color-6: darkCyan;
+  --color-7: brown;
+  --color-8: black;
 }
 
 /* Box sizing rules */
@@ -250,6 +260,15 @@ p::selection {
   width: var(--cell-width);
   height: var(--cell-height);
   border: 1px solid var(--black-color-50);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.8rem;
+
+  /* prevent cell selection */
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
 }
 
 .game-board > [data-cell-state='hidden'] {
@@ -317,6 +336,31 @@ p::selection {
   -khtml-user-select: none; /* Konqueror HTML */
   -moz-user-select: none; /* Firefox */
   -ms-user-select: none; /* Internet Explorer/Edge */
+}
+
+.cell-color-1 {
+  color: var(--color-1);
+}
+.cell-color-2 {
+  color: var(--color-2);
+}
+.cell-color-3 {
+  color: var(--color-3);
+}
+.cell-color-4 {
+  color: var(--color-4);
+}
+.cell-color-5 {
+  color: var(--color-5);
+}
+.cell-color-6 {
+  color: var(--color-6);
+}
+.cell-color-7 {
+  color: var(--color-7);
+}
+.cell-color-8 {
+  color: var(--color-8);
 }
 
 .hidden {

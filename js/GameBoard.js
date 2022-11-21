@@ -79,8 +79,8 @@ class GameBoard extends LayerControl {
   }
 
   findBombsLocation() {
-    let bombsToRelocate = this.bombsCount;
-    while (bombsToRelocate > 0) {
+    let bombsToAllocate = this.bombsCount;
+    while (bombsToAllocate > 0) {
       const x = this.getRandomInt(0, this.rowsCount - 1);
       const y = this.getRandomInt(0, this.colsCount - 1);
       if (this.cells[x][y].cellElement.dataset.bomb === 'true') {
@@ -89,7 +89,7 @@ class GameBoard extends LayerControl {
       // bomb location test
       console.log(this.cells[x][y]);
       this.cells[x][y].cellElement.dataset.bomb = 'true';
-      bombsToRelocate--;
+      bombsToAllocate--;
     }
   }
 
@@ -136,6 +136,13 @@ class GameBoard extends LayerControl {
       (cell) => cell.dataset.bomb === 'true'
     );
     console.log('adjacentBombs ', adjacentBombs);
+
+    if (adjacentBombs.length === 0) {
+      adjacentCells.forEach((cell) => this.revealCell(cell));
+    } else {
+      cell.textContent = adjacentBombs.length;
+      cell.classList.add(`cell-color-${adjacentBombs.length}`);
+    }
   }
 
   cellsAround(cell) {
