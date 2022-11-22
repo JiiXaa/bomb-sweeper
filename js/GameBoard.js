@@ -100,9 +100,14 @@ class GameBoard extends LayerControl {
     });
   }
 
+  removeCellsListeners() {
+    this.cells.flat().forEach(({ cellElement }) => {
+      cellElement.removeEventListener('click', this.handleCellLeftClick);
+      cellElement.removeEventListener('contextmenu', this.handleCellRightClick);
+    });
+  }
+
   handleCellLeftClick = (e) => {
-    // console.log(e.target.getAttribute('data-x'));
-    // console.log(e.target.getAttribute('data-y'));
     this.revealCell(e.target);
   };
 
@@ -120,12 +125,15 @@ class GameBoard extends LayerControl {
       this.userFirstClick = false;
     }
 
+    // If the cell is already revealed, do nothing
     if (cell.dataset.cellState !== CELL_STATE.HIDDEN) {
       return;
     }
 
+    // If the cell is a bomb, reveal all bombs and end the game
     if (cell.dataset.bomb === 'true') {
-      cell.dataset.cellState = CELL_STATE.BOMB;
+      this.revealAllBombs();
+      this.removeCellsListeners();
       return;
     }
 
@@ -176,6 +184,14 @@ class GameBoard extends LayerControl {
     }
     this.cells[newX][newY].cellElement.dataset.bomb = 'true';
     console.log('relocated bomb', this.cells[newX][newY]);
+  }
+
+  revealAllBombs() {
+    this.cells.flat().forEach(({ cellElement }) => {
+      if (cellElement.dataset.bomb === 'true') {
+        cellElement.dataset.cellState = CELL_STATE.BOMB;
+      }
+    });
   }
 
   markCell(cell) {
