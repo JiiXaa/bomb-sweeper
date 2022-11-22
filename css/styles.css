@@ -298,6 +298,26 @@ p::selection {
 .game-board > [data-cell-state='bomb']::after {
   content: '\f1e2';
   font-family: FontAwesome;
+  color: var(--black-color);
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Bomb exploded */
+.game-board > [data-cell-state='bomb-exploded'] {
+  background-color: var(--selected-color);
+  border: 1px solid var(--black-color);
+  -webkit-box-shadow: inset 0px 0px 5px var(--grey-color);
+  -moz-box-shadow: inset 0px 0px 5px var(--grey-color);
+  box-shadow: inset 0px 0px 5px var(--grey-color);
+  outline: none;
+}
+
+.game-board > [data-cell-state='bomb-exploded']::after {
+  content: '\f1e2';
+  font-family: FontAwesome;
   color: var(--danger-color);
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: var(--black-color-50);
@@ -305,6 +325,45 @@ p::selection {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+/* Bomb guessed/marked */
+.game-board > [data-cell-state='bomb-marked'] {
+  background-image: url(/img/bomb-solid.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: var(--selected-color);
+  background-size: 2rem;
+  border: 1px solid var(--black-color);
+  -webkit-box-shadow: inset 0px 0px 5px var(--grey-color);
+  -moz-box-shadow: inset 0px 0px 5px var(--grey-color);
+  box-shadow: inset 0px 0px 5px var(--grey-color);
+  outline: none;
+}
+
+.game-board > [data-cell-state='bomb-marked']::before {
+  position: absolute;
+  content: '';
+  width: 45px;
+  height: 2.5px;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+  background-color: var(--danger-color);
+}
+
+.game-board > [data-cell-state='bomb-marked']::after {
+  content: '';
+  width: 45px;
+  height: 2.5px;
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  background-color: var(--danger-color);
 }
 
 /* Flag */

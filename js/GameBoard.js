@@ -52,7 +52,6 @@ class GameBoard extends LayerControl {
     this.addCellsListeners();
     this.findBombsLocation();
     console.log(this.cells);
-    // this.cells[0][0].cellState = CELL_STATE.BOMB;
   }
 
   generateCells() {
@@ -133,6 +132,7 @@ class GameBoard extends LayerControl {
     // If the cell is a bomb, reveal all bombs and end the game
     if (cell.dataset.bomb === 'true') {
       this.revealAllBombs();
+      cell.dataset.cellState = CELL_STATE.BOMB_EXPLODED;
       this.removeCellsListeners();
       return;
     }
@@ -188,7 +188,12 @@ class GameBoard extends LayerControl {
 
   revealAllBombs() {
     this.cells.flat().forEach(({ cellElement }) => {
-      if (cellElement.dataset.bomb === 'true') {
+      if (
+        cellElement.dataset.bomb === 'true' &&
+        cellElement.dataset.cellState === CELL_STATE.FLAGGED
+      ) {
+        cellElement.dataset.cellState = CELL_STATE.BOMB_MARKED;
+      } else if (cellElement.dataset.bomb === 'true') {
         cellElement.dataset.cellState = CELL_STATE.BOMB;
       }
     });

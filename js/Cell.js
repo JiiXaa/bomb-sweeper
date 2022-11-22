@@ -3,6 +3,8 @@ import { LayerControl } from './LayerControl.js';
 export const CELL_STATE = {
   HIDDEN: 'hidden',
   BOMB: 'bomb',
+  BOMB_EXPLODED: 'bomb-exploded',
+  BOMB_MARKED: 'bomb-marked',
   REVEALED: 'revealed',
   FLAGGED: 'flagged',
 };
