@@ -1,6 +1,6 @@
 import { LayerControl } from './LayerControl.js';
 import { Cell, CELL_STATE } from './Cell.js';
-import { modal } from './EndGameModal.js';
+import { endGameModal } from './EndGameModal.js';
 
 const GAME_SCREEN_ID = 'game-screen-js';
 const GAME_BOARD_ID = 'game-board-js';
@@ -32,6 +32,12 @@ class GameBoard extends LayerControl {
   bombsCount = null;
   bombsLocation = [];
 
+  buttons = {
+    beginner: this.bindElementById('beginner-btn-js'),
+    intermediate: this.bindElementById('intermediate-btn-js'),
+    expert: this.bindElementById('expert-btn-js'),
+  };
+
   constructor() {
     super(GAME_SCREEN_ID);
     this.initializeGameBoard();
@@ -39,12 +45,13 @@ class GameBoard extends LayerControl {
 
   initializeGameBoard() {
     this.startNewGame();
+    this.addButtonsListeners();
   }
 
   startNewGame(
-    rows = this.difficulties.intermediate.rows,
-    cols = this.difficulties.intermediate.cols,
-    bombs = this.difficulties.intermediate.bombs
+    rows = this.difficulties.beginner.rows,
+    cols = this.difficulties.beginner.cols,
+    bombs = this.difficulties.beginner.bombs
   ) {
     this.rowsCount = rows;
     this.colsCount = cols;
@@ -80,7 +87,7 @@ class GameBoard extends LayerControl {
     gameBoard.style.setProperty('--cols', this.colsCount);
 
     // Change the size of the End Game Modal
-    modal.elementById.style.setProperty('--rows', this.rowsCount);
+    endGameModal.elementById.style.setProperty('--rows', this.rowsCount);
 
     // Change the size of the Game Side Menu
     const sidemenu = this.bindElementById(GAME_SIDEMENU_ID);
@@ -116,6 +123,40 @@ class GameBoard extends LayerControl {
     });
   }
 
+  addButtonsListeners() {
+    this.buttons.beginner.addEventListener('click', () => {
+      console.log('first');
+      this.handleNewGameClick(
+        this.difficulties.beginner.rows,
+        this.difficulties.beginner.cols,
+        this.difficulties.beginner.bombs
+      );
+    });
+    this.buttons.intermediate.addEventListener('click', () => {
+      this.handleNewGameClick(
+        this.difficulties.intermediate.rows,
+        this.difficulties.intermediate.cols,
+        this.difficulties.intermediate.bombs
+      );
+    });
+    this.buttons.expert.addEventListener('click', () => {
+      this.handleNewGameClick(
+        this.difficulties.expert.rows,
+        this.difficulties.expert.cols,
+        this.difficulties.expert.bombs
+      );
+    });
+  }
+
+  handleNewGameClick(
+    rows = this.rowsCount,
+    cols = this.colsCount,
+    bombs = this.bombsCount
+  ) {
+    endGameModal.closeModal();
+    this.startNewGame(rows, cols, bombs);
+  }
+
   handleCellLeftClick = (e) => {
     this.revealCell(e.target);
   };
@@ -144,7 +185,7 @@ class GameBoard extends LayerControl {
       this.revealAllBombs();
       cell.dataset.cellState = CELL_STATE.BOMB_EXPLODED;
       this.removeCellsListeners();
-      modal.showModalEndGame();
+      endGameModal.showModalEndGame();
       return;
     }
 

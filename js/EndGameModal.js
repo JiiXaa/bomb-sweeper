@@ -26,4 +26,4 @@ class EndGameModal extends LayerControl {
   }
 }
 
-export const modal = new EndGameModal();
+export const endGameModal = new EndGameModal();

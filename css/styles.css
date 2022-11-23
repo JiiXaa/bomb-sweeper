@@ -280,11 +280,48 @@ p::selection {
   transition: opacity 0.3s ease-in;
 }
 
+/* Side Menu */
 .game-sidemenu {
+  display: flex;
   height: calc(var(--rows) * var(--cell-height));
   width: 200px;
   background-color: var(--white-color);
   border: 1px solid var(--black-color-50);
+}
+
+/* Game Info */
+
+/* Game Info Buttons */
+.game-buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: 100%;
+  width: 100%;
+}
+
+.game-buttons__btn {
+  border: none;
+  padding: 2px;
+  margin-bottom: 2px;
+  border-top: 2px solid var(--black-color);
+  border-bottom: 2px solid var(--black-color);
+  border-radius: none;
+  background-color: var(--alert-color);
+  color: var(--black-color);
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.2s ease-in;
+}
+
+.game-buttons__btn:hover {
+  color: var(--danger-color-50);
+  border-color: var(--danger-color-50);
+  background-color: var(--white-color-10);
+}
+
+.game-buttons__btn:focus {
+  outline: none;
 }
 
 .game-board > [data-cell-state='hidden'] {
