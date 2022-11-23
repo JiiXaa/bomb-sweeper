@@ -3,6 +3,7 @@
   --main-bg-color: #2b2d42;
   --white-color: #edf2f4;
   --white-color-10: rgba(237, 242, 244, 0.1);
+  --white-color-50: rgba(165, 161, 152, 0.5);
   --black-color: rgb(17, 17, 17);
   --black-color-50: rgba(17, 17, 17, 0.5);
   --grey-color: #c1c1c1;
@@ -148,7 +149,6 @@ p::selection {
 }
 
 .game__wrapper {
-  position: absolute;
   height: 80vh;
   width: 60vw;
   background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='%23EDF2F4FF' stroke-width='12' stroke-dasharray='8%2c 45' stroke-dashoffset='47' stroke-linecap='square'/%3e%3c/svg%3e");
@@ -168,7 +168,7 @@ p::selection {
 .main--menu {
   display: flex;
   flex-direction: column;
-  padding-top: 15%;
+  padding-top: 10%;
   align-items: center;
 }
 
@@ -242,6 +242,7 @@ p::selection {
   bottom: 0;
   left: 0;
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
 }
@@ -250,9 +251,6 @@ p::selection {
   display: grid;
   grid-template-rows: repeat(var(--rows), var(--cell-height));
   grid-template-columns: repeat(var(--cols), var(--cell-width));
-  border: 2px solid var(--black-color);
-
-  /* background-color: #42b3b1; */
 }
 
 .cell {
@@ -271,14 +269,30 @@ p::selection {
   user-select: none; /* Standard syntax */
 }
 
+/* End Game Modal */
+.endgame-modal {
+  opacity: 0;
+  height: calc(var(--rows) * var(--cell-height));
+  width: 200px;
+  background-color: var(--white-color);
+  border: 1px solid var(--black-color-50);
+  z-index: 100;
+  transition: opacity 0.3s ease-in;
+}
+
+.game-sidemenu {
+  height: calc(var(--rows) * var(--cell-height));
+  width: 200px;
+  background-color: var(--white-color);
+  border: 1px solid var(--black-color-50);
+}
+
 .game-board > [data-cell-state='hidden'] {
   background-color: var(--white-color);
 }
 
 .game-board > [data-cell-state='revealed'] {
   background-color: var(--selected-color);
-  /* background-color: red; */
-  border: 1px solid var(--black-color);
   -webkit-box-shadow: inset 0px 0px 5px var(--grey-color);
   -moz-box-shadow: inset 0px 0px 5px var(--grey-color);
   box-shadow: inset 0px 0px 5px var(--grey-color);
@@ -288,7 +302,6 @@ p::selection {
 /* Bomb  */
 .game-board > [data-cell-state='bomb'] {
   background-color: var(--selected-color);
-  border: 1px solid var(--black-color);
   -webkit-box-shadow: inset 0px 0px 5px var(--grey-color);
   -moz-box-shadow: inset 0px 0px 5px var(--grey-color);
   box-shadow: inset 0px 0px 5px var(--grey-color);
@@ -308,7 +321,6 @@ p::selection {
 /* Bomb exploded */
 .game-board > [data-cell-state='bomb-exploded'] {
   background-color: var(--selected-color);
-  border: 1px solid var(--black-color);
   -webkit-box-shadow: inset 0px 0px 5px var(--grey-color);
   -moz-box-shadow: inset 0px 0px 5px var(--grey-color);
   box-shadow: inset 0px 0px 5px var(--grey-color);
@@ -334,7 +346,6 @@ p::selection {
   background-repeat: no-repeat;
   background-color: var(--selected-color);
   background-size: 2rem;
-  border: 1px solid var(--black-color);
   -webkit-box-shadow: inset 0px 0px 5px var(--grey-color);
   -moz-box-shadow: inset 0px 0px 5px var(--grey-color);
   box-shadow: inset 0px 0px 5px var(--grey-color);
@@ -369,7 +380,6 @@ p::selection {
 /* Flag */
 .game-board > [data-cell-state='flagged'] {
   background-color: var(--white-color);
-  border: 1px solid var(--black-color);
   -webkit-box-shadow: inset 0px 0px 5px var(--grey-color);
   -moz-box-shadow: inset 0px 0px 5px var(--grey-color);
   box-shadow: inset 0px 0px 5px var(--grey-color);

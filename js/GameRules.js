@@ -1,6 +1,6 @@
 import { LayerControl } from './LayerControl.js';
 
-const GAME_RULES_ID = 'js-rules-screen';
+const GAME_RULES_ID = 'rules-screen-js';
 
 class GameRules extends LayerControl {
   constructor() {

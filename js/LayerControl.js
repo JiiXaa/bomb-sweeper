@@ -26,4 +26,10 @@ export class LayerControl {
       ? element.classList.remove(CLASS_HIDDEN)
       : element.classList.add(CLASS_HIDDEN);
   }
+
+  opacityToggle(element, option) {
+    option == SCREEN_VISIBLE
+      ? (element.style.opacity = 1)
+      : (element.style.opacity = 0);
+  }
 }

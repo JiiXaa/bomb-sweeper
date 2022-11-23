@@ -1,7 +1,10 @@
 import { LayerControl } from './LayerControl.js';
 import { Cell, CELL_STATE } from './Cell.js';
+import { modal } from './EndGameModal.js';
 
-const GAME_SCREEN_ID = 'js-game-screen';
+const GAME_SCREEN_ID = 'game-screen-js';
+const GAME_BOARD_ID = 'game-board-js';
+const GAME_SIDEMENU_ID = 'game-sidemenu-js';
 
 class GameBoard extends LayerControl {
   difficulties = {
@@ -39,9 +42,9 @@ class GameBoard extends LayerControl {
   }
 
   startNewGame(
-    rows = this.difficulties.beginner.rows,
-    cols = this.difficulties.beginner.cols,
-    bombs = this.difficulties.beginner.bombs
+    rows = this.difficulties.intermediate.rows,
+    cols = this.difficulties.intermediate.cols,
+    bombs = this.difficulties.intermediate.bombs
   ) {
     this.rowsCount = rows;
     this.colsCount = cols;
@@ -66,7 +69,7 @@ class GameBoard extends LayerControl {
   }
 
   generateBoard() {
-    const gameBoard = this.bindElementById('js-game-board');
+    const gameBoard = this.bindElementById(GAME_BOARD_ID);
     gameBoard.innerHTML = '';
     this.cells.flat().forEach((cell) => {
       gameBoard.appendChild(cell.generateCells());
@@ -75,6 +78,13 @@ class GameBoard extends LayerControl {
     // Change the size of the game board
     gameBoard.style.setProperty('--rows', this.rowsCount);
     gameBoard.style.setProperty('--cols', this.colsCount);
+
+    // Change the size of the End Game Modal
+    modal.elementById.style.setProperty('--rows', this.rowsCount);
+
+    // Change the size of the Game Side Menu
+    const sidemenu = this.bindElementById(GAME_SIDEMENU_ID);
+    sidemenu.style.setProperty('--rows', this.rowsCount);
   }
 
   findBombsLocation() {
@@ -134,6 +144,7 @@ class GameBoard extends LayerControl {
       this.revealAllBombs();
       cell.dataset.cellState = CELL_STATE.BOMB_EXPLODED;
       this.removeCellsListeners();
+      modal.showModalEndGame();
       return;
     }
 

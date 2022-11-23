@@ -24,17 +24,17 @@
     <main class="game">
       <div class="game__wrapper">
         <!-- Main Menu Layer -->
-        <div class="game__layer main--menu" id="js-main-menu">
+        <div class="game__layer main--menu" id="main-menu-js">
           <header class="menu__header">
             <span class="bomb-emoji disable-select">💣</span>
             <h1>Welcome to B&nbsp;&nbsp; mb Sweeper</h1>
           </header>
           <div class="btn-group">
-            <button class="menu__btn play--btn" id="js-play-btn">Play</button>
-            <button class="menu__btn rules--btn" id="js-rules-btn">
+            <button class="menu__btn play--btn" id="play-btn-js">Play</button>
+            <button class="menu__btn rules--btn" id="rules-btn-js">
               Rules
             </button>
-            <button class="menu__btn settings--btn" id="js-settings-btn">
+            <button class="menu__btn settings--btn" id="settings-btn-js">
               <i class="fa-solid fa-gear"></i>
             </button>
           </div>
@@ -42,19 +42,26 @@
         <!-- End Main Menu Layer -->
 
         <!-- Game Layer -->
-        <div class="game__layer game-screen hidden" id="js-game-screen">
-          <div class="game-board" id="js-game-board"></div>
+        <div class="game__layer game-screen hidden" id="game-screen-js">
+          <div class="endgame-modal" id="endgame-modal-js">
+            <div
+              class="end-game-modal-content"
+              id="end-game-modal-content-js"
+            ></div>
+          </div>
+          <div class="game-board" id="game-board-js"></div>
+          <div class="game-sidemenu" id="game-sidemenu-js"></div>
         </div>
         <!-- End Game Layer -->
 
         <!-- Rules Layer -->
-        <div class="game__layer game-rules hidden" id="js-rules-screen">
+        <div class="game__layer game-rules hidden" id="rules-screen-js">
           <h1>This will be a game rules screen</h1>
         </div>
         <!-- End Rules Layer -->
 
         <!-- Settings Layer -->
-        <div class="game__layer game-settings hidden" id="js-settings-screen">
+        <div class="game__layer game-settings hidden" id="settings-screen-js">
           <h1>This will be a game settings screen</h1>
         </div>
         <!-- End Settings Layer -->

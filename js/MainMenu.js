@@ -8,10 +8,10 @@ import { gameBoard } from './GameBoard.js';
 import { gameRules } from './GameRules.js';
 import { gameSettings } from './GameSettings.js';
 
-const MAIN_MENU_ID = 'js-main-menu';
-const PLAY_GAME_BUTTON_ID = 'js-play-btn';
-const GAME_RULES_BUTTON_ID = 'js-rules-btn';
-const GAME_SETTINGS_BUTTON_ID = 'js-settings-btn';
+const MAIN_MENU_ID = 'main-menu-js';
+const PLAY_GAME_BUTTON_ID = 'play-btn-js';
+const GAME_RULES_BUTTON_ID = 'rules-btn-js';
+const GAME_SETTINGS_BUTTON_ID = 'settings-btn-js';
 
 class MainMenu extends LayerControl {
   constructor() {
