@@ -15,7 +15,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Ubuntu:ital,wght@0,400;0,500;0,700;1,400&display=swap"
       rel="stylesheet"
     />
     <title>💣 Bomb Sweeper 💣</title>
@@ -50,8 +50,25 @@
             ></div>
           </div>
           <div class="game-board" id="game-board-js"></div>
-          <div class="game-sidemenu" id="game-sidemenu-js">
-            <div class="game-info" id="game-info-js"></div>
+          <div class="game-sidemenu disable-select" id="game-sidemenu-js">
+            <div class="game-info" id="game-info-js">
+              <div class="game-info__header">
+                <div class="time-left">
+                  <i class="fa-solid fa-clock"></i>
+                  <span class="time-left__value" id="time-left-js">000</span>
+                </div>
+                <div class="bombs-left">
+                  <i class="fa-solid fa-bomb"></i>
+                  <span class="bombs-left__value" id="bombs-left-js">00</span>
+                </div>
+              </div>
+              <div class="revealed-count">
+                <span class="revealed-count__value" id="revealed-count-js"
+                  >0</span
+                >
+                <span class="revealed-count__text">Moves</span>
+              </div>
+            </div>
             <div class="game-buttons" id="game-buttons-js">
               <button class="game-buttons__btn" id="beginner-btn-js">
                 Beginner

@@ -15,6 +15,7 @@
 
   /* Font */
   --font-main: 'Ubuntu', sans-serif;
+  --font-game: 'Press Start 2P', cursive;
 
   /* Board */
   --rows: 8;
@@ -283,26 +284,84 @@ p::selection {
 /* Side Menu */
 .game-sidemenu {
   display: flex;
+  flex-direction: column;
   height: calc(var(--rows) * var(--cell-height));
-  width: 200px;
+  width: 150px;
   background-color: var(--white-color);
   border: 1px solid var(--black-color-50);
 }
 
 /* Game Info */
+.game-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  font-family: var(--font-game);
+}
+
+.game-info__header {
+  display: flex;
+  padding: 0.2rem 0.1rem;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.time-left {
+  padding: 0.4rem 0.2rem;
+  display: flex;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+}
+
+.time-left > i {
+  position: relative;
+  font-size: 1rem;
+  margin-right: 0.3rem;
+  top: -2px;
+}
+
+.bombs-left {
+  display: flex;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+}
+
+.bombs-left > i {
+  position: relative;
+  top: -2px;
+  font-size: 1.1rem;
+  margin-right: 0.3rem;
+}
+
+.revealed-count {
+  display: flex;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1.1rem;
+}
+
+.revealed-count > span {
+  padding: 0.4rem 0.2rem;
+}
 
 /* Game Info Buttons */
 .game-buttons {
+  /* border: 2px solid green; */
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  height: 100%;
+  height: 50%;
   width: 100%;
 }
 
 .game-buttons__btn {
   border: none;
-  padding: 2px;
+  padding: 0.5rem 0;
   margin-bottom: 2px;
   border-top: 2px solid var(--black-color);
   border-bottom: 2px solid var(--black-color);
@@ -310,7 +369,8 @@ p::selection {
   background-color: var(--alert-color);
   color: var(--black-color);
   cursor: pointer;
-  font-size: 1rem;
+  font-family: var(--font-game);
+  font-size: 0.7rem;
   transition: all 0.2s ease-in;
 }
 
@@ -338,7 +398,7 @@ p::selection {
 
 /* Bomb  */
 .game-board > [data-cell-state='bomb'] {
-  background-color: var(--selected-color);
+  background-color: var(--white-color);
   -webkit-box-shadow: inset 0px 0px 5px var(--grey-color);
   -moz-box-shadow: inset 0px 0px 5px var(--grey-color);
   box-shadow: inset 0px 0px 5px var(--grey-color);
@@ -357,7 +417,7 @@ p::selection {
 
 /* Bomb exploded */
 .game-board > [data-cell-state='bomb-exploded'] {
-  background-color: var(--selected-color);
+  background-color: var(--white-color);
   -webkit-box-shadow: inset 0px 0px 5px var(--grey-color);
   -moz-box-shadow: inset 0px 0px 5px var(--grey-color);
   box-shadow: inset 0px 0px 5px var(--grey-color);
