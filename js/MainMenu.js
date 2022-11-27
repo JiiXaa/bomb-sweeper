@@ -7,6 +7,7 @@ import {
 import { gameBoard } from './GameBoard.js';
 import { gameRules } from './GameRules.js';
 import { gameSettings } from './GameSettings.js';
+import { timer } from './Timer.js';
 
 const MAIN_MENU_ID = 'main-menu-js';
 const PLAY_GAME_BUTTON_ID = 'play-btn-js';
@@ -33,6 +34,8 @@ class MainMenu extends LayerControl {
     console.log('loading game screen');
     this.visibilityToggle(this.elementById, SCREEN_HIDDEN);
     this.visibilityToggle(gameBoard.elementById, SCREEN_VISIBLE);
+    // Have to reset the timer when loading the game screen, to make sure it starts from 0
+    timer.resetTimer();
   }
 
   loadRulesScreen() {

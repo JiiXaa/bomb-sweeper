@@ -1,6 +1,7 @@
 import { LayerControl } from './LayerControl.js';
 import { Cell, CELL_STATE } from './Cell.js';
 import { endGameModal } from './EndGameModal.js';
+import { timer } from './Timer.js';
 
 const GAME_SCREEN_ID = 'game-screen-js';
 const GAME_BOARD_ID = 'game-board-js';
@@ -61,6 +62,8 @@ class GameBoard extends LayerControl {
 
     this.generateCells();
     this.generateBoard();
+    // Timer
+    timer.resetTimer();
     this.addCellsListeners();
     this.findBombsLocation();
     this.flagsLeftToPlace = this.bombsCount;
