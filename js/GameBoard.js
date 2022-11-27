@@ -31,6 +31,8 @@ class GameBoard extends LayerControl {
   rowsCount = null;
   bombsCount = null;
   bombsLocation = [];
+  flagsLeftScreen = this.bindElementById('flags-left-js');
+  flagsLeftToPlace = null;
 
   buttons = {
     beginner: this.bindElementById('beginner-btn-js'),
@@ -61,6 +63,7 @@ class GameBoard extends LayerControl {
     this.generateBoard();
     this.addCellsListeners();
     this.findBombsLocation();
+    this.flagsLeftToPlace = this.bombsCount;
     console.log(this.cells);
   }
 
@@ -92,6 +95,9 @@ class GameBoard extends LayerControl {
     // Change the size of the Game Side Menu
     const sidemenu = this.bindElementById(GAME_SIDEMENU_ID);
     sidemenu.style.setProperty('--rows', this.rowsCount);
+
+    // Flags left to place
+    this.flagsLeftScreen.textContent = this.bombsCount;
   }
 
   findBombsLocation() {
@@ -258,13 +264,28 @@ class GameBoard extends LayerControl {
     ) {
       return;
     }
-
     if (cell.dataset.cellState === CELL_STATE.FLAGGED) {
+      ++this.flagsLeftToPlace;
+      this.flagsLeftScreen.textContent = this.flagsLeftToPlace;
       cell.dataset.cellState = CELL_STATE.HIDDEN;
     } else {
+      if (this.flagsLeftToPlace === 0) {
+        return;
+      }
+      --this.flagsLeftToPlace;
+      this.flagsLeftScreen.textContent = this.flagsLeftToPlace;
       cell.dataset.cellState = CELL_STATE.FLAGGED;
     }
   }
+
+  // flagsLeftToPlace() {
+  //   let flagsLeft =
+  //     this.bombsCount -
+  //     this.cells.flat().filter((cell) => cell.cellState === CELL_STATE.FLAGGED)
+  //       .length;
+  //   // this.flagsLeft.textContent = flagsLeft;
+  //   return flagsLeft;
+  // }
 
   getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
