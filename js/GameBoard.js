@@ -161,6 +161,7 @@ class GameBoard extends LayerControl {
   ) {
     endGameModal.closeModal();
     this.startNewGame(rows, cols, bombs);
+    this.userFirstClick = true;
   }
 
   handleCellLeftClick = (e) => {
