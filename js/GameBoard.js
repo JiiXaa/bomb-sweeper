@@ -70,6 +70,19 @@ class GameBoard extends LayerControl {
     console.log(this.cells);
   }
 
+  endGame(isWin, cell) {
+    if (!isWin) {
+      timer.stopTimer();
+      this.revealAllBombs();
+      cell.dataset.cellState = CELL_STATE.BOMB_EXPLODED;
+      this.removeCellsListeners();
+      endGameModal.showModalEndGame();
+
+      // TODO: Seconds it took to lose, used for the end game modal
+      console.log('seconds from', timer.timeInSeconds);
+    }
+  }
+
   generateCells() {
     this.cells.length = 0;
     for (let x = 0; x < this.rowsCount; x++) {
@@ -192,10 +205,7 @@ class GameBoard extends LayerControl {
 
     // If the cell is a bomb, reveal all bombs and end the game
     if (cell.dataset.bomb === 'true') {
-      this.revealAllBombs();
-      cell.dataset.cellState = CELL_STATE.BOMB_EXPLODED;
-      this.removeCellsListeners();
-      endGameModal.showModalEndGame();
+      this.endGame(false, cell);
       return;
     }
 

@@ -6,6 +6,7 @@ class Timer extends LayerControl {
   maxTime = 999;
   timeInSeconds = 0;
   interval = null;
+  endTime = null;
 
   constructor() {
     super(TIME_LEFT_ID);
@@ -19,6 +20,7 @@ class Timer extends LayerControl {
 
   stopTimer() {
     clearInterval(this.interval);
+    this.endTime = this.timeInSeconds;
   }
 
   resetTimer() {
