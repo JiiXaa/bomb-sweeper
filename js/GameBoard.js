@@ -6,6 +6,8 @@ import { timer } from './Timer.js';
 const GAME_SCREEN_ID = 'game-screen-js';
 const GAME_BOARD_ID = 'game-board-js';
 const GAME_SIDEMENU_ID = 'game-sidemenu-js';
+const USED_MOVES_ID = 'revealed-count-js';
+const FLAGS_LEFT_ID = 'flags-left-js';
 
 class GameBoard extends LayerControl {
   difficulties = {
@@ -32,7 +34,9 @@ class GameBoard extends LayerControl {
   rowsCount = null;
   bombsCount = null;
   bombsLocation = [];
-  flagsLeftScreen = this.bindElementById('flags-left-js');
+  usedMoves = 0;
+  usedMovesScreen = this.bindElementById(USED_MOVES_ID);
+  flagsLeftScreen = this.bindElementById(FLAGS_LEFT_ID);
   flagsLeftToPlace = null;
 
   buttons = {
@@ -79,7 +83,7 @@ class GameBoard extends LayerControl {
       endGameModal.showModalEndGame();
 
       // TODO: Seconds it took to lose, used for the end game modal
-      console.log('seconds from', timer.timeInSeconds);
+      console.log('seconds from endGame: ', timer.timeInSeconds);
     }
   }
 
@@ -189,6 +193,7 @@ class GameBoard extends LayerControl {
     this.markCell(e.target);
   };
 
+  // Left click on cell
   revealCell(cell) {
     // Check user's first click and if it is a bomb. If it is a bomb, relocate it.
     if (this.userFirstClick) {
@@ -210,13 +215,14 @@ class GameBoard extends LayerControl {
     }
 
     cell.dataset.cellState = CELL_STATE.REVEALED;
+    // Check how many bombs are around the cell
     const adjacentCells = this.cellsAround(cell);
     console.log('adjacentCells ', adjacentCells);
     const adjacentBombs = adjacentCells.filter(
       (cell) => cell.dataset.bomb === 'true'
     );
     console.log('adjacentBombs ', adjacentBombs);
-
+    // if there are no bombs around the cell, reveal all adjacent cells recursively until there are bombs around
     if (adjacentBombs.length === 0) {
       adjacentCells.forEach((cell) => this.revealCell(cell));
     } else {
@@ -225,6 +231,31 @@ class GameBoard extends LayerControl {
     }
   }
 
+  // Right click on a cell
+  markCell(cell) {
+    if (
+      cell.dataset.cellState !== CELL_STATE.HIDDEN &&
+      cell.dataset.cellState !== CELL_STATE.FLAGGED
+    ) {
+      return;
+    }
+    if (cell.dataset.cellState === CELL_STATE.FLAGGED) {
+      cell.dataset.cellState = CELL_STATE.HIDDEN;
+      // Flags left to place logic when removing a flag
+      ++this.flagsLeftToPlace;
+      this.flagsLeftScreen.textContent = this.flagsLeftToPlace;
+    } else {
+      if (this.flagsLeftToPlace === 0) {
+        return;
+      }
+      cell.dataset.cellState = CELL_STATE.FLAGGED;
+      // Flags left to place logic when placing a flag
+      --this.flagsLeftToPlace;
+      this.flagsLeftScreen.textContent = this.flagsLeftToPlace;
+    }
+  }
+
+  // Check how many cells are around the cell
   cellsAround(cell) {
     const x = parseInt(cell.dataset.x);
     const y = parseInt(cell.dataset.y);
@@ -240,13 +271,13 @@ class GameBoard extends LayerControl {
     return cells;
   }
 
+  // Relocate the bomb to a random cell that is not the same as the first click, and not a bomb already
   relocateBomb(cell) {
     const x = parseInt(cell.dataset.x);
     const y = parseInt(cell.dataset.y);
     cell.dataset.bomb = 'false';
     let newX = x;
     let newY = y;
-    // Relocate the bomb to a random cell that is not the same as the first click, and not a bomb already
     while (
       (newX === x && newY === y) ||
       this.cells[newX][newY].cellElement.dataset.bomb === 'true'
@@ -258,6 +289,7 @@ class GameBoard extends LayerControl {
     console.log('relocated bomb', this.cells[newX][newY]);
   }
 
+  // Reveal all bombs when the game ends
   revealAllBombs() {
     this.cells.flat().forEach(({ cellElement }) => {
       if (
@@ -269,27 +301,6 @@ class GameBoard extends LayerControl {
         cellElement.dataset.cellState = CELL_STATE.BOMB;
       }
     });
-  }
-
-  markCell(cell) {
-    if (
-      cell.dataset.cellState !== CELL_STATE.HIDDEN &&
-      cell.dataset.cellState !== CELL_STATE.FLAGGED
-    ) {
-      return;
-    }
-    if (cell.dataset.cellState === CELL_STATE.FLAGGED) {
-      ++this.flagsLeftToPlace;
-      this.flagsLeftScreen.textContent = this.flagsLeftToPlace;
-      cell.dataset.cellState = CELL_STATE.HIDDEN;
-    } else {
-      if (this.flagsLeftToPlace === 0) {
-        return;
-      }
-      --this.flagsLeftToPlace;
-      this.flagsLeftScreen.textContent = this.flagsLeftToPlace;
-      cell.dataset.cellState = CELL_STATE.FLAGGED;
-    }
   }
 
   // flagsLeftToPlace() {
