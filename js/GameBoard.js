@@ -34,8 +34,8 @@ class GameBoard extends LayerControl {
   rowsCount = null;
   bombsCount = null;
   bombsLocation = [];
-  usedMoves = 0;
   usedMovesScreen = this.bindElementById(USED_MOVES_ID);
+  usedMoves = 0;
   flagsLeftScreen = this.bindElementById(FLAGS_LEFT_ID);
   flagsLeftToPlace = null;
 
@@ -186,11 +186,13 @@ class GameBoard extends LayerControl {
 
   handleCellLeftClick = (e) => {
     this.revealCell(e.target);
+    this.countUsedMoves();
   };
 
   handleCellRightClick = (e) => {
     e.preventDefault();
     this.markCell(e.target);
+    this.countUsedMoves();
   };
 
   // Left click on cell
@@ -303,6 +305,10 @@ class GameBoard extends LayerControl {
     });
   }
 
+  countUsedMoves() {
+    ++this.usedMoves;
+    this.usedMovesScreen.textContent = this.usedMoves;
+  }
   // flagsLeftToPlace() {
   //   let flagsLeft =
   //     this.bombsCount -
