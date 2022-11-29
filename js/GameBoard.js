@@ -76,6 +76,7 @@ class GameBoard extends LayerControl {
     console.log(this.cells);
   }
 
+  // Check if the user won the game and if so, it opens the End Game Modal with the win message and the time it took to win the game and the number of moves it took to win the game.
   endGame(isWin, cell) {
     if (!isWin) {
       timer.stopTimer();
@@ -89,6 +90,7 @@ class GameBoard extends LayerControl {
     }
   }
 
+  // Create a new Cell object and pushes it to the cells array with the coordinates of the cell and the cell state
   generateCells() {
     this.cells.length = 0;
     for (let x = 0; x < this.rowsCount; x++) {
@@ -100,6 +102,7 @@ class GameBoard extends LayerControl {
     }
   }
 
+  // Generate the game board from the cells array and and appends it to the game screen
   generateBoard() {
     const gameBoard = this.bindElementById(GAME_BOARD_ID);
     gameBoard.innerHTML = '';
@@ -122,6 +125,7 @@ class GameBoard extends LayerControl {
     this.flagsLeftScreen.textContent = this.bombsCount;
   }
 
+  // Allocate the bombs randomly on the game board
   generateBombsLocation() {
     let bombsToAllocate = this.bombsCount;
     while (bombsToAllocate > 0) {
@@ -223,6 +227,7 @@ class GameBoard extends LayerControl {
     }
 
     cell.dataset.cellState = CELL_STATE.REVEALED;
+
     // Check how many bombs are around the cell
     const adjacentCells = this.cellsAround(cell);
     console.log('adjacentCells ', adjacentCells);
@@ -311,6 +316,7 @@ class GameBoard extends LayerControl {
     });
   }
 
+  // Track the number of moves the user has made
   countUsedMoves(cell) {
     if (cell.dataset.cellState === CELL_STATE.REVEALED) {
       return;
