@@ -69,8 +69,10 @@ class GameBoard extends LayerControl {
     // Timer
     timer.resetTimer();
     this.addCellsListeners();
-    this.findBombsLocation();
+    this.generateBombsLocation();
     this.flagsLeftToPlace = this.bombsCount;
+    this.usedMoves = 0;
+    this.usedMovesScreen.textContent = this.usedMoves;
     console.log(this.cells);
   }
 
@@ -120,7 +122,7 @@ class GameBoard extends LayerControl {
     this.flagsLeftScreen.textContent = this.bombsCount;
   }
 
-  findBombsLocation() {
+  generateBombsLocation() {
     let bombsToAllocate = this.bombsCount;
     while (bombsToAllocate > 0) {
       const x = this.getRandomInt(0, this.rowsCount - 1);
@@ -135,6 +137,7 @@ class GameBoard extends LayerControl {
     }
   }
 
+  // Method sets event listeners to the cells for the left and right click
   addCellsListeners() {
     this.cells.flat().forEach(({ cellElement }) => {
       cellElement.addEventListener('click', this.handleCellLeftClick);
@@ -142,6 +145,7 @@ class GameBoard extends LayerControl {
     });
   }
 
+  // Method removes event listeners to the cells for the left and right click
   removeCellsListeners() {
     this.cells.flat().forEach(({ cellElement }) => {
       cellElement.removeEventListener('click', this.handleCellLeftClick);
@@ -149,9 +153,9 @@ class GameBoard extends LayerControl {
     });
   }
 
+  // Difficulty buttons event listeners
   addButtonsListeners() {
     this.buttons.beginner.addEventListener('click', () => {
-      console.log('first');
       this.handleNewGameClick(
         this.difficulties.beginner.rows,
         this.difficulties.beginner.cols,
@@ -174,6 +178,7 @@ class GameBoard extends LayerControl {
     });
   }
 
+  // New game buttons method, resets the game and starts a new one depending on the difficulty chosen by the user (beginner, intermediate, expert)
   handleNewGameClick(
     rows = this.rowsCount,
     cols = this.colsCount,
@@ -184,18 +189,19 @@ class GameBoard extends LayerControl {
     this.userFirstClick = true;
   }
 
+  // left click on cell event handler
   handleCellLeftClick = (e) => {
+    this.countUsedMoves(e.target);
     this.revealCell(e.target);
-    this.countUsedMoves();
   };
 
+  // right click on cell event handler
   handleCellRightClick = (e) => {
     e.preventDefault();
     this.markCell(e.target);
-    this.countUsedMoves();
   };
 
-  // Left click on cell
+  // Left click on cell method
   revealCell(cell) {
     // Check user's first click and if it is a bomb. If it is a bomb, relocate it.
     if (this.userFirstClick) {
@@ -233,7 +239,7 @@ class GameBoard extends LayerControl {
     }
   }
 
-  // Right click on a cell
+  // Right click on a cell method
   markCell(cell) {
     if (
       cell.dataset.cellState !== CELL_STATE.HIDDEN &&
@@ -305,10 +311,15 @@ class GameBoard extends LayerControl {
     });
   }
 
-  countUsedMoves() {
+  countUsedMoves(cell) {
+    if (cell.dataset.cellState === CELL_STATE.REVEALED) {
+      return;
+    }
     ++this.usedMoves;
     this.usedMovesScreen.textContent = this.usedMoves;
+    console.log('usedMoves ', this.usedMoves);
   }
+
   // flagsLeftToPlace() {
   //   let flagsLeft =
   //     this.bombsCount -
