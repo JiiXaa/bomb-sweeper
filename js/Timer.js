@@ -41,7 +41,7 @@ class Timer extends LayerControl {
     // slice(-3) - get last 3 digits, padStart(3, 0) - add 0 to the beginning if less than 3 digits
     // Found this solution on StackOverflow
     // https://stackoverflow.com/questions/21029057/javascript-three-digits-counter-how-to-do
-    this.elementById.textContent = ('00' + this.timeInSeconds).slice(-3);
+    this.elementById.textContent = ('00' + time).slice(-3);
   }
 }
 

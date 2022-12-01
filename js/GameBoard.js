@@ -66,8 +66,6 @@ class GameBoard extends LayerControl {
 
     this.generateCells();
     this.generateBoard();
-    // Timer
-    timer.resetTimer();
     this.addCellsListeners();
     this.generateBombsLocation();
     this.flagsLeftToPlace = this.bombsCount;
@@ -191,6 +189,9 @@ class GameBoard extends LayerControl {
     endGameModal.closeModal();
     this.startNewGame(rows, cols, bombs);
     this.userFirstClick = true;
+    // Have to stop the timer when loading a new game, zero it and start it again when the user clicks on a cell
+    timer.stopTimer();
+    timer.setTimer(0);
   }
 
   // left click on cell event handler
@@ -209,6 +210,8 @@ class GameBoard extends LayerControl {
   revealCell(cell) {
     // Check user's first click and if it is a bomb. If it is a bomb, relocate it.
     if (this.userFirstClick) {
+      // Timer starts when the user clicks on a cell
+      timer.resetTimer();
       if (cell.dataset.bomb === 'true') {
         this.relocateBomb(cell);
       }
