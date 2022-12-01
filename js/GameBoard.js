@@ -2,6 +2,7 @@ import { LayerControl } from './LayerControl.js';
 import { Cell, CELL_STATE } from './Cell.js';
 import { endGameModal } from './EndGameModal.js';
 import { timer } from './Timer.js';
+import { leaderboard } from './Leaderboard.js';
 
 const GAME_SCREEN_ID = 'game-screen-js';
 const GAME_BOARD_ID = 'game-board-js';
@@ -82,9 +83,15 @@ class GameBoard extends LayerControl {
       cell.dataset.cellState = CELL_STATE.BOMB_EXPLODED;
       this.removeCellsListeners();
       endGameModal.showModalEndGame();
+      // TODO: finish leaderboard functionality
+      leaderboard.addHighScoreLS({
+        moves: this.usedMoves,
+        time: timer.endTime,
+      });
+      console.log(leaderboard.getScoresLS());
 
       // TODO: Seconds it took to lose, used for the end game modal
-      console.log('seconds from endGame: ', timer.timeInSeconds);
+      console.log('seconds from endGame: ', timer.endTime);
     }
   }
 

@@ -7,6 +7,7 @@ import {
 import { gameBoard } from './GameBoard.js';
 import { gameRules } from './GameRules.js';
 import { gameSettings } from './GameSettings.js';
+import { leaderboard } from './Leaderboard.js';
 
 const MAIN_MENU_ID = 'main-menu-js';
 const PLAY_GAME_BUTTON_ID = 'play-btn-js';
@@ -17,6 +18,8 @@ class MainMenu extends LayerControl {
   constructor() {
     super(MAIN_MENU_ID);
     this.bindMenuElements();
+    // leaderboard.saveScoreLS({ name: 'test', score: 999 });
+    // console.log(leaderboard.getScoresLS());
   }
 
   bindMenuElements() {
