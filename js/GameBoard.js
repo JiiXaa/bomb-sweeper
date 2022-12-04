@@ -1,14 +1,21 @@
-import { LayerControl } from './LayerControl.js';
+import { LayerControl, SCREEN_HIDDEN, SCREEN_VISIBLE } from './LayerControl.js';
 import { Cell, CELL_STATE } from './Cell.js';
 import { endGameModal } from './EndGameModal.js';
 import { timer } from './Timer.js';
 import { leaderboard } from './Leaderboard.js';
+import { mainMenu } from './MainMenu.js';
 
 const GAME_SCREEN_ID = 'game-screen-js';
 const GAME_BOARD_ID = 'game-board-js';
 const GAME_SIDEMENU_ID = 'game-sidemenu-js';
 const USED_MOVES_ID = 'revealed-count-js';
 const FLAGS_LEFT_ID = 'flags-left-js';
+
+// Buttons
+const BEGINNER_BTN_ID = 'beginner-btn-js';
+const INTERMEDIATE_BTN_ID = 'intermediate-btn-js';
+const EXPERT_BTN_ID = 'expert-btn-js';
+const MENU_BTN_ID = 'menu-btn-js';
 
 class GameBoard extends LayerControl {
   difficulties = {
@@ -41,9 +48,10 @@ class GameBoard extends LayerControl {
   flagsLeftToPlace = null;
 
   buttons = {
-    beginner: this.bindElementById('beginner-btn-js'),
-    intermediate: this.bindElementById('intermediate-btn-js'),
-    expert: this.bindElementById('expert-btn-js'),
+    beginner: this.bindElementById(BEGINNER_BTN_ID),
+    intermediate: this.bindElementById(INTERMEDIATE_BTN_ID),
+    expert: this.bindElementById(EXPERT_BTN_ID),
+    menu: this.bindElementById(MENU_BTN_ID),
   };
 
   constructor() {
@@ -184,6 +192,9 @@ class GameBoard extends LayerControl {
         this.difficulties.expert.cols,
         this.difficulties.expert.bombs
       );
+    });
+    this.buttons.menu.addEventListener('click', () => {
+      this.backToMenu();
     });
   }
 
@@ -328,7 +339,10 @@ class GameBoard extends LayerControl {
 
   // Track the number of moves the user has made
   countUsedMoves(cell) {
-    if (cell.dataset.cellState === CELL_STATE.REVEALED) {
+    if (
+      cell.dataset.cellState === CELL_STATE.REVEALED ||
+      cell.dataset.cellState === CELL_STATE.FLAGGED
+    ) {
       return;
     }
     ++this.usedMoves;
@@ -344,6 +358,15 @@ class GameBoard extends LayerControl {
   //   // this.flagsLeft.textContent = flagsLeft;
   //   return flagsLeft;
   // }
+
+  backToMenu() {
+    this.visibilityToggle(this.elementById, SCREEN_HIDDEN);
+    this.visibilityToggle(mainMenu.elementById, SCREEN_VISIBLE);
+    this.startNewGame();
+    timer.stopTimer();
+    timer.setTimer(0);
+    endGameModal.closeModal();
+  }
 
   getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
