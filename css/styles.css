@@ -198,8 +198,8 @@ p::selection {
   grid-template-rows: 1fr 1fr;
   gap: 20px;
   grid-template-areas:
-    'play settings settings'
-    'rules settings settings';
+    'play leaderboard leaderboard'
+    'rules leaderboard leaderboard';
 }
 .play--btn {
   grid-area: play;
@@ -207,8 +207,8 @@ p::selection {
 .rules--btn {
   grid-area: rules;
 }
-.settings--btn {
-  grid-area: settings;
+.leaderboard--btn {
+  grid-area: leaderboard;
 }
 
 .menu__btn {

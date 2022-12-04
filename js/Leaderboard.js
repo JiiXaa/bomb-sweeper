@@ -1,11 +1,11 @@
 import { LayerControl } from './LayerControl.js';
 
-const LEADERBOARD_ID = 'leaderboard-js';
+const LEADERBOARD_ID = 'leaderboard-screen-js';
 const MAX_HIGH_SCORES = 5;
 
 class Leaderboard extends LayerControl {
   constructor() {
-    super();
+    super(LEADERBOARD_ID);
   }
 
   // saveScoreLS(score) {
@@ -14,6 +14,7 @@ class Leaderboard extends LayerControl {
   //   localStorage.setItem('highScores', JSON.stringify(scores));
   // }
 
+  // Load high scores from local storage, or return an empty array if none exist
   getScoresLS() {
     let highScores = localStorage.getItem('highScores');
     if (highScores) {

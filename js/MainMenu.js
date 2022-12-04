@@ -6,13 +6,13 @@ import {
 } from './LayerControl.js';
 import { gameBoard } from './GameBoard.js';
 import { gameRules } from './GameRules.js';
-import { gameSettings } from './GameSettings.js';
+import { gameLeaderboard } from './GameLeaderboard.js';
 import { leaderboard } from './Leaderboard.js';
 
 const MAIN_MENU_ID = 'main-menu-js';
 const PLAY_GAME_BUTTON_ID = 'play-btn-js';
 const GAME_RULES_BUTTON_ID = 'rules-btn-js';
-const GAME_SETTINGS_BUTTON_ID = 'settings-btn-js';
+const GAME_LEADERBOARD_BUTTON_ID = 'leaderboard-btn-js';
 
 class MainMenu extends LayerControl {
   constructor() {
@@ -25,11 +25,13 @@ class MainMenu extends LayerControl {
   bindMenuElements() {
     const playButton = this.bindElementById(PLAY_GAME_BUTTON_ID);
     const rulesButton = this.bindElementById(GAME_RULES_BUTTON_ID);
-    const settingsButton = this.bindElementById(GAME_SETTINGS_BUTTON_ID);
+    const leaderboardButton = this.bindElementById(GAME_LEADERBOARD_BUTTON_ID);
 
     playButton.addEventListener('click', () => this.loadGameScreen());
     rulesButton.addEventListener('click', () => this.loadRulesScreen());
-    settingsButton.addEventListener('click', () => this.loadSettingsScreen());
+    leaderboardButton.addEventListener('click', () =>
+      this.loadLeaderboardScreen()
+    );
   }
 
   loadGameScreen() {
@@ -44,10 +46,10 @@ class MainMenu extends LayerControl {
     this.visibilityToggle(gameRules.elementById, SCREEN_VISIBLE);
   }
 
-  loadSettingsScreen() {
-    console.log('loading game settings screen');
+  loadLeaderboardScreen() {
+    console.log('loading game leaderboard screen');
     this.visibilityToggle(this.elementById, SCREEN_HIDDEN);
-    this.visibilityToggle(gameSettings.elementById, SCREEN_VISIBLE);
+    this.visibilityToggle(gameLeaderboard.elementById, SCREEN_VISIBLE);
   }
 }
 
