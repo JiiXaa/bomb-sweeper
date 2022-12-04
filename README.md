@@ -8,6 +8,17 @@
 
 Class based project (OOP) seem to be good choice because: - Code is cleaner, functions (methods) are stored in objects. - Provides encapsulation thus better readability. - Strict Mode out of the box - Good exercise
 
+### User Stories
+
+- As a first time player, I want to know the game instructions/rules.
+- As a player I want to be able to change game difficulty and reset it any time during the game.
+- As a player I want to reset the game.
+- As a player I want to be able to flag/unflag a cell with potentially hidden bomb.
+- As a player I want to see how many bombs left after I have flagged some.
+- As a player, if bomb exploded I want to know position of remaining bombs, and my correctly predicted (flagged) ones.
+- As a player, if win the game I want to know how many clicks and seconds it took to complete.
+- As a frequent player I want to be able to see and compare my previous scores.
+
 ### Pseudocode
 
 1. [x] Create Initial Utility Class with features:
