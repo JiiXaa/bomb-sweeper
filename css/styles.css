@@ -9,6 +9,7 @@
   --grey-color: #c1c1c1;
   --success-color: #42b3b1;
   --alert-color: #f7b32b;
+  --alert-color-50: rgba(247, 179, 43, 0.5);
   --danger-color: #d90429;
   --danger-color-50: rgba(223, 17, 34, 0.8);
   --selected-color: #ecece3;
@@ -21,8 +22,8 @@
   --rows: 8;
   --cols: 8;
   --columns: 8;
-  --cell-width: 50px;
-  --cell-height: 50px;
+  --cell-width: 40px;
+  --cell-height: 40px;
   --border-width: 0.2rem;
 
   /* Cell Numbers */
@@ -262,7 +263,7 @@ p::selection {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 1.8rem;
+  font-size: 1.6rem;
 
   /* prevent cell selection */
   -webkit-user-select: none; /* Safari */
@@ -279,6 +280,33 @@ p::selection {
   border: 1px solid var(--black-color-50);
   z-index: 100;
   transition: opacity 0.3s ease-in;
+}
+
+.end-game-modal-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  font-family: var(--font-game);
+  font-size: 0.7rem;
+}
+
+.endgame-modal__header {
+  padding-bottom: 1rem;
+  color: green;
+}
+
+.endgame-modal__info {
+  border: 2px solid var(--black-color-50);
+  padding: 0.2rem;
+  font-size: 0.9rem;
+  background-color: var(--alert-color-50);
+}
+
+.endgame-modal__info p {
+  padding-bottom: 0.5rem;
 }
 
 /* Side Menu */
@@ -415,7 +443,7 @@ p::selection {
   content: '\f1e2';
   font-family: FontAwesome;
   color: var(--black-color);
-  font-size: 2rem;
+  font-size: 1.8rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -436,7 +464,7 @@ p::selection {
   color: var(--danger-color);
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: var(--black-color-50);
-  font-size: 2rem;
+  font-size: 1.8rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -448,7 +476,7 @@ p::selection {
   background-position: center;
   background-repeat: no-repeat;
   background-color: var(--selected-color);
-  background-size: 2rem;
+  background-size: 1.8rem;
   -webkit-box-shadow: inset 0px 0px 5px var(--grey-color);
   -moz-box-shadow: inset 0px 0px 5px var(--grey-color);
   box-shadow: inset 0px 0px 5px var(--grey-color);
@@ -458,7 +486,7 @@ p::selection {
 .game-board > [data-cell-state='bomb-marked']::before {
   position: absolute;
   content: '';
-  width: 45px;
+  width: 40px;
   height: 2.5px;
   -webkit-transform: rotate(45deg);
   -moz-transform: rotate(45deg);
@@ -470,7 +498,7 @@ p::selection {
 
 .game-board > [data-cell-state='bomb-marked']::after {
   content: '';
-  width: 45px;
+  width: 40px;
   height: 2.5px;
   -webkit-transform: rotate(-45deg);
   -moz-transform: rotate(-45deg);
@@ -495,7 +523,7 @@ p::selection {
   color: var(--alert-color);
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: var(--black-color-50);
-  font-size: 2rem;
+  font-size: 1.7rem;
   display: flex;
   align-items: center;
   justify-content: center;
