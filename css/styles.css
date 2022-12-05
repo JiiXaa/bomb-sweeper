@@ -1,3 +1,5 @@
+/* Default styling is set for Large Desktop */
+
 :root {
   /* Colors */
   --main-bg-color: #2b2d42;
@@ -150,11 +152,8 @@ p::selection {
   justify-content: center;
 }
 
-.game__wrapper {
-  height: 80vh;
-  width: 60vw;
-  /* background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='%23EDF2F4FF' stroke-width='12' stroke-dasharray='8%2c 45' stroke-dashoffset='47' stroke-linecap='square'/%3e%3c/svg%3e"); */
-}
+/* .game__wrapper {
+} */
 
 .game__layer {
   position: absolute;
@@ -565,4 +564,74 @@ p::selection {
 
 .hidden {
   display: none;
+}
+
+/* Desktop breakpoint */
+@media (max-width: 1280px) {
+  .main--menu {
+    padding-top: 2%;
+  }
+
+  .game-screen {
+    --cell-width: 28px;
+    --cell-height: 28px;
+  }
+
+  .game-board > [data-cell-state='bomb']::after {
+    font-size: 1.4rem;
+  }
+
+  .game-board > [data-cell-state='bomb-exploded']::after {
+    font-size: 1.4rem;
+  }
+
+  /* Bomb guessed/marked */
+  .game-board > [data-cell-state='bomb-marked'] {
+    background-size: 1.4rem;
+  }
+
+  .game-board > [data-cell-state='bomb-marked']::before {
+    width: 28px;
+  }
+
+  .game-board > [data-cell-state='bomb-marked']::after {
+    width: 28px;
+  }
+
+  .game-board > [data-cell-state='flagged']::after {
+    font-size: 1.3rem;
+  }
+
+  .cell {
+    font-size: 1.3rem;
+  }
+
+  .time-left {
+    padding: 0.4rem 0.2rem;
+    font-size: 1rem;
+  }
+
+  .time-left > i {
+    font-size: 1rem;
+    top: -1px;
+  }
+
+  .flags-left {
+    font-size: 1rem;
+  }
+
+  .flags-left > i {
+    top: -1px;
+    font-size: 1rem;
+  }
+
+  .revealed-count {
+    font-size: 1rem;
+  }
+
+  .game-buttons__btn {
+    padding: 0.4rem 0;
+    margin-bottom: 1px;
+    font-size: 0.6rem;
+  }
 }
