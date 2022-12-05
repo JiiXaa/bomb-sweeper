@@ -133,6 +133,10 @@ class GameBoard extends LayerControl {
     // Change the size of the Game Side Menu
     const sidemenu = this.bindElementById(GAME_SIDEMENU_ID);
     sidemenu.style.setProperty('--rows', this.rowsCount);
+    // Prevent the context menu from opening when right clicking on the game board
+    sidemenu.addEventListener('contextmenu', (e) => {
+      e.preventDefault();
+    });
 
     // Flags left to place
     this.flagsLeftScreen.textContent = this.bombsCount;
