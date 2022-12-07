@@ -47,6 +47,9 @@ class GameBoard extends LayerControl {
   flagsLeftScreen = this.bindElementById(FLAGS_LEFT_ID);
   flagsLeftToPlace = null;
 
+  revealedCells = 0;
+  cellsToReveal = 0;
+
   buttons = {
     beginner: this.bindElementById(BEGINNER_BTN_ID),
     intermediate: this.bindElementById(INTERMEDIATE_BTN_ID),
@@ -73,11 +76,17 @@ class GameBoard extends LayerControl {
     this.colsCount = cols;
     this.bombsCount = bombs;
 
+    // Calculate the number of cells to reveal to win the game
+    this.cellsToReveal = this.rowsCount * this.colsCount - this.bombsCount;
     this.generateCells();
     this.generateBoard();
     this.addCellsListeners();
     this.generateBombsLocation();
+    // reset count of revealed cells
+    this.revealedCells = 0;
+    // set the number of flags left to place
     this.flagsLeftToPlace = this.bombsCount;
+    // reset the number of used moves
     this.usedMoves = 0;
     this.usedMovesScreen.textContent = this.usedMoves;
     console.log(this.cells);
@@ -98,8 +107,15 @@ class GameBoard extends LayerControl {
       });
       console.log(leaderboard.getScoresLS());
 
-      // TODO: Seconds it took to lose, used for the end game modal
-      console.log('seconds from endGame: ', timer.endTime);
+      // TODO: Moves and seconds it took to lose, used for the end game modal
+      console.log('seconds from endGame (lose): ', timer.endTime);
+    }
+    if (isWin) {
+      timer.stopTimer();
+      this.removeCellsListeners();
+      // TODO: Moves and seconds it took to win, used for the end game modal
+      console.log('seconds from endGame (win): ', timer.endTime);
+      endGameModal.showModalEndGame();
     }
   }
 
@@ -247,10 +263,19 @@ class GameBoard extends LayerControl {
 
     // If the cell is a bomb, reveal all bombs and end the game
     if (cell.dataset.bomb === 'true') {
+      console.log('you lose');
       this.endGame(false, cell);
       return;
     }
+    this.revealedCells++;
 
+    if (this.revealedCells === this.cellsToReveal) {
+      console.log('you win');
+      this.endGame(true);
+      return;
+    }
+
+    // If the cell is not a bomb, reveal it
     cell.dataset.cellState = CELL_STATE.REVEALED;
 
     // Check how many bombs are around the cell
@@ -353,15 +378,6 @@ class GameBoard extends LayerControl {
     this.usedMovesScreen.textContent = this.usedMoves;
     console.log('usedMoves ', this.usedMoves);
   }
-
-  // flagsLeftToPlace() {
-  //   let flagsLeft =
-  //     this.bombsCount -
-  //     this.cells.flat().filter((cell) => cell.cellState === CELL_STATE.FLAGGED)
-  //       .length;
-  //   // this.flagsLeft.textContent = flagsLeft;
-  //   return flagsLeft;
-  // }
 
   backToMenu() {
     this.visibilityToggle(this.elementById, SCREEN_HIDDEN);
