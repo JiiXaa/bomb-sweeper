@@ -4,6 +4,7 @@ import { endGameModal } from './EndGameModal.js';
 import { timer } from './Timer.js';
 import { leaderboard } from './Leaderboard.js';
 import { mainMenu } from './MainMenu.js';
+import { developerMode } from './DeveloperMode.js';
 
 const GAME_SCREEN_ID = 'game-screen-js';
 const GAME_BOARD_ID = 'game-board-js';
@@ -65,6 +66,8 @@ class GameBoard extends LayerControl {
   initializeGameBoard() {
     this.addButtonsListeners();
     this.startNewGame();
+    // Developer Mode - bombs visible on key sequence 'bombs' pressed
+    developerMode.bombsVisible(this.cells);
   }
 
   startNewGame(
@@ -168,7 +171,7 @@ class GameBoard extends LayerControl {
         continue;
       }
       // bomb location test
-      console.log(this.cells[x][y]);
+      console.log('bomb', this.cells[x][y]);
       this.cells[x][y].cellElement.dataset.bomb = 'true';
       bombsToAllocate--;
     }
