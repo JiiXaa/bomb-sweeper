@@ -49,6 +49,7 @@ Class based project (OOP) seem to be good choice because: - Code is cleaner, fun
 - [x] New Game Buttons for all three difficulties (reset whole game)
 - [x] Game tracks player moves count and time of the current game (in seconds)
 - [x] Developer Mode: when key sequence 'bombs' is pressed it shows/highlight bomb locations, it mostly implemented to speed up development process but also wanted add it as it reminds me of old games cheat codes.
+      It is possible to clear highlighted bombs with key sequence: 'clear'.
 
 # **rough notes** (early development only!)
 

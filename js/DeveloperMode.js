@@ -49,6 +49,17 @@ class DeveloperMode extends LayerControl {
         this.state.buffer = [];
         this.state.setTime = false;
       }
+
+      // if the key sequence is 'clear' the bombs are cleared from the board
+      if (this.state.buffer.join('') === 'clear') {
+        bombs.flat().forEach((bomb) => {
+          if (bomb.cellElement.dataset.bomb === 'true') {
+            bomb.cellElement.style = '';
+          }
+        });
+        this.state.buffer = [];
+        this.state.setTime = false;
+      }
     });
   }
 }
