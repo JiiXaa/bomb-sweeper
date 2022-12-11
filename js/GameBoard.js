@@ -5,6 +5,7 @@ import { timer } from './Timer.js';
 import { leaderboard } from './Leaderboard.js';
 import { mainMenu } from './MainMenu.js';
 import { developerMode } from './DeveloperMode.js';
+import { DEV_MODE } from './DeveloperMode.js';
 
 const GAME_SCREEN_ID = 'game-screen-js';
 const GAME_BOARD_ID = 'game-board-js';
@@ -100,6 +101,15 @@ class GameBoard extends LayerControl {
     if (!isWin) {
       timer.stopTimer();
       this.revealAllBombs();
+      // When user clicks on a highlighted bomb (developerMode), game ends and all bombs become unhighlighted.
+      if (DEV_MODE) {
+        this.cells.flat().forEach((cell) => {
+          if (cell.cellElement.dataset.cellState === CELL_STATE.BOMB) {
+            cell.cellElement.style = '';
+          }
+        });
+        developerMode.setDevModeFalse();
+      }
       cell.dataset.cellState = CELL_STATE.BOMB_EXPLODED;
       this.removeCellsListeners();
       endGameModal.showModalEndGame();
@@ -249,14 +259,12 @@ class GameBoard extends LayerControl {
 
   // Left click on cell method
   revealCell(cell) {
-    // When player clicks on a cell, the developer mode is turned off
-    developerMode.cheatsOff();
     // Check user's first click and if it is a bomb. If it is a bomb, relocate it.
     if (this.userFirstClick) {
       // Timer starts when the user clicks on a cell
       timer.resetTimer();
       if (cell.dataset.bomb === 'true') {
-        this.relocateBomb(cell);
+        this.relocateBomb(cell, DEV_MODE);
       }
       this.userFirstClick = false;
     }
@@ -340,10 +348,12 @@ class GameBoard extends LayerControl {
   }
 
   // Relocate the bomb to a random cell that is not the same as the first click, and not a bomb already
-  relocateBomb(cell) {
+  relocateBomb(cell, isDevMode) {
     const x = parseInt(cell.dataset.x);
     const y = parseInt(cell.dataset.y);
     cell.dataset.bomb = 'false';
+    // remove style from the cell in case cheats are on (red background, DeveloperMode)
+    cell.style = '';
     let newX = x;
     let newY = y;
     while (
@@ -354,6 +364,11 @@ class GameBoard extends LayerControl {
       newY = this.getRandomInt(0, this.colsCount - 1);
     }
     this.cells[newX][newY].cellElement.dataset.bomb = 'true';
+    // If developer mode is on, change the background of the newly located bomb
+    if (isDevMode) {
+      this.cells[newX][newY].cellElement.style =
+        'background-color: var(--bomb-color);';
+    }
     console.log('relocated bomb', this.cells[newX][newY]);
   }
 

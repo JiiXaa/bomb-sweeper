@@ -1,6 +1,7 @@
 import { LayerControl } from './LayerControl.js';
 import { gameBoard } from './GameBoard.js';
 
+export let DEV_MODE = false;
 class DeveloperMode extends LayerControl {
   state = {
     setTime: false,
@@ -42,7 +43,7 @@ class DeveloperMode extends LayerControl {
     if (this.state.buffer.join('') === 'bombs') {
       gameBoard.cells.flat().forEach((bomb) => {
         if (bomb.cellElement.dataset.bomb === 'true') {
-          bomb.cellElement.style = 'background-color: rgba(211, 92, 102, 0.9)';
+          bomb.cellElement.style = 'background-color: var(--bomb-color)';
         }
       });
       this.state.buffer = [];
@@ -62,12 +63,17 @@ class DeveloperMode extends LayerControl {
   };
 
   // This function is called from the Game class. It listens for key presses and if the key sequence is 'bombs' the bombs are highlighted on the board. If the key sequence is 'clear' the bombs are cleared from the board.
-  bombsVisible(bombs) {
+  bombsVisible() {
     document.addEventListener('keydown', this.addCheatsListener);
+    DEV_MODE = true;
   }
 
   cheatsOff() {
     document.removeEventListener('keydown', this.addCheatsListener);
+  }
+
+  setDevModeFalse() {
+    DEV_MODE = false;
   }
 }
 
