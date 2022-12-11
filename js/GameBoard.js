@@ -104,7 +104,10 @@ class GameBoard extends LayerControl {
       // When user clicks on a highlighted bomb (developerMode), game ends and all bombs become unhighlighted.
       if (DEV_MODE) {
         this.cells.flat().forEach((cell) => {
-          if (cell.cellElement.dataset.cellState === CELL_STATE.BOMB) {
+          if (
+            cell.cellElement.dataset.cellState === CELL_STATE.BOMB ||
+            cell.cellElement.dataset.cellState === CELL_STATE.BOMB_MARKED
+          ) {
             cell.cellElement.style = '';
           }
         });
