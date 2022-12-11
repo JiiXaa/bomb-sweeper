@@ -66,8 +66,6 @@ class GameBoard extends LayerControl {
   initializeGameBoard() {
     this.addButtonsListeners();
     this.startNewGame();
-    // Developer Mode - bombs visible on key sequence 'bombs' pressed
-    developerMode.bombsVisible(this.cells);
   }
 
   startNewGame(
@@ -93,6 +91,8 @@ class GameBoard extends LayerControl {
     this.usedMoves = 0;
     this.usedMovesScreen.textContent = this.usedMoves;
     console.log(this.cells);
+    // Developer Mode - bombs visible on key sequence 'bombs' pressed
+    developerMode.bombsVisible(this.cells);
   }
 
   // Check if the user won the game and if so, it opens the End Game Modal with the win message and the time it took to win the game and the number of moves it took to win the game.
@@ -249,6 +249,8 @@ class GameBoard extends LayerControl {
 
   // Left click on cell method
   revealCell(cell) {
+    // When player clicks on a cell, the developer mode is turned off
+    developerMode.cheatsOff();
     // Check user's first click and if it is a bomb. If it is a bomb, relocate it.
     if (this.userFirstClick) {
       // Timer starts when the user clicks on a cell
