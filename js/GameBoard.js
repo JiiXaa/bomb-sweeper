@@ -94,6 +94,7 @@ class GameBoard extends LayerControl {
     console.log(this.cells);
     // Developer Mode - bombs visible on key sequence 'bombs' pressed
     developerMode.bombsVisible(this.cells);
+    developerMode.setDevModeFalse();
   }
 
   // Check if the user won the game and if so, it opens the End Game Modal with the win message and the time it took to win the game and the number of moves it took to win the game.
@@ -131,7 +132,7 @@ class GameBoard extends LayerControl {
       this.removeCellsListeners();
       // TODO: Moves and seconds it took to win, used for the end game modal
       console.log('seconds from endGame (win): ', timer.endTime);
-      endGameModal.showModalEndGame();
+      endGameModal.showModalEndGame(true, timer.endTime, this.usedMoves);
     }
   }
 

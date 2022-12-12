@@ -294,6 +294,7 @@ p::selection {
 }
 
 .endgame-modal__header {
+  text-align: center;
   padding-bottom: 1rem;
   color: green;
 }
