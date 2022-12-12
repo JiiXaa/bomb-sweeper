@@ -46,6 +46,7 @@ class DeveloperMode extends LayerControl {
           bomb.cellElement.style = 'background-color: var(--bomb-color)';
         }
       });
+      DEV_MODE = true;
       this.state.buffer = [];
       this.state.setTime = false;
     }
@@ -59,6 +60,7 @@ class DeveloperMode extends LayerControl {
       });
       this.state.buffer = [];
       this.state.setTime = false;
+      DEV_MODE = false;
     }
   };
 
