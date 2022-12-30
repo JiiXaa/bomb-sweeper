@@ -8,6 +8,8 @@ class Leaderboard extends LayerControl {
     super(LEADERBOARD_ID);
   }
 
+  difficulty = 'beginner';
+
   // saveScoreLS(score) {
   //   const scores = this.getScoresLS();
   //   scores.push(score);
@@ -16,13 +18,48 @@ class Leaderboard extends LayerControl {
 
   // Load high scores from local storage, or return an empty array if none exist
   getScoresLS() {
-    let highScores = localStorage.getItem('highScores');
+    let highScores = localStorage.getItem(this.difficulty);
     if (highScores) {
       highScores = JSON.parse(highScores);
     } else {
       highScores = [];
     }
     return highScores;
+  }
+
+  getBeginnerScoresLS() {
+    this.difficulty = 'beginner';
+    const beginner = this.getScoresLS();
+    return beginner;
+  }
+
+  getIntermediateScoresLS() {
+    this.difficulty = 'intermediate';
+    const intermediate = this.getScoresLS();
+    return intermediate;
+  }
+
+  getExpertScoresLS() {
+    this.difficulty = 'expert';
+    const expert = this.getScoresLS();
+    return expert;
+  }
+
+  getAllScoresLS() {
+    const beginnerScores = this.getBeginnerScoresLS();
+    const intermediateScores = this.getIntermediateScoresLS();
+    const expertScores = this.getExpertScoresLS();
+
+    console.log(
+      'beginner: ',
+      beginnerScores,
+      'inter',
+      intermediateScores,
+      'exp',
+      expertScores
+    );
+
+    return { beginnerScores, intermediateScores, expertScores };
   }
 
   addHighScoreLS({ moves, time }) {
@@ -39,7 +76,7 @@ class Leaderboard extends LayerControl {
     highScores.push(newHighScore);
     highScores.sort((a, b) => a.moves - b.moves);
     highScores.splice(MAX_HIGH_SCORES);
-    localStorage.setItem('highScores', JSON.stringify(highScores));
+    localStorage.setItem(this.difficulty, JSON.stringify(highScores));
   }
 }
 

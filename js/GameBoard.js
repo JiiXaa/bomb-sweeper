@@ -43,6 +43,8 @@ class GameBoard extends LayerControl {
   colsCount = null;
   rowsCount = null;
   bombsCount = null;
+  difficulty = null;
+  chosenDifficulty = null;
   bombsLocation = [];
   usedMovesScreen = this.bindElementById(USED_MOVES_ID);
   usedMoves = 0;
@@ -213,21 +215,24 @@ class GameBoard extends LayerControl {
       this.handleNewGameClick(
         this.difficulties.beginner.rows,
         this.difficulties.beginner.cols,
-        this.difficulties.beginner.bombs
+        this.difficulties.beginner.bombs,
+        'beginner'
       );
     });
     this.buttons.intermediate.addEventListener('click', () => {
       this.handleNewGameClick(
         this.difficulties.intermediate.rows,
         this.difficulties.intermediate.cols,
-        this.difficulties.intermediate.bombs
+        this.difficulties.intermediate.bombs,
+        'intermediate'
       );
     });
     this.buttons.expert.addEventListener('click', () => {
       this.handleNewGameClick(
         this.difficulties.expert.rows,
         this.difficulties.expert.cols,
-        this.difficulties.expert.bombs
+        this.difficulties.expert.bombs,
+        'expert'
       );
     });
     this.buttons.menu.addEventListener('click', () => {
@@ -239,10 +244,13 @@ class GameBoard extends LayerControl {
   handleNewGameClick(
     rows = this.rowsCount,
     cols = this.colsCount,
-    bombs = this.bombsCount
+    bombs = this.bombsCount,
+    difficulty = this.difficulty
   ) {
     endGameModal.closeModal();
     this.startNewGame(rows, cols, bombs);
+    leaderboard.difficulty = difficulty;
+    console.log('difficulty: ', this.difficulty);
     this.userFirstClick = true;
     // Have to stop the timer when loading a new game, zero it and start it again when the user clicks on a cell
     timer.resetTimer();
@@ -408,6 +416,8 @@ class GameBoard extends LayerControl {
     this.startNewGame();
     timer.resetTimer();
     endGameModal.closeModal();
+    // quick test to see if the Local Storage for leaderboard is working
+    leaderboard.getAllScoresLS();
   }
 
   getRandomInt(min, max) {
