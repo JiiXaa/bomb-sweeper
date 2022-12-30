@@ -23,11 +23,16 @@ class Timer extends LayerControl {
     this.endTime = this.timeInSeconds;
   }
 
-  resetTimer() {
+  restartTimer() {
     this.timeInSeconds = 0;
     this.setTimer(this.timeInSeconds);
     this.stopTimer();
     this.startTimer();
+  }
+
+  resetTimer() {
+    this.stopTimer();
+    this.setTimer(0);
   }
 
   updateTimer() {
