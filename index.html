@@ -112,8 +112,30 @@
           class="game__layer game-leaderboard hidden"
           id="leaderboard-screen-js"
         >
-          <h1>Leader Board</h1>
-          <ul class="stats-container"></ul>
+          <section class="scores-container">
+            <h1>Leader Board</h1>
+            <div class="scores-group">
+              <h3>Beginner:</h3>
+              <ul class="scores-beginner" id="scores-beginner-js">
+                <li class="scores-beginner_item">No recorded score</li>
+              </ul>
+            </div>
+            <div class="scores-group">
+              <h3>Intermediate:</h3>
+              <ul class="scores-intermediate" id="scores-intermediate-js">
+                <li class="scores-intermediate_item">No recorded score</li>
+              </ul>
+            </div>
+            <div class="scores-group">
+              <h3>Expert:</h3>
+              <ul class="scores-expert" id="scores-expert-js">
+                <li class="scores-expert_item">No recorded score</li>
+              </ul>
+            </div>
+            <button class="scores-menu__btn" id="scores-menu-btn-js">
+              Back To Menu
+            </button>
+          </section>
         </div>
         <!-- End Leaderboard Layer -->
       </div>

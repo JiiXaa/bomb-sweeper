@@ -47,8 +47,9 @@ class MainMenu extends LayerControl {
 
   loadLeaderboardScreen() {
     console.log('loading game leaderboard screen');
+    leaderboard.displayAllScores();
     this.visibilityToggle(this.elementById, SCREEN_HIDDEN);
-    this.visibilityToggle(gameLeaderboard.elementById, SCREEN_VISIBLE);
+    this.visibilityToggle(leaderboard.elementById, SCREEN_VISIBLE);
   }
 }
 

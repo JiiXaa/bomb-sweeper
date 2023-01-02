@@ -135,7 +135,9 @@ h2::selection,
 h3::selection,
 h4::selection,
 h5::selection,
-p::selection {
+p::selection,
+ul::selection,
+li::selection {
   /* background: #fff; */
   color: var(--danger-color-50);
 }
@@ -419,10 +421,12 @@ p::selection {
   outline: none;
 }
 
+/* Game Board */
 .game-board > [data-cell-state='hidden'] {
   background-color: var(--white-color);
 }
 
+/* Revealed cell */
 .game-board > [data-cell-state='revealed'] {
   background-color: var(--selected-color);
   -webkit-box-shadow: inset 0px 0px 5px var(--grey-color);
@@ -509,7 +513,7 @@ p::selection {
   background-color: var(--danger-color);
 }
 
-/* Flag */
+/* Flag  guessed */
 .game-board > [data-cell-state='flagged'] {
   background-color: var(--white-color);
   -webkit-box-shadow: inset 0px 0px 5px var(--grey-color);
@@ -528,6 +532,114 @@ p::selection {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+/* Leader Board */
+.game-leaderboard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 1rem;
+  background-color: var(--main-bg-color);
+}
+
+.scores-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 6rem 8rem;
+  color: var(--danger-color-50);
+  border: 3px solid var(--danger-color-50);
+  border-radius: 1rem;
+  color: var(--danger-color-50);
+  background-color: var(--white-color-10);
+}
+
+.scores-container h1 {
+  text-decoration: underline;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: var(--black-color-50);
+}
+
+.scores-group {
+  text-align: center;
+  width: 100%;
+}
+
+.scores-group > h3 {
+  font-size: 1.5rem;
+  color: var(--bomb-color);
+}
+
+.scores-group > ul {
+  position: relative;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.scores-group ul li {
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+  color: var(--alert-color);
+}
+
+.scores-group ul li:last-child {
+  margin-bottom: 1rem;
+}
+
+.scores-group ul li span {
+  /* display: block; */
+  padding-right: 0.5rem;
+  color: var(--black-color);
+  text-decoration: underline;
+}
+
+/* .scores-beginner::after {
+  content: '';
+  position: absolute;
+  bottom: -0.5rem;
+  left: 0;
+  right: 0;
+  height: 0.1rem;
+  width: 100%;
+  background-color: var(--black-color);
+  opacity: 0.4;
+}
+
+.scores-intermediate::after {
+  content: '';
+  position: absolute;
+  bottom: -0.5rem;
+  left: 0;
+  right: 0;
+  height: 0.1rem;
+  width: 100%;
+  background-color: var(--black-color);
+  opacity: 0.4;
+} */
+
+.scores-menu__btn {
+  width: 100%;
+  border: 2px solid var(--black-color);
+  border-radius: 0.3rem;
+  background-color: var(--alert-color);
+  color: var(--black-color);
+  font-size: 1.2rem;
+  padding: 0.5rem 0;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.scores-menu__btn:hover {
+  background-color: var(--white-color-10);
+  color: var(--danger-color);
+  border-color: var(--danger-color);
 }
 
 /* Utility Classes */

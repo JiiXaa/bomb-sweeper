@@ -416,8 +416,6 @@ class GameBoard extends LayerControl {
     this.startNewGame();
     timer.resetTimer();
     endGameModal.closeModal();
-    // quick test to see if the Local Storage for leaderboard is working
-    leaderboard.getAllScoresLS();
   }
 
   getRandomInt(min, max) {
