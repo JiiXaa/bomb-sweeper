@@ -2,7 +2,7 @@ import { LayerControl, SCREEN_HIDDEN, SCREEN_VISIBLE } from './LayerControl.js';
 import { Cell, CELL_STATE } from './Cell.js';
 import { endGameModal } from './EndGameModal.js';
 import { timer } from './Timer.js';
-import { leaderboard } from './Leaderboard.js';
+import { leaderboard } from './GameLeaderboard.js';
 import { mainMenu } from './MainMenu.js';
 import { developerMode } from './DeveloperMode.js';
 import { DEV_MODE } from './DeveloperMode.js';

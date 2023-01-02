@@ -6,8 +6,7 @@ import {
 } from './LayerControl.js';
 import { gameBoard } from './GameBoard.js';
 import { gameRules } from './GameRules.js';
-import { gameLeaderboard } from './GameLeaderboard.js';
-import { leaderboard } from './Leaderboard.js';
+import { leaderboard } from './GameLeaderboard.js';
 
 const MAIN_MENU_ID = 'main-menu-js';
 const PLAY_GAME_BUTTON_ID = 'play-btn-js';
