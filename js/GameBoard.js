@@ -43,8 +43,8 @@ class GameBoard extends LayerControl {
   colsCount = null;
   rowsCount = null;
   bombsCount = null;
-  difficulty = null;
-  chosenDifficulty = null;
+  // difficulty = null;
+  // chosenDifficulty = null;
   bombsLocation = [];
   usedMovesScreen = this.bindElementById(USED_MOVES_ID);
   usedMoves = 0;
@@ -245,12 +245,12 @@ class GameBoard extends LayerControl {
     rows = this.rowsCount,
     cols = this.colsCount,
     bombs = this.bombsCount,
-    difficulty = this.difficulty
+    difficulty = leaderboard.difficulty
   ) {
     endGameModal.closeModal();
     this.startNewGame(rows, cols, bombs);
     leaderboard.difficulty = difficulty;
-    console.log('difficulty: ', this.difficulty);
+    console.log('difficulty: ', leaderboard.difficulty);
     this.userFirstClick = true;
     // Have to stop the timer when loading a new game, zero it and start it again when the user clicks on a cell
     timer.resetTimer();
@@ -413,8 +413,8 @@ class GameBoard extends LayerControl {
   backToMenu() {
     this.visibilityToggle(this.elementById, SCREEN_HIDDEN);
     this.visibilityToggle(mainMenu.elementById, SCREEN_VISIBLE);
-    this.startNewGame();
     timer.resetTimer();
+    this.handleNewGameClick();
     endGameModal.closeModal();
   }
 
