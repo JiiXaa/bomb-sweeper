@@ -12,6 +12,7 @@ const GAME_BOARD_ID = 'game-board-js';
 const GAME_SIDEMENU_ID = 'game-sidemenu-js';
 const USED_MOVES_ID = 'revealed-count-js';
 const FLAGS_LEFT_ID = 'flags-left-js';
+const DIFFICULTY_SCREEN_ID = 'info-difficulty-js';
 
 // Buttons
 const BEGINNER_BTN_ID = 'beginner-btn-js';
@@ -43,14 +44,12 @@ class GameBoard extends LayerControl {
   colsCount = null;
   rowsCount = null;
   bombsCount = null;
-  // difficulty = null;
-  // chosenDifficulty = null;
   bombsLocation = [];
+  difficultyScreen = this.bindElementById(DIFFICULTY_SCREEN_ID);
   usedMovesScreen = this.bindElementById(USED_MOVES_ID);
   usedMoves = 0;
   flagsLeftScreen = this.bindElementById(FLAGS_LEFT_ID);
   flagsLeftToPlace = null;
-
   revealedCells = 0;
   cellsToReveal = 0;
 
@@ -97,6 +96,7 @@ class GameBoard extends LayerControl {
     // Developer Mode - bombs visible on key sequence 'bombs' pressed
     developerMode.bombsVisible(this.cells);
     developerMode.setDevModeFalse();
+    this.showActiveDifficulty();
   }
 
   // Check if the user won the game and if so, it opens the End Game Modal with the win message and the time it took to win the game and the number of moves it took to win the game.
@@ -254,6 +254,7 @@ class GameBoard extends LayerControl {
     this.userFirstClick = true;
     // Have to stop the timer when loading a new game, zero it and start it again when the user clicks on a cell
     timer.resetTimer();
+    this.showActiveDifficulty();
   }
 
   // left click on cell event handler
@@ -408,6 +409,18 @@ class GameBoard extends LayerControl {
     ++this.usedMoves;
     this.usedMovesScreen.textContent = this.usedMoves;
     console.log('usedMoves ', this.usedMoves);
+  }
+
+  showActiveDifficulty() {
+    if (leaderboard.difficulty === 'intermediate') {
+      this.difficultyScreen.style.setProperty(
+        '--difficulty-font-size',
+        '.8rem'
+      );
+    } else {
+      this.difficultyScreen.style.setProperty('--difficulty-font-size', '1rem');
+    }
+    this.difficultyScreen.innerHTML = `<p>${leaderboard.difficulty}</p>`;
   }
 
   backToMenu() {

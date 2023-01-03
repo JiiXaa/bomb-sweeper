@@ -29,6 +29,8 @@
   --cell-height: 40px;
   --border-width: 0.2rem;
 
+  --difficulty-font-size: 0.8rem;
+
   /* Cell Numbers */
   --color-1: green;
   --color-2: blue;
@@ -330,6 +332,14 @@ li::selection {
   height: 100%;
   width: 100%;
   font-family: var(--font-game);
+}
+
+.game-info__difficulty p {
+  margin-top: 0.4rem;
+  color: var(--danger-color-50);
+  font-size: var(--difficulty-font-size);
+  letter-spacing: -1px;
+  text-transform: capitalize;
 }
 
 .game-info__header {
