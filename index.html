@@ -106,7 +106,72 @@
 
         <!-- Rules Layer -->
         <div class="game__layer game-rules hidden" id="rules-screen-js">
-          <h1>This will be a game rules screen</h1>
+          <section class="rules-container">
+            <h1>Rules</h1>
+            <div class="rules-group">
+              <h3>Objective:</h3>
+              <p>
+                The objective of the game is to clear the board without
+                detonating any of the bombs. The player is given a number of
+                flags equal to the number of bombs on the board. The player can
+                use the flags to mark the location of the bombs. The player can
+                then click on the squares to reveal them. If the player clicks
+                on a bomb, the game is over. If the player clicks on a square
+                that is not a bomb, the square will reveal a number. This number
+                represents the number of bombs that are adjacent to that square.
+                The player can then use this information to deduce the location
+                of the bombs. To win a game of Bombsweeper, all non-bomb cells
+                must be opened without detonating a bomb. The game tracks the
+                number of moves the player has made, the time it took to
+                complete the game and the flags count left to place. The first
+                click of the game is always safe.
+              </p>
+            </div>
+            <div class="rules-group">
+              <h3>Controls:</h3>
+              <p>
+                The player can use LMB (left mouse button) to reveal a cell. RMB
+                (right mouse button) can be used to place flag on the square.
+                The player can use the escape key to return to the main menu.
+              </p>
+            </div>
+            <div class="rules-group">
+              <h3>Difficulty:</h3>
+              <p>
+                The game has three difficulty settings. The beginner setting has
+                a 8x8 board with 10 bombs. The intermediate setting has a 16x16
+                board with 40 bombs. The expert setting has a 16x30 board with
+                99 bombs.
+              </p>
+            </div>
+            <div class="rules-group">
+              <h3>Leaderboard:</h3>
+              <p>
+                The game tracks the best time and moves count for each
+                difficulty setting. The leaderboard can be accessed from the
+                main menu.
+              </p>
+            </div>
+            <div class="rules-group">
+              <h3>Mobile:</h3>
+              <p>
+                The game is fully responsive and can be played on mobile
+                devices.
+              </p>
+            </div>
+            <div class="rules-group">
+              <h3>Cheat Codes:</h3>
+              <p>
+                The game has a few cheat codes that can be used to help the
+                player. The cheat codes can be entered simply by typing on the
+                keyboard. The following cheat codes are available: <br />
+                <span class="code">bombs</span> - highlights location of all
+                bombs on the board. <br />
+                <span class="code">clear</span> - hides the highlighted bombs on
+                board when "bombs" code is used.<br />
+              </p>
+            </div>
+          </section>
         </div>
         <!-- End Rules Layer -->
 
