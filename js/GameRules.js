@@ -1,10 +1,18 @@
-import { LayerControl } from './LayerControl.js';
+import { LayerControl, SCREEN_HIDDEN, SCREEN_VISIBLE } from './LayerControl.js';
+import { mainMenu } from './MainMenu.js';
 
 const GAME_RULES_ID = 'rules-screen-js';
+const RULES_BACK_BUTTON_ID = 'rules-menu-btn-js';
 
 class GameRules extends LayerControl {
+  backToMenu = this.bindElementById(RULES_BACK_BUTTON_ID);
+
   constructor() {
     super(GAME_RULES_ID);
+    this.backToMenu.addEventListener('click', () => {
+      this.visibilityToggle(this.elementById, SCREEN_HIDDEN);
+      this.visibilityToggle(mainMenu.elementById, SCREEN_VISIBLE);
+    });
   }
 }
 

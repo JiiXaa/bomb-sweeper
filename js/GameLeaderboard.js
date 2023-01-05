@@ -9,6 +9,7 @@ const USER_NAME = 'User';
 class GameLeaderboard extends LayerControl {
   difficulty = 'beginner';
   backToMenu = this.bindElementById(SCORES_BACK_BUTTON_ID);
+
   constructor() {
     super(GAME_LEADERBOARD_ID);
     this.backToMenu.addEventListener('click', () => {

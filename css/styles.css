@@ -688,6 +688,26 @@ li::selection {
   text-align: center;
 }
 
+.rules__btn {
+  position: fixed;
+  margin-left: 2rem;
+  border: 2px solid var(--black-color);
+  border-radius: 0.3rem;
+  background-color: var(--success-color);
+  color: var(--white-color);
+  font-size: 1.2rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+.rules__btn:hover {
+  background-color: var(--white-color);
+  color: var(--danger-color);
+  border-color: var(--danger-color);
+}
+
 /* Utility Classes */
 .disable-select {
   user-select: none; /* supported by Chrome and Opera */
