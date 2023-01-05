@@ -107,7 +107,13 @@
         <!-- Rules Layer -->
         <div class="game__layer game-rules hidden" id="rules-screen-js">
           <section class="rules-container">
-            <h1>Rules</h1>
+            <h1>-- Rules --</h1>
+            <img
+              src="./img/expert-board.png"
+              alt="Expert board example game"
+              loading="lazy"
+              class="rules-img-main"
+            />
             <div class="rules-group">
               <h3>Objective:</h3>
               <p>
@@ -126,6 +132,16 @@
                 complete the game and the flags count left to place. The first
                 click of the game is always safe.
               </p>
+              <img
+                src="./img/win-showcase.png"
+                alt="Beginner board win example"
+                loading="lazy"
+              />
+              <img
+                src="./img/expert-board-lose.png"
+                alt="Expert board lose examplse"
+                loading="lazy"
+              />
             </div>
             <div class="rules-group">
               <h3>Controls:</h3>
@@ -146,11 +162,19 @@
             </div>
             <div class="rules-group">
               <h3>Leaderboard:</h3>
-              <p>
-                The game tracks the best time and moves count for each
-                difficulty setting. The leaderboard can be accessed from the
-                main menu.
-              </p>
+              <div class="rules--vertical-block">
+                <p>
+                  The game tracks the 5 best scores based on the count of moves
+                  made by the player for each difficulty setting. The
+                  leaderboard can be accessed from the main menu. The
+                  leaderboard is stored in the browser's local storage.
+                </p>
+                <img
+                  src="./img/leaderboard.png"
+                  alt="Leaderboard showcase"
+                  loading="lazy"
+                />
+              </div>
             </div>
             <div class="rules-group">
               <h3>Mobile:</h3>
@@ -167,6 +191,11 @@
                 keyboard. The following cheat codes are available: <br />
                 <span class="code">bombs</span> - highlights location of all
                 bombs on the board. <br />
+                <img
+                  src="./img/cheat-show-bombs.png"
+                  alt="bombs cheat on highlighting bombs position"
+                  loading="lazy"
+                />
                 <span class="code">clear</span> - hides the highlighted bombs on
                 board when "bombs" code is used.<br />
               </p>

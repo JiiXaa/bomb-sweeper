@@ -652,6 +652,42 @@ li::selection {
   border-color: var(--danger-color);
 }
 
+/* Rules */
+.game-rules {
+  color: var(--grey-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 1rem;
+  background-color: var(--main-bg-color);
+}
+
+.rules-container {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  height: 100%;
+  padding: 1rem;
+  background-color: var(--main-bg-color);
+}
+
+.rules-container h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: var(--alert-color);
+  text-align: center;
+}
+
+.rules-group h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.3rem;
+  color: var(--alert-color);
+  text-align: center;
+}
+
 /* Utility Classes */
 .disable-select {
   user-select: none; /* supported by Chrome and Opera */
