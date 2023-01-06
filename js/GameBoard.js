@@ -20,6 +20,9 @@ const INTERMEDIATE_BTN_ID = 'intermediate-btn-js';
 const EXPERT_BTN_ID = 'expert-btn-js';
 const MENU_BTN_ID = 'menu-btn-js';
 
+// Mobile
+const MOBILE_WIDTH = 640;
+
 class GameBoard extends LayerControl {
   difficulties = {
     beginner: {
@@ -162,12 +165,31 @@ class GameBoard extends LayerControl {
     gameBoard.style.setProperty('--rows', this.rowsCount);
     gameBoard.style.setProperty('--cols', this.colsCount);
 
+    // Change the size and position of the game board on mobile
+    if (window.innerWidth < MOBILE_WIDTH) {
+      gameBoard.style.setProperty('--rows', this.colsCount);
+      gameBoard.style.setProperty('--cols', this.rowsCount);
+    }
+
     // Change the size of the End Game Modal
     endGameModal.elementById.style.setProperty('--rows', this.rowsCount);
+
+    if (window.innerWidth < MOBILE_WIDTH) {
+      endGameModal.elementById.style.setProperty('--cols', this.colsCount);
+    }
 
     // Change the size of the Game Side Menu
     const sidemenu = this.bindElementById(GAME_SIDEMENU_ID);
     sidemenu.style.setProperty('--rows', this.rowsCount);
+
+    if (window.innerWidth < MOBILE_WIDTH) {
+      sidemenu.style.setProperty('--cols', this.colsCount);
+    } else if (
+      window.innerWidth < MOBILE_WIDTH &&
+      leaderboard.difficulty === 'expert'
+    ) {
+      sidemenu.style.setProperty('--cols', this.rowsCount);
+    }
     // Prevent the context menu from opening when right clicking on the game board
     sidemenu.addEventListener('contextmenu', (e) => {
       e.preventDefault();

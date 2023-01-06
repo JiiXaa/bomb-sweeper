@@ -24,7 +24,6 @@
   /* Board */
   --rows: 8;
   --cols: 8;
-  --columns: 8;
   --cell-width: 40px;
   --cell-height: 40px;
   --border-width: 0.2rem;
@@ -242,14 +241,14 @@ li::selection {
 
 /* Board */
 .game-screen {
-  position: absolute;
+  /* position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
-  left: 0;
+  left: 0; */
   display: flex;
   flex-direction: row;
-  align-items: center;
+  /* align-items: center; */
   justify-content: center;
 }
 
@@ -747,7 +746,7 @@ li::selection {
 }
 
 /* Desktop breakpoint */
-@media (max-width: 1280px) {
+@media screen and (max-width: 1280px) {
   .main--menu {
     padding-top: 2%;
   }
@@ -813,5 +812,180 @@ li::selection {
     padding: 0.4rem 0;
     margin-bottom: 1px;
     font-size: 0.6rem;
+  }
+}
+
+/* Mobile breakpoint */
+
+@media screen and (max-width: 640px) {
+  .game-screen {
+    flex-direction: column;
+    align-items: center;
+    --cell-width: 20px;
+    --cell-height: 20px;
+  }
+
+  .game-screen :nth-child(1) {
+    order: 3;
+  }
+
+  .game-screen :nth-child(2) {
+    order: 2;
+  }
+
+  .game-screen :nth-child(3) {
+    order: 1;
+  }
+
+  /* End Game Modal */
+  .endgame-modal {
+    opacity: 0;
+    padding-bottom: 0.8rem;
+    height: auto;
+    width: calc(var(--cols) * var(--cell-width));
+    background-color: var(--white-color);
+    border: 1px solid var(--black-color-50);
+    z-index: 100;
+    transition: opacity 0.3s ease-in;
+  }
+
+  .end-game-modal-content {
+    display: block;
+    padding-top: 0.5rem;
+    font-family: var(--font-game);
+    font-size: 0.5rem;
+  }
+
+  .endgame-modal__header {
+    text-align: center;
+    color: green;
+    padding-bottom: 0.5rem;
+  }
+
+  .endgame-modal__info {
+    border: 2px solid var(--black-color-50);
+    padding: 0.2rem;
+    font-size: 0.7rem;
+    background-color: var(--alert-color-50);
+  }
+
+  .endgame-modal__info p {
+    padding-bottom: 0.5rem;
+  }
+
+  /* Side Menu */
+  .game-sidemenu {
+    display: flex;
+    flex-direction: column;
+    height: calc(var(--rows) * var(--cell-height));
+    width: calc(var(--cols) * var(--cell-width));
+    background-color: var(--white-color);
+    border: 1px solid var(--black-color-50);
+  }
+
+  /* Game Info */
+  .game-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    font-family: var(--font-game);
+  }
+
+  .game-info__difficulty p {
+    margin-top: 0.4rem;
+    color: var(--danger-color-50);
+    font-size: var(--difficulty-font-size);
+    letter-spacing: -1px;
+    text-transform: capitalize;
+  }
+
+  .game-info__header {
+    display: flex;
+    padding: 0.2rem 0.1rem;
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .time-left {
+    padding: 0.4rem 0.2rem;
+    display: flex;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+  }
+
+  .time-left > i {
+    position: relative;
+    font-size: 1rem;
+    color: var(--danger-color);
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: var(--black-color-50);
+    margin-right: 0.3rem;
+    top: -2px;
+  }
+
+  .flags-left {
+    display: flex;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+  }
+
+  .flags-left > i {
+    position: relative;
+    top: -2px;
+    font-size: 1.1rem;
+    color: var(--alert-color);
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: var(--black-color-50);
+    margin-right: 0.3rem;
+  }
+
+  .revealed-count {
+    display: flex;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1.1rem;
+  }
+
+  .revealed-count > span {
+    padding: 0.4rem 0.2rem;
+  }
+
+  /* Game Info Buttons */
+  .game-buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    height: 50%;
+    width: 100%;
+  }
+
+  .game-buttons__btn {
+    border: none;
+    padding: 0.1rem 0;
+    margin-bottom: 1px;
+    border-top: 2px solid var(--black-color);
+    border-bottom: 2px solid var(--black-color);
+    border-radius: none;
+    background-color: var(--alert-color);
+    color: var(--black-color);
+    cursor: pointer;
+    font-family: var(--font-game);
+    font-size: 0.5rem;
+    transition: all 0.2s ease-in;
+  }
+
+  .game-buttons__btn:hover {
+    color: var(--danger-color-50);
+    border-color: var(--danger-color-50);
+    background-color: var(--white-color-10);
+  }
+
+  .game-buttons__btn:focus {
+    outline: none;
   }
 }
