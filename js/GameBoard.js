@@ -56,6 +56,8 @@ class GameBoard extends LayerControl {
   revealedCells = 0;
   cellsToReveal = 0;
 
+  sidemenu = this.bindElementById(GAME_SIDEMENU_ID);
+
   buttons = {
     beginner: this.bindElementById(BEGINNER_BTN_ID),
     intermediate: this.bindElementById(INTERMEDIATE_BTN_ID),
@@ -179,19 +181,12 @@ class GameBoard extends LayerControl {
     }
 
     // Change the size of the Game Side Menu
-    const sidemenu = this.bindElementById(GAME_SIDEMENU_ID);
-    sidemenu.style.setProperty('--rows', this.rowsCount);
+    this.sidemenu.style.setProperty('--rows', this.rowsCount);
 
-    if (window.innerWidth < MOBILE_WIDTH) {
-      sidemenu.style.setProperty('--cols', this.colsCount);
-    } else if (
-      window.innerWidth < MOBILE_WIDTH &&
-      leaderboard.difficulty === 'expert'
-    ) {
-      sidemenu.style.setProperty('--cols', this.rowsCount);
-    }
+    // Change the size of the modals for game board on mobile
+    this.mobileResize();
     // Prevent the context menu from opening when right clicking on the game board
-    sidemenu.addEventListener('contextmenu', (e) => {
+    this.sidemenu.addEventListener('contextmenu', (e) => {
       e.preventDefault();
     });
 
@@ -277,6 +272,8 @@ class GameBoard extends LayerControl {
     // Have to stop the timer when loading a new game, zero it and start it again when the user clicks on a cell
     timer.resetTimer();
     this.showActiveDifficulty();
+    // Change the size of the modals for game board on mobile
+    this.mobileResize();
   }
 
   // left click on cell event handler
@@ -443,6 +440,19 @@ class GameBoard extends LayerControl {
       this.difficultyScreen.style.setProperty('--difficulty-font-size', '1rem');
     }
     this.difficultyScreen.innerHTML = `<p>${leaderboard.difficulty}</p>`;
+  }
+
+  mobileResize() {
+    if (
+      window.innerWidth < MOBILE_WIDTH &&
+      leaderboard.difficulty === 'beginner'
+    ) {
+      this.sidemenu.style.setProperty('--cols', 8);
+      endGameModal.elementById.style.setProperty('--cols', 8);
+    } else {
+      this.sidemenu.style.setProperty('--cols', 16);
+      endGameModal.elementById.style.setProperty('--cols', 16);
+    }
   }
 
   backToMenu() {

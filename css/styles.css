@@ -877,7 +877,7 @@ li::selection {
   .game-sidemenu {
     display: flex;
     flex-direction: column;
-    height: calc(var(--rows) * var(--cell-height));
+    height: auto;
     width: calc(var(--cols) * var(--cell-width));
     background-color: var(--white-color);
     border: 1px solid var(--black-color-50);
@@ -894,31 +894,32 @@ li::selection {
   }
 
   .game-info__difficulty p {
-    margin-top: 0.4rem;
+    margin-top: 0;
     color: var(--danger-color-50);
     font-size: var(--difficulty-font-size);
     letter-spacing: -1px;
     text-transform: capitalize;
+    font-size: 0.7rem;
   }
 
   .game-info__header {
     display: flex;
-    padding: 0.2rem 0.1rem;
+    padding: 0;
     width: 100%;
-    justify-content: space-between;
+    justify-content: space-around;
   }
 
   .time-left {
     padding: 0.4rem 0.2rem;
     display: flex;
-    font-size: 1.1rem;
+    font-size: 0.7rem;
     display: flex;
     align-items: center;
   }
 
   .time-left > i {
     position: relative;
-    font-size: 1rem;
+    font-size: 0.8rem;
     color: var(--danger-color);
     -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: var(--black-color-50);
@@ -928,7 +929,7 @@ li::selection {
 
   .flags-left {
     display: flex;
-    font-size: 1.1rem;
+    font-size: 0.7rem;
     display: flex;
     align-items: center;
   }
@@ -936,7 +937,7 @@ li::selection {
   .flags-left > i {
     position: relative;
     top: -2px;
-    font-size: 1.1rem;
+    font-size: 0.8rem;
     color: var(--alert-color);
     -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: var(--black-color-50);
@@ -948,7 +949,7 @@ li::selection {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    font-size: 1.1rem;
+    font-size: 0.7rem;
   }
 
   .revealed-count > span {
