@@ -2,11 +2,18 @@
 
 ## Work in progress (for the Code Institute as second Milestone Project)
 
-## Design choices
+## Contents
 
-#### Class based over Functional ?
+- [**User Experience**](#user-experience)
+  - [**User Stories**](#user-stories)
+- [**Design Choices**]
+  - [**OOP Approach**](#oop-approach)
+  - [**Pseudocode**](#pseudocode)
+  - [**App Design**](#app-design)
+  - [**Mobile Functionality**](#mobile-functionality)
+  - [**Possible features to add in future**](#possible-features-to-add-in-future)
 
-Class based project (OOP) seem to be good choice because: - Code is cleaner, functions (methods) are stored in objects. - Provides encapsulation thus better readability. - Strict Mode out of the box - Good exercise
+## User Experience
 
 ### User Stories
 
@@ -19,6 +26,12 @@ Class based project (OOP) seem to be good choice because: - Code is cleaner, fun
 - As a player, if win the game I want to know how many clicks and seconds it took to complete.
 - As a frequent player I want to be able to see and compare my previous scores.
 
+## Design Choices
+
+### OOP Approach
+
+Class based project (Object Oriented Programming paradigm) seem to be good choice because: - Code is cleaner, functions (methods) are stored in objects. - it provides encapsulation thus better readability. - Strict Mode out of the box - Good practice.
+
 ### Pseudocode
 
 1. [x] Create Initial Utility Class with features:
@@ -26,52 +39,64 @@ Class based project (OOP) seem to be good choice because: - Code is cleaner, fun
 - [x] selecting element from the DOM for easy manipulation,
 - [x] toggle of the elements visibility,
 
-2. [] Create Main Menu Class with features:
+2. [x] Create Main Menu Class with features:
 
 - [x] Load Game depending on set difficulty
   - [x] Used Google Search to find rules of minesweeper for difficulty levels: <br>
         "There are three difficulty levels for Minesweeper: beginner, intermediate, and expert. Beginner has a total of ten mines and the board size is either 8 × 8, 9 × 9, or 10 × 10. Intermediate has 40 mines and also varies in size between 13 × 15 and 16 × 16. Finally, expert has 99 mines and is always 16 × 30 (or 30 × 16)."
 - [x] Options, where user can change level of difficulty (default set to beginner)
-  - [] possible extra feature hardcore mode? with game with some kind of timer, that would set difficulty on another level.
-  - [] for hardcore mode change them of the game (more aggressive)
 
-3. [] Game Logic Class
+  - **Possible feature to add in future**:
+  - [] Extra feature hardcore mode with the timer counting to zero and explode bombs if not game is not finished before time is over, that would set difficulty on another level.
+  - [] For hardcore mode change colors of the game to more aggressive.
+
+3. [x] Game Logic Class
 
 - [x] Create game board depending on board size and bomb count set by user.
 - [x] Left Mouse Click on a board's cell reveals either bomb (that ends the game) or number showing how many bombs are around that cell.
 - [x] Right Mouse Button on a board's cell marks the user choice/prediction for bomb location
 - Win/Lose condition:
   - [x] **lose**: when user click on the cell with bomb - reveal all bombs for user to see their locations.
-    - [] also show "lose" paragraph on the screen (possible: change game's logo to red? / sound of the bomb?)
-  - [] **win** after all bombs are marked correctly and rest of cell's are revealed.
-    - [] also show "win" paragraph on the screen (possible: change game's logo to green? / sound for the win condition)
+    - [x] also show "lose" paragraph on the screen (possible: change game's logo to red? / sound of the bomb?)
+  - [x] **win** after all bombs are marked correctly and rest of cell's are revealed.
+    - [x] also show "win" paragraph on the screen (possible: change game's logo to green? / sound for the win condition)
 - [x] Show how many bombs are selected/guessed (count shown with flag emoji, decreasing/increasing depending on the user selection)
 - [x] New Game Buttons for all three difficulties (reset whole game)
 - [x] Game tracks player moves count and time of the current game (in seconds)
 - [x] Developer Mode: when key sequence 'bombs' is pressed it shows/highlight bomb locations, it mostly implemented to speed up development process but also wanted add it as it reminds me of old games cheat codes.
       It is possible to clear highlighted bombs with key sequence: 'clear'.
+- [x] Leader board stored in localStorage to persist 5 best scores for each difficulty.
+  - [x] Display scores on the LeaderBoard page (component) for user to see previous scores.
+- [x] **First click never can be a bomb hit:** <br>
+      The game board is generated randomly before the player clicks any squares. If the player happens to click a bomb square on their very first click, the bomb at this square is removed and a new bomb is placed in the random square. If there is already a bomb in the that square it tries to find other random square with no bomb on it. Once this change is made, the game proceeds as if the initial clicked square was empty. This is done to ensure that the player will not lose on their very first click.
 
-# **rough notes** (early development only!)
+  **Possible feature to add in future**
 
-## design choices
+  - [] Add feature where user can change name in the input and that name would be displayed in the leader board scores. That enable to distinguish different players for competitive gameplay. **GameLeaderboard.js** is prepared to accept user name parameter in the addHighScoreLS method. Its default value is set to "User" if user name is not provided.
+
+### App Design
 
 - used Coolors for color scheme <br>
   temporary pallette: https://coolors.co/2b2d42-f7b32b-edf2f4-6ac8c6-d90429
 - Google fonts: main font - Ubuntu
+- Utilized CSS Reset shared by [Andy Bell](https://piccalil.li/blog/a-modern-css-reset/).
+- Used CSS custom properties (variables) to avoid DRY principle. Also provided me with easy way for manipulating HTML elements with use of JavaScript. </br>
+  Example of dynamic board generation (rowsCount and colsCount variables are set depending on the game difficulty chosen by the user and the board's size is dictated by those values):
+  ```javascript
+  gameBoard.style.setProperty('--rows', this.rowsCount);
+  gameBoard.style.setProperty('--cols', this.colsCount);
+  ```
+- CSS styles developed Desktop first as the game is targeted mostly to PC/Desktop gamers. But game is fully responsive and playable on smaller devices (mobiles, tablets).
+- Text selection changes it to red color to match "exploding" theme.
 
-### Main Menu:
+### **Mobile Functionality**
 
-- Selecting text changes it to red color to match "exploding" theme.
+For the mobile devices / tablets the game is utilizing built in functionality where **one tap** on the device's screen is equivalent to the LMB (left mouse button) click and **press and hold** on the device's screen is equivalent to the RMB (right mouse button).
 
-## development
+# **rough notes** (early development only!)
 
-CSS Reset shared by [Andy Bell](https://piccalil.li/blog/a-modern-css-reset/).
-CSS custom properties (variables) to avoid DRY principle.
-CSS Desktop first as the game is targeted mostly to PC gamers (that might change).
-Used [Dash Border Generator](https://kovart.github.io/dashed-border-generator/) to generate custom styled border for main wrapper.
+## **Possible features to add in future:**
 
-### **Things to implement/fix:**
-
-- **First click never can be a bomb hit:** <br>
-  (description found in this [Reddit](https://www.reddit.com/r/AskReddit/comments/djnck/minesweeper_debate_can_you_can_lose_on_the_first/) post.) <br>
-  In Windows, the Minesweeper board is generated randomly before the player clicks any squares.[citation needed] If the player happens to click a mine square on their very first click, the mine at this square is removed and a new mine is placed in the upper left corner. If there is already a mine in the upper left corner (or it was the square that the player clicked), a new mine is placed in the first (starting in the upper left corner then proceeding left->right, top->bottom) available empty spot of the board. Once this change is made, the game proceeds as if the initial clicked square was empty. This is done to ensure that the player will not lose on their very first click.
+- Add feature where user can change name in the input and that name would be displayed in the leader board scores. That enable to distinguish different players for competitive gameplay. **GameLeaderboard.js** is prepared to accept user name parameter in the addHighScoreLS method. Its default value is set to "User" if user name is not provided.
+- Extra feature hardcore mode with the timer counting to zero and explode bombs if not game is not finished before time is over, that would set difficulty on another level.
+- For hardcore mode change colors of the game to more aggressive.
