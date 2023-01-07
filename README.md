@@ -6,7 +6,7 @@
 
 - [**User Experience**](#user-experience)
   - [**User Stories**](#user-stories)
-- [**Design Choices**]
+- [**Design Choices**](#design-choices)
   - [**OOP Approach**](#oop-approach)
   - [**Pseudocode**](#pseudocode)
   - [**App Design**](#app-design)
