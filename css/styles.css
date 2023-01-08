@@ -138,7 +138,8 @@ h4::selection,
 h5::selection,
 p::selection,
 ul::selection,
-li::selection {
+li::selection,
+span::selection {
   /* background: #fff; */
   color: var(--danger-color-50);
 }
@@ -618,8 +619,7 @@ li::selection {
 .rules-container {
   display: flex;
   flex-direction: column;
-  width: 60%;
-  height: 100%;
+  width: 50%;
   padding: 1rem;
   background-color: var(--main-bg-color);
 }
@@ -629,6 +629,68 @@ li::selection {
   margin-bottom: 1rem;
   color: var(--alert-color);
   text-align: center;
+  text-decoration: underline;
+}
+
+/* Main image */
+.rules-img-main {
+  margin: 0 auto;
+  height: 100%;
+  margin-bottom: 1rem;
+}
+
+/* Expert lose scenario image */
+.rules-img-lose {
+  margin: 0 auto;
+  height: 100%;
+  margin-bottom: 1rem;
+}
+
+.rules--vertical-block {
+  display: flex;
+  justify-content: space-between;
+}
+
+.rules--vertical-block > p {
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.vertical-block--inner {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0.5rem;
+}
+
+.vertical-block--inner-code {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 1rem;
+}
+
+/* Beginner win scenario image */
+.rules-img-win {
+  margin: 0 auto;
+  height: 50%;
+  margin-bottom: 1rem;
+}
+
+/* Leader board image */
+.rules-img-leaderboard {
+  height: 40%;
+  width: 40%;
+  margin-bottom: 1rem;
+}
+
+/* Cheats image */
+.rules-img-cheats {
+  height: 40%;
+  width: 40%;
+  margin-bottom: 1rem;
 }
 
 .rules-group h3 {
@@ -638,15 +700,20 @@ li::selection {
   text-align: center;
 }
 
+.rules-group p {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+}
+
 .rules__btn {
   position: fixed;
-  margin-left: 2rem;
+  margin-left: 1rem;
   border: 2px solid var(--black-color);
   border-radius: 0.3rem;
   background-color: var(--success-color);
   color: var(--white-color);
   font-size: 1.2rem;
-  padding: 0.5rem 1rem;
+  padding: 0.3rem 1.2rem;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
@@ -694,6 +761,17 @@ li::selection {
 
 .hidden {
   display: none;
+}
+
+.code {
+  position: relative;
+  font-family: var(--font-game);
+  font-size: 1.2rem;
+  top: 3px;
+  border: 2px solid var(--danger-color-50);
+  padding: 0.3rem 0.6rem;
+  border-color: rgba(217, 4, 39, 0.5);
+  line-height: 1.5rem;
 }
 
 /* Desktop breakpoint */
