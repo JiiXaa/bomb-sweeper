@@ -13,6 +13,12 @@ class GameRules extends LayerControl {
       this.visibilityToggle(this.elementById, SCREEN_HIDDEN);
       this.visibilityToggle(mainMenu.elementById, SCREEN_VISIBLE);
     });
+    document.addEventListener('keydown', (e) => {
+      if (e.key == 'Escape') {
+        this.visibilityToggle(this.elementById, SCREEN_HIDDEN);
+        this.visibilityToggle(mainMenu.elementById, SCREEN_VISIBLE);
+      }
+    });
   }
 }
 

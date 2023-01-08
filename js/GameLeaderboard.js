@@ -16,6 +16,13 @@ class GameLeaderboard extends LayerControl {
       this.visibilityToggle(this.elementById, SCREEN_HIDDEN);
       this.visibilityToggle(mainMenu.elementById, SCREEN_VISIBLE);
     });
+    // Listener for escape key to return to main menu
+    document.addEventListener('keydown', (e) => {
+      if (e.key == 'Escape') {
+        this.visibilityToggle(this.elementById, SCREEN_HIDDEN);
+        this.visibilityToggle(mainMenu.elementById, SCREEN_VISIBLE);
+      }
+    });
   }
 
   // Load high scores from local storage, or return an empty array if none exist

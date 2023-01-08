@@ -4,6 +4,7 @@ import { endGameModal } from './EndGameModal.js';
 import { timer } from './Timer.js';
 import { leaderboard } from './GameLeaderboard.js';
 import { mainMenu } from './MainMenu.js';
+import { gameRules } from './GameRules.js';
 import { developerMode } from './DeveloperMode.js';
 import { DEV_MODE } from './DeveloperMode.js';
 
@@ -68,6 +69,15 @@ class GameBoard extends LayerControl {
   constructor() {
     super(GAME_SCREEN_ID);
     this.initializeGameBoard();
+    // Listener for the ESC key to go back to the main menu.
+    document.addEventListener('keydown', (e) => {
+      if (e.key == 'Escape') {
+        console.log('Escape pressed');
+        this.backToMenu();
+        // this.visibilityToggle(gameRules.elementById, SCREEN_HIDDEN);
+        // this.visibilityToggle(leaderboard.elementById, SCREEN_HIDDEN);
+      }
+    });
   }
 
   initializeGameBoard() {
