@@ -40,27 +40,25 @@
 
       <!-- Game Layer -->
       <div class="game__layer game-screen hidden" id="game-screen-js">
-        <div class="endgame-modal" id="endgame-modal-js">
-          <div class="end-game-modal-content" id="end-game-modal-content-js">
-            <!-- <h1 class="endgame-modal__header" id="endgame-modal__header-js">
-                You Win!
-              </h1>
-              <div class="endgame-modal__info">
-                <p>It took you:</p>
-                <div class="endgame-modal__info-item">
-                  <span class="endgame-modal__info-item-value">120</span>
-                  <span class="endgame-modal__info-item-text">seconds,</span>
-                </div>
-                <div class="endgame-modal__info-item">
-                  <span class="endgame-modal__info-item-value">18</span>
-                  <span class="endgame-modal__info-item-text">Moves</span>
-                </div>
-                <div class="endgame-modal__info-item">
-                  <span class="endgame-modal__info-item-value">09</span>
-                  <span class="endgame-modal__info-item-text">Flags</span>
-                </div>
-              </div> -->
+        <div class="to-menu__modal hidden" id="to-menu-modal-js">
+          <div class="to-menu__modal-content">
+            <h2>
+              Are you sure you want to go back to the menu? Game progress will
+              be lost!
+            </h2>
+            <div class="to-menu__modal-btns">
+              <button class="to-menu__modal-btn" id="to-menu-yes-js">
+                Yes
+              </button>
+              <button class="to-menu__modal-btn" id="to-menu-no-js">No</button>
+            </div>
           </div>
+        </div>
+        <div class="endgame-modal" id="endgame-modal-js">
+          <div
+            class="end-game-modal-content"
+            id="end-game-modal-content-js"
+          ></div>
         </div>
         <div class="game-board" id="game-board-js"></div>
         <div class="game-sidemenu disable-select" id="game-sidemenu-js">

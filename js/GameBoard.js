@@ -14,12 +14,15 @@ const GAME_SIDEMENU_ID = 'game-sidemenu-js';
 const USED_MOVES_ID = 'revealed-count-js';
 const FLAGS_LEFT_ID = 'flags-left-js';
 const DIFFICULTY_SCREEN_ID = 'info-difficulty-js';
+const MENU_MODAL_ID = 'to-menu-modal-js';
 
 // Buttons
 const BEGINNER_BTN_ID = 'beginner-btn-js';
 const INTERMEDIATE_BTN_ID = 'intermediate-btn-js';
 const EXPERT_BTN_ID = 'expert-btn-js';
 const MENU_BTN_ID = 'menu-btn-js';
+const toMenuAccept = 'to-menu-yes-js';
+const toMenuCancel = 'to-menu-no-js';
 
 // Mobile
 const MOBILE_WIDTH = 640;
@@ -56,6 +59,7 @@ class GameBoard extends LayerControl {
   flagsLeftToPlace = null;
   revealedCells = 0;
   cellsToReveal = 0;
+  toMenuModal = this.bindElementById(MENU_MODAL_ID);
 
   sidemenu = this.bindElementById(GAME_SIDEMENU_ID);
 
@@ -64,6 +68,8 @@ class GameBoard extends LayerControl {
     intermediate: this.bindElementById(INTERMEDIATE_BTN_ID),
     expert: this.bindElementById(EXPERT_BTN_ID),
     menu: this.bindElementById(MENU_BTN_ID),
+    toMenuAccept: this.bindElementById(toMenuAccept),
+    toMenuCancel: this.bindElementById(toMenuCancel),
   };
 
   constructor() {
@@ -72,10 +78,7 @@ class GameBoard extends LayerControl {
     // Listener for the ESC key to go back to the main menu.
     document.addEventListener('keydown', (e) => {
       if (e.key == 'Escape') {
-        console.log('Escape pressed');
         this.backToMenu();
-        // this.visibilityToggle(gameRules.elementById, SCREEN_HIDDEN);
-        // this.visibilityToggle(leaderboard.elementById, SCREEN_HIDDEN);
       }
     });
   }
@@ -263,7 +266,7 @@ class GameBoard extends LayerControl {
       );
     });
     this.buttons.menu.addEventListener('click', () => {
-      this.backToMenu();
+      this.backToMenuOpenModal();
     });
   }
 
@@ -463,6 +466,20 @@ class GameBoard extends LayerControl {
       this.sidemenu.style.setProperty('--cols', 16);
       endGameModal.elementById.style.setProperty('--cols', 16);
     }
+  }
+
+  backToMenuOpenModal() {
+    // Listener for the back to menu modal button accept.
+    this.buttons.toMenuAccept.addEventListener('click', () => {
+      this.backToMenu();
+      this.visibilityToggle(this.toMenuModal, SCREEN_HIDDEN);
+    });
+    // Listener for the back to menu modal button cancel.
+    this.buttons.toMenuCancel.addEventListener('click', () => {
+      this.visibilityToggle(this.toMenuModal, SCREEN_HIDDEN);
+    });
+
+    this.visibilityToggle(this.toMenuModal, SCREEN_VISIBLE);
   }
 
   backToMenu() {

@@ -519,6 +519,30 @@ span::selection {
   justify-content: center;
 }
 
+/* Back to menu modal */
+.to-menu__modal {
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  color: var(--white-color);
+  background-color: rgba(19, 1, 1, 0.8);
+  z-index: 100;
+  padding-top: 5rem;
+}
+
+.to-menu__modal-content {
+  width: 80%;
+  text-align: center;
+}
+
+/* .to-menu__modal-btns button {
+  z-index: 99;
+} */
+
 /* Leader Board */
 .game-leaderboard {
   display: flex;
