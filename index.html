@@ -38,22 +38,33 @@
       </div>
       <!-- End Main Menu Layer -->
 
-      <!-- Game Layer -->
-      <div class="game__layer game-screen hidden" id="game-screen-js">
-        <div class="to-menu__modal hidden" id="to-menu-modal-js">
-          <div class="to-menu__modal-content">
-            <h2>
-              Are you sure you want to go back to the menu? Game progress will
-              be lost!
-            </h2>
-            <div class="to-menu__modal-btns">
-              <button class="to-menu__modal-btn" id="to-menu-yes-js">
-                Yes
-              </button>
-              <button class="to-menu__modal-btn" id="to-menu-no-js">No</button>
-            </div>
+      <!-- Back to Menu Modal from the Game Board -->
+      <div class="to-menu__modal hidden" id="to-menu-modal-js">
+        <div class="to-menu__modal-content">
+          <h2>
+            Are you sure you want to go back to the menu? Game progress will be
+            lost!
+          </h2>
+          <div class="to-menu__modal-btns">
+            <button
+              class="to-menu__modal-btn to-menu__modal-btn--yes"
+              id="to-menu-yes-js"
+            >
+              Yes
+            </button>
+            <button
+              class="to-menu__modal-btn to-menu__modal-btn--no"
+              id="to-menu-no-js"
+            >
+              No
+            </button>
           </div>
         </div>
+      </div>
+      <!-- End Back to Menu Modal from the Game Board -->
+
+      <!-- Game Layer -->
+      <div class="game__layer game-screen hidden" id="game-screen-js">
         <div class="endgame-modal" id="endgame-modal-js">
           <div
             class="end-game-modal-content"

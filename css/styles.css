@@ -535,13 +535,55 @@ span::selection {
 }
 
 .to-menu__modal-content {
-  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  height: 40%;
+  padding: 2rem;
   text-align: center;
+  background-color: var(--white-color-10);
+  border: 3px solid var(--danger-color-50);
+  border-radius: 1rem;
 }
 
-/* .to-menu__modal-btns button {
-  z-index: 99;
-} */
+.to-menu__modal-content h2 {
+  font-size: 1.5rem;
+  color: var(--alert-color);
+  margin-bottom: 1.5rem;
+}
+
+.to-menu__modal-btns {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.to-menu__modal-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 8rem;
+  padding: 0.5rem 1rem;
+  border: 2px solid var(--danger-color-50);
+  border-radius: 0.5rem;
+  color: var(--danger-color-50);
+  font-size: 1.2rem;
+  background-color: var(--white-color);
+  cursor: pointer;
+  transition: all 0.2s ease-in;
+}
+
+.to-menu__modal-btn:hover {
+  background-color: var(--danger-color-50);
+  color: var(--white-color);
+}
+
+.to-menu__modal-btn--no:hover {
+  background-color: var(--success-color);
+  color: var(--white-color);
+  border-color: var(--success-color);
+}
 
 /* Leader Board */
 .game-leaderboard {
@@ -898,6 +940,50 @@ span::selection {
     font-size: 0.6rem;
   }
 
+  /* Back to menu modal */
+  .to-menu__modal {
+    padding-top: 5rem;
+  }
+
+  .to-menu__modal-content {
+    width: 40%;
+    height: 50%;
+    padding: 2rem;
+  }
+
+  .to-menu__modal-content h2 {
+    font-size: 1.3rem;
+    color: var(--alert-color);
+    margin-bottom: 1rem;
+  }
+
+  .to-menu__modal-btns {
+    gap: 1.5rem;
+  }
+
+  .to-menu__modal-btn {
+    width: 7rem;
+    padding: 0.2rem 0;
+    border: 2px solid var(--danger-color-50);
+    border-radius: 0.5rem;
+    color: var(--danger-color-50);
+    font-size: 1.2rem;
+    background-color: var(--white-color);
+    cursor: pointer;
+    transition: all 0.2s ease-in;
+  }
+
+  .to-menu__modal-btn:hover {
+    background-color: var(--danger-color-50);
+    color: var(--white-color);
+  }
+
+  .to-menu__modal-btn--no:hover {
+    background-color: var(--success-color);
+    color: var(--white-color);
+    border-color: var(--success-color);
+  }
+
   /* Leader Board */
 
   .scores-container {
@@ -1149,6 +1235,34 @@ span::selection {
 
   .game-buttons__btn:focus {
     outline: none;
+  }
+
+  /* Back to menu modal */
+  .to-menu__modal {
+    padding-top: 8rem;
+  }
+
+  .to-menu__modal-content {
+    width: 70%;
+    height: 40%;
+    padding: 0 2rem;
+    background-color: var(--white-color-10);
+    border: 3px solid var(--danger-color-50);
+  }
+
+  .to-menu__modal-content h2 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+
+  .to-menu__modal-btns {
+    gap: 0.5rem;
+  }
+
+  .to-menu__modal-btn {
+    width: 6rem;
+    padding: 0.5rem;
+    font-size: 1rem;
   }
 
   /* Leader Board */

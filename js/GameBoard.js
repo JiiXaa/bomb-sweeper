@@ -4,7 +4,6 @@ import { endGameModal } from './EndGameModal.js';
 import { timer } from './Timer.js';
 import { leaderboard } from './GameLeaderboard.js';
 import { mainMenu } from './MainMenu.js';
-import { gameRules } from './GameRules.js';
 import { developerMode } from './DeveloperMode.js';
 import { DEV_MODE } from './DeveloperMode.js';
 
