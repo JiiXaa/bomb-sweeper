@@ -180,10 +180,10 @@ class GameBoard extends LayerControl {
     gameBoard.style.setProperty('--cols', this.colsCount);
 
     // Change the size and position of the game board on mobile
-    if (window.innerWidth < MOBILE_WIDTH) {
-      gameBoard.style.setProperty('--rows', this.colsCount);
-      gameBoard.style.setProperty('--cols', this.rowsCount);
-    }
+    // if (window.innerWidth < MOBILE_WIDTH) {
+    //   gameBoard.style.setProperty('--rows', this.colsCount);
+    //   gameBoard.style.setProperty('--cols', this.rowsCount);
+    // }
 
     // Change the size of the End Game Modal
     endGameModal.elementById.style.setProperty('--rows', this.rowsCount);
@@ -197,6 +197,7 @@ class GameBoard extends LayerControl {
 
     // Change the size of the modals for game board on mobile
     this.mobileResize();
+    this.mobileRotateExpertBoard();
     // Prevent the context menu from opening when right clicking on the game board
     this.sidemenu.addEventListener('contextmenu', (e) => {
       e.preventDefault();
@@ -286,6 +287,18 @@ class GameBoard extends LayerControl {
     this.showActiveDifficulty();
     // Change the size of the modals for game board on mobile
     this.mobileResize();
+    this.mobileRotateExpertBoard();
+    if (
+      (window.innerWidth < MOBILE_WIDTH &&
+        leaderboard.difficulty === 'beginner') ||
+      (window.innerWidth < MOBILE_WIDTH &&
+        leaderboard.difficulty === 'intermediate')
+    ) {
+      const cells = document.querySelectorAll('.cell');
+      cells.forEach((cell) => {
+        cell.style.setProperty('--rotate-number', '0');
+      });
+    }
   }
 
   // left click on cell event handler
@@ -452,6 +465,25 @@ class GameBoard extends LayerControl {
       this.difficultyScreen.style.setProperty('--difficulty-font-size', '1rem');
     }
     this.difficultyScreen.innerHTML = `<p>${leaderboard.difficulty}</p>`;
+  }
+
+  mobileRotateExpertBoard() {
+    const gameBoard = this.bindElementById(GAME_BOARD_ID);
+    const cells = document.querySelectorAll('.cell');
+    if (
+      window.innerWidth < MOBILE_WIDTH &&
+      leaderboard.difficulty === 'expert'
+    ) {
+      cells.forEach((cell) => {
+        cell.style.setProperty('--rotate-number', '-90deg');
+      });
+      // Expert board rotation for mobile
+      gameBoard.style.setProperty('--rotate', '90deg');
+      gameBoard.style.setProperty('--expert-top', '8.7rem');
+    } else {
+      gameBoard.style.setProperty('--rotate', '0');
+      gameBoard.style.setProperty('--expert-top', '0');
+    }
   }
 
   mobileResize() {
