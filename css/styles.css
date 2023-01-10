@@ -1072,8 +1072,8 @@ span::selection {
   .game-screen {
     flex-direction: column;
     align-items: center;
-    --cell-width: 20px;
-    --cell-height: 20px;
+    --cell-width: 21px;
+    --cell-height: 21px;
   }
 
   .game-screen :nth-child(1) {
@@ -1096,6 +1096,120 @@ span::selection {
 
   .cell {
     transform: rotate(var(--rotate-number));
+  }
+
+  /* Game Board */
+  .game-board > [data-cell-state='hidden'] {
+    background-color: var(--white-color);
+  }
+
+  /* Revealed cell */
+  .game-board > [data-cell-state='revealed'] {
+    background-color: var(--selected-color);
+    -webkit-box-shadow: inset 0px 0px 5px var(--grey-color);
+    -moz-box-shadow: inset 0px 0px 5px var(--grey-color);
+    box-shadow: inset 0px 0px 5px var(--grey-color);
+    font-size: 2rem;
+    outline: none;
+  }
+
+  /* Bomb  */
+  .game-board > [data-cell-state='bomb'] {
+    background-color: var(--white-color);
+    -webkit-box-shadow: inset 0px 0px 5px var(--grey-color);
+    -moz-box-shadow: inset 0px 0px 5px var(--grey-color);
+    box-shadow: inset 0px 0px 5px var(--grey-color);
+    outline: none;
+  }
+
+  .game-board > [data-cell-state='bomb']::after {
+    content: '\f1e2';
+    font-family: FontAwesome;
+    color: var(--black-color);
+    font-size: 2.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Bomb exploded */
+  .game-board > [data-cell-state='bomb-exploded'] {
+    background-color: var(--white-color);
+    -webkit-box-shadow: inset 0px 0px 5px var(--grey-color);
+    -moz-box-shadow: inset 0px 0px 5px var(--grey-color);
+    box-shadow: inset 0px 0px 5px var(--grey-color);
+    outline: none;
+  }
+
+  .game-board > [data-cell-state='bomb-exploded']::after {
+    content: '\f1e2';
+    font-family: FontAwesome;
+    color: var(--danger-color);
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: var(--black-color-50);
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Bomb guessed/marked */
+  .game-board > [data-cell-state='bomb-marked'] {
+    background-image: url(/img/bomb-crossed.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: var(--selected-color);
+    background-size: 4.5rem;
+    -webkit-box-shadow: inset 0px 0px 5px var(--grey-color);
+    -moz-box-shadow: inset 0px 0px 5px var(--grey-color);
+    box-shadow: inset 0px 0px 5px var(--grey-color);
+    outline: none;
+  }
+
+  /* .game-board > [data-cell-state='bomb-marked']::before {
+  position: absolute;
+  content: '';
+  width: 40px;
+  height: 2.5px;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+  background-color: var(--danger-color);
+}
+
+.game-board > [data-cell-state='bomb-marked']::after {
+  content: '';
+  width: 40px;
+  height: 2.5px;
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  background-color: var(--danger-color);
+} */
+
+  /* Flag  guessed */
+  .game-board > [data-cell-state='flagged'] {
+    background-color: var(--white-color);
+    -webkit-box-shadow: inset 0px 0px 5px var(--grey-color);
+    -moz-box-shadow: inset 0px 0px 5px var(--grey-color);
+    box-shadow: inset 0px 0px 5px var(--grey-color);
+    outline: none;
+  }
+
+  .game-board > [data-cell-state='flagged']::after {
+    content: '\f024';
+    font-family: FontAwesome;
+    color: var(--alert-color);
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: var(--black-color-50);
+    font-size: 1.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   /* End Game Modal */
