@@ -419,6 +419,7 @@ span::selection {
   -webkit-box-shadow: inset 0px 0px 5px var(--grey-color);
   -moz-box-shadow: inset 0px 0px 5px var(--grey-color);
   box-shadow: inset 0px 0px 5px var(--grey-color);
+  font-size: 2rem;
   outline: none;
 }
 
@@ -435,7 +436,7 @@ span::selection {
   content: '\f1e2';
   font-family: FontAwesome;
   color: var(--black-color);
-  font-size: 1.8rem;
+  font-size: 2.2rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -456,7 +457,7 @@ span::selection {
   color: var(--danger-color);
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: var(--black-color-50);
-  font-size: 1.8rem;
+  font-size: 2rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -464,18 +465,18 @@ span::selection {
 
 /* Bomb guessed/marked */
 .game-board > [data-cell-state='bomb-marked'] {
-  background-image: url(/img/bomb-solid.svg);
+  background-image: url(/img/bomb-crossed.svg);
   background-position: center;
   background-repeat: no-repeat;
   background-color: var(--selected-color);
-  background-size: 1.8rem;
+  background-size: 4.5rem;
   -webkit-box-shadow: inset 0px 0px 5px var(--grey-color);
   -moz-box-shadow: inset 0px 0px 5px var(--grey-color);
   box-shadow: inset 0px 0px 5px var(--grey-color);
   outline: none;
 }
 
-.game-board > [data-cell-state='bomb-marked']::before {
+/* .game-board > [data-cell-state='bomb-marked']::before {
   position: absolute;
   content: '';
   width: 40px;
@@ -498,7 +499,7 @@ span::selection {
   -o-transform: rotate(-45deg);
   transform: rotate(-45deg);
   background-color: var(--danger-color);
-}
+} */
 
 /* Flag  guessed */
 .game-board > [data-cell-state='flagged'] {
@@ -515,7 +516,7 @@ span::selection {
   color: var(--alert-color);
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: var(--black-color-50);
-  font-size: 1.7rem;
+  font-size: 1.9rem;
   display: flex;
   align-items: center;
   justify-content: center;
