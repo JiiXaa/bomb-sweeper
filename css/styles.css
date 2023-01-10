@@ -1076,7 +1076,7 @@ span::selection {
     --cell-height: 21px;
   }
 
-  .game-screen :nth-child(1) {
+  /* .game-screen :nth-child(1) {
     order: 3;
   }
 
@@ -1086,7 +1086,7 @@ span::selection {
 
   .game-screen :nth-child(3) {
     order: 1;
-  }
+  } */
 
   .game-board {
     position: relative;
@@ -1109,7 +1109,7 @@ span::selection {
     -webkit-box-shadow: inset 0px 0px 5px var(--grey-color);
     -moz-box-shadow: inset 0px 0px 5px var(--grey-color);
     box-shadow: inset 0px 0px 5px var(--grey-color);
-    font-size: 2rem;
+    font-size: 1.4rem;
     outline: none;
   }
 
@@ -1126,7 +1126,7 @@ span::selection {
     content: '\f1e2';
     font-family: FontAwesome;
     color: var(--black-color);
-    font-size: 2.2rem;
+    font-size: 1.3rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1147,7 +1147,7 @@ span::selection {
     color: var(--danger-color);
     -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: var(--black-color-50);
-    font-size: 2rem;
+    font-size: 1.2rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1155,41 +1155,47 @@ span::selection {
 
   /* Bomb guessed/marked */
   .game-board > [data-cell-state='bomb-marked'] {
-    background-image: url(/img/bomb-crossed.svg);
+    background-image: url('/img/bomb-solid.svg');
     background-position: center;
     background-repeat: no-repeat;
     background-color: var(--selected-color);
-    background-size: 4.5rem;
+    background-size: 1.3rem;
     -webkit-box-shadow: inset 0px 0px 5px var(--grey-color);
     -moz-box-shadow: inset 0px 0px 5px var(--grey-color);
     box-shadow: inset 0px 0px 5px var(--grey-color);
     outline: none;
   }
 
-  /* .game-board > [data-cell-state='bomb-marked']::before {
-  position: absolute;
-  content: '';
-  width: 40px;
-  height: 2.5px;
-  -webkit-transform: rotate(45deg);
-  -moz-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  -o-transform: rotate(45deg);
-  transform: rotate(45deg);
-  background-color: var(--danger-color);
-}
+  /* .game-board > [data-cell-state='bomb-marked']::after {
+    content: ('img/bomb-crossed.svg');
+    width: 18px;
+    height: 18px;
+  } */
 
-.game-board > [data-cell-state='bomb-marked']::after {
-  content: '';
-  width: 40px;
-  height: 2.5px;
-  -webkit-transform: rotate(-45deg);
-  -moz-transform: rotate(-45deg);
-  -ms-transform: rotate(-45deg);
-  -o-transform: rotate(-45deg);
-  transform: rotate(-45deg);
-  background-color: var(--danger-color);
-} */
+  .game-board > [data-cell-state='bomb-marked']::before {
+    position: absolute;
+    content: '';
+    width: 30px;
+    height: 2.5px;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+    background-color: var(--danger-color);
+  }
+
+  .game-board > [data-cell-state='bomb-marked']::after {
+    content: '';
+    width: 30px;
+    height: 2.5px;
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    background-color: var(--danger-color);
+  }
 
   /* Flag  guessed */
   .game-board > [data-cell-state='flagged'] {
@@ -1206,7 +1212,7 @@ span::selection {
     color: var(--alert-color);
     -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: var(--black-color-50);
-    font-size: 1.9rem;
+    font-size: 1.1rem;
     display: flex;
     align-items: center;
     justify-content: center;
