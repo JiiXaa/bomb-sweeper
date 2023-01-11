@@ -1,5 +1,7 @@
 import { LayerControl } from './LayerControl.js';
 import { gameBoard } from './GameBoard.js';
+import { leaderboard } from './GameLeaderboard.js';
+import { MOBILE_WIDTH } from './GameBoard.js';
 
 export let DEV_MODE = false;
 class DeveloperMode extends LayerControl {
@@ -44,6 +46,13 @@ class DeveloperMode extends LayerControl {
       gameBoard.cells.flat().forEach((bomb) => {
         if (bomb.cellElement.dataset.bomb === 'true') {
           bomb.cellElement.style = 'background-color: var(--bomb-color)';
+          if (
+            window.innerWidth < MOBILE_WIDTH &&
+            leaderboard.difficulty === 'expert'
+          ) {
+            // When the bombs are highlighted, all icons have to be rotated 90 degrees to be visible on the mobile version of the game (only for expert board).
+            bomb.cellElement.style.setProperty('--rotate-number', '-90deg');
+          }
         }
       });
       DEV_MODE = true;

@@ -24,7 +24,7 @@ const toMenuAccept = 'to-menu-yes-js';
 const toMenuCancel = 'to-menu-no-js';
 
 // Mobile
-const MOBILE_WIDTH = 640;
+export const MOBILE_WIDTH = 640;
 
 class GameBoard extends LayerControl {
   difficulties = {
@@ -423,6 +423,16 @@ class GameBoard extends LayerControl {
     if (isDevMode) {
       this.cells[newX][newY].cellElement.style =
         'background-color: var(--bomb-color);';
+      if (
+        window.innerWidth < MOBILE_WIDTH &&
+        leaderboard.difficulty === 'expert'
+      ) {
+        // When the bombs are highlighted, first click on the bomb have to rotate cell as expert board is rotated 90def for mobile screens.
+        this.cells[x][y].cellElement.style.setProperty(
+          '--rotate-number',
+          '-90deg'
+        );
+      }
     }
     console.log('relocated bomb', this.cells[newX][newY]);
   }
@@ -473,15 +483,18 @@ class GameBoard extends LayerControl {
       window.innerWidth < MOBILE_WIDTH &&
       leaderboard.difficulty === 'expert'
     ) {
+      // Rotate all cells for mobile
       cells.forEach((cell) => {
         cell.style.setProperty('--rotate-number', '-90deg');
       });
       // Expert board rotation for mobile
       gameBoard.style.setProperty('--rotate', '90deg');
       gameBoard.style.setProperty('--expert-top', '9.2rem');
+      this.sidemenu.style.setProperty('--expert-top', '18.4rem');
     } else {
       gameBoard.style.setProperty('--rotate', '0');
       gameBoard.style.setProperty('--expert-top', '0');
+      this.sidemenu.style.setProperty('--expert-top', '0');
     }
   }
 

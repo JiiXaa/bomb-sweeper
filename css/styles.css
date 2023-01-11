@@ -1257,10 +1257,12 @@ span::selection {
 
   /* Side Menu */
   .game-sidemenu {
+    position: relative;
     display: flex;
     flex-direction: column;
     height: auto;
     width: calc(var(--cols) * var(--cell-width));
+    top: var(--expert-top);
     background-color: var(--white-color);
     border: 1px solid var(--black-color-50);
   }
