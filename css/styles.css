@@ -1278,7 +1278,7 @@ span::selection {
   }
 
   .game-info__difficulty p {
-    margin-top: 0;
+    margin-top: 0.6rem;
     color: var(--danger-color-50);
     font-size: var(--difficulty-font-size);
     letter-spacing: -1px;
@@ -1338,6 +1338,8 @@ span::selection {
   }
 
   .revealed-count > span {
+    position: relative;
+    top: -0.4rem;
     padding: 0.4rem 0.2rem;
   }
 
@@ -1352,7 +1354,7 @@ span::selection {
 
   .game-buttons__btn {
     border: none;
-    padding: 0.1rem 0;
+    padding: 0.5rem 0;
     margin-bottom: 1px;
     border-top: 2px solid var(--black-color);
     border-bottom: 2px solid var(--black-color);
@@ -1436,5 +1438,108 @@ span::selection {
     margin-top: 0;
     font-size: 1rem;
     padding: 0.3rem 0;
+  }
+
+  /* Rules */
+  .game-rules {
+    padding: 1rem;
+  }
+
+  .rules-container {
+    width: 90%;
+    padding: 0;
+  }
+
+  .rules-container h1 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+  }
+
+  /* Main image */
+  .rules-img-main {
+    margin: 0 auto;
+    height: 100%;
+    margin-bottom: 1rem;
+  }
+
+  /* Expert lose scenario image */
+  .rules-img-lose {
+    margin: 0 auto;
+    height: 100%;
+    margin-bottom: 1rem;
+  }
+
+  .rules--vertical-block {
+    display: flex;
+    flex-direction: column;
+    justify-content: baseline;
+  }
+
+  .rules--vertical-block > p {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .vertical-block--inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0.5rem;
+  }
+
+  .vertical-block--inner-code {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0;
+  }
+
+  /* Beginner win scenario image */
+  .rules-img-win {
+    margin: 0 auto;
+    height: 50%;
+    margin-bottom: 1rem;
+  }
+
+  /* Leader board image */
+  .rules-img-leaderboard {
+    height: 50%;
+    width: 50%;
+    margin: 0 auto;
+    margin-bottom: 1rem;
+  }
+
+  /* Cheats image */
+  .rules-img-cheats {
+    height: 60%;
+    width: 60%;
+    margin: 0 auto;
+    margin-bottom: 1.5rem;
+  }
+
+  .rules-group h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .rules-group p {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .rules__btn {
+    margin-left: 0;
+    font-size: 1.1rem;
+    padding: 0.3rem 1.2rem;
+  }
+
+  /* Utility Classes */
+  .code {
+    font-size: 1rem;
+    top: 3px;
+    padding: 0.3rem 0.6rem;
+    line-height: 0.1rem;
   }
 }
