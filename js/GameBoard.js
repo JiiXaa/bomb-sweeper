@@ -7,6 +7,7 @@ import { mainMenu } from './MainMenu.js';
 import { developerMode } from './DeveloperMode.js';
 import { DEV_MODE } from './DeveloperMode.js';
 
+// General variables
 const GAME_SCREEN_ID = 'game-screen-js';
 const GAME_BOARD_ID = 'game-board-js';
 const GAME_SIDEMENU_ID = 'game-sidemenu-js';
@@ -73,6 +74,7 @@ class GameBoard extends LayerControl {
 
   constructor() {
     super(GAME_SCREEN_ID);
+    // Initialize the game board
     this.initializeGameBoard();
     // Listener for the ESC key to go back to the main menu.
     document.addEventListener('keydown', (e) => {
@@ -97,15 +99,20 @@ class GameBoard extends LayerControl {
     cols = this.difficulties.beginner.cols,
     bombs = this.difficulties.beginner.bombs
   ) {
+    // Set the number of rows, columns and bombs
     this.rowsCount = rows;
     this.colsCount = cols;
     this.bombsCount = bombs;
 
     // Calculate the number of cells to reveal to win the game
     this.cellsToReveal = this.rowsCount * this.colsCount - this.bombsCount;
+    // generate cells
     this.generateCells();
+    // generate the board
     this.generateBoard();
+    // Add listeners to the cells for left and right click
     this.addCellsListeners();
+    // Generate random location of bombs
     this.generateBombsLocation();
     // reset count of revealed cells
     this.revealedCells = 0;
@@ -114,15 +121,17 @@ class GameBoard extends LayerControl {
     // reset the number of used moves
     this.usedMoves = 0;
     this.usedMovesScreen.textContent = this.usedMoves;
-    console.log(this.cells);
-    // Developer Mode - bombs visible on key sequence 'bombs' pressed
+    // Developer Mode - sets listeners on key sequence 'bombs' pressed to show all bombs or hide them if 'clear' is typed.
     developerMode.bombsVisible(this.cells);
+    // Developer Mode - sets the DEV_MODE state to false.
     developerMode.setDevModeFalse();
+    // Display active difficulty on the screen
     this.showActiveDifficulty();
   }
 
   // Check if the user won the game and if so, it opens the End Game Modal with the win message and the time it took to win the game and the number of moves it took to win the game.
   endGame(isWin, cell) {
+    // If user clicked on a bomb, game ends and all bombs are shown. The bomb that was clicked on is shown as exploded (red color). The timer stops and the cells listeners are removed. The End Game Modal is shown. All bombs become unhighlighted if developer mode is on.
     if (!isWin) {
       timer.stopTimer();
       this.revealAllBombs();
@@ -141,22 +150,17 @@ class GameBoard extends LayerControl {
       cell.dataset.cellState = CELL_STATE.BOMB_EXPLODED;
       this.removeCellsListeners();
       endGameModal.showModalEndGame();
-      // TODO: finish leaderboard functionality
+    }
+    // If user won the game, it stops the timer, removes the event listeners from the cells, opens the End Game Modal with the win message and the time it took to win the game and the number of moves it took to win the game.
+    if (isWin) {
+      timer.stopTimer();
+      this.removeCellsListeners();
+      endGameModal.showModalEndGame(true, timer.endTime, this.usedMoves);
+      // Add the score to the leaderboard
       leaderboard.addHighScoreLS({
         moves: this.usedMoves,
         time: timer.endTime,
       });
-      console.log(leaderboard.getScoresLS());
-
-      // TODO: Moves and seconds it took to lose, used for the end game modal
-      console.log('seconds from endGame (lose): ', timer.endTime);
-    }
-    if (isWin) {
-      timer.stopTimer();
-      this.removeCellsListeners();
-      // TODO: Moves and seconds it took to win, used for the end game modal
-      console.log('seconds from endGame (win): ', timer.endTime);
-      endGameModal.showModalEndGame(true, timer.endTime, this.usedMoves);
     }
   }
 
@@ -187,6 +191,7 @@ class GameBoard extends LayerControl {
     // Change the size of the End Game Modal
     endGameModal.elementById.style.setProperty('--rows', this.rowsCount);
 
+    // Change the size of the End Game Modal on mobile
     if (window.innerWidth < MOBILE_WIDTH) {
       endGameModal.elementById.style.setProperty('--cols', this.colsCount);
     }
@@ -196,6 +201,7 @@ class GameBoard extends LayerControl {
 
     // Change the size of the modals for game board on mobile
     this.mobileSideMenuResize();
+    // Rotate game board on mobile for the expert difficulty
     this.mobileRotateExpertBoard();
     // Prevent the context menu from opening when right clicking on the game board
     this.sidemenu.addEventListener('contextmenu', (e) => {
@@ -206,7 +212,7 @@ class GameBoard extends LayerControl {
     this.flagsLeftScreen.textContent = this.bombsCount;
   }
 
-  // Allocate the bombs randomly on the game board
+  // Allocate the all bombs randomly on the game board
   generateBombsLocation() {
     let bombsToAllocate = this.bombsCount;
     while (bombsToAllocate > 0) {
@@ -215,8 +221,6 @@ class GameBoard extends LayerControl {
       if (this.cells[x][y].cellElement.dataset.bomb === 'true') {
         continue;
       }
-      // bomb location test
-      console.log('bomb', this.cells[x][y]);
       this.cells[x][y].cellElement.dataset.bomb = 'true';
       bombsToAllocate--;
     }
@@ -269,24 +273,28 @@ class GameBoard extends LayerControl {
     });
   }
 
-  // New game buttons method, resets the game and starts a new one depending on the difficulty chosen by the user (beginner, intermediate, expert)
+  // New game buttons method, resets the game and starts a new one depending on the difficulty chosen by the user (beginner, intermediate, expert).
   handleNewGameClick(
     rows = this.rowsCount,
     cols = this.colsCount,
     bombs = this.bombsCount,
     difficulty = leaderboard.difficulty
   ) {
+    // Close the end game modal when game is restarted
     endGameModal.closeModal();
+    // Reset the game
     this.startNewGame(rows, cols, bombs);
+    // Set the difficulty state in the leaderboard object
     leaderboard.difficulty = difficulty;
-    console.log('difficulty: ', leaderboard.difficulty);
     this.userFirstClick = true;
     // Have to stop the timer when loading a new game, zero it and start it again when the user clicks on a cell
     timer.resetTimer();
     this.showActiveDifficulty();
     // Change the size of the modals for game board on mobile
     this.mobileSideMenuResize();
+    // Rotate game board for expert difficulty on mobile
     this.mobileRotateExpertBoard();
+    // if difficulty is beginner or intermediate, rotate the numbers on the game board for every cell
     if (
       (window.innerWidth < MOBILE_WIDTH &&
         leaderboard.difficulty === 'beginner') ||
@@ -331,14 +339,12 @@ class GameBoard extends LayerControl {
 
     // If the cell is a bomb, reveal all bombs and end the game
     if (cell.dataset.bomb === 'true') {
-      console.log('you lose');
       this.endGame(false, cell);
       return;
     }
     this.revealedCells++;
 
     if (this.revealedCells === this.cellsToReveal) {
-      console.log('you win');
       this.endGame(true);
       return;
     }
@@ -348,11 +354,9 @@ class GameBoard extends LayerControl {
 
     // Check how many bombs are around the cell
     const adjacentCells = this.cellsAround(cell);
-    console.log('adjacentCells ', adjacentCells);
     const adjacentBombs = adjacentCells.filter(
       (cell) => cell.dataset.bomb === 'true'
     );
-    console.log('adjacentBombs ', adjacentBombs);
     // if there are no bombs around the cell, reveal all adjacent cells recursively until there are bombs around
     if (adjacentBombs.length === 0) {
       adjacentCells.forEach((cell) => this.revealCell(cell));
@@ -364,12 +368,14 @@ class GameBoard extends LayerControl {
 
   // Right click on a cell method
   markCell(cell) {
+    // If the cell is not revealed and not flagged, do nothing
     if (
       cell.dataset.cellState !== CELL_STATE.HIDDEN &&
       cell.dataset.cellState !== CELL_STATE.FLAGGED
     ) {
       return;
     }
+    // If the cell is flagged, remove the flag
     if (cell.dataset.cellState === CELL_STATE.FLAGGED) {
       cell.dataset.cellState = CELL_STATE.HIDDEN;
       // Flags left to place logic when removing a flag
@@ -386,7 +392,7 @@ class GameBoard extends LayerControl {
     }
   }
 
-  // Check how many cells are around the cell
+  // Check how many cells are around the cell and return an array of cells
   cellsAround(cell) {
     const x = parseInt(cell.dataset.x);
     const y = parseInt(cell.dataset.y);
@@ -402,7 +408,7 @@ class GameBoard extends LayerControl {
     return cells;
   }
 
-  // Relocate the bomb to a random cell that is not the same as the first click, and not a bomb already
+  // Relocate the bomb to a random cell that is not the same as the first click, and is not a bomb already
   relocateBomb(cell, isDevMode) {
     const x = parseInt(cell.dataset.x);
     const y = parseInt(cell.dataset.y);
@@ -434,7 +440,6 @@ class GameBoard extends LayerControl {
         );
       }
     }
-    console.log('relocated bomb', this.cells[newX][newY]);
   }
 
   // Reveal all bombs when the game ends
@@ -461,10 +466,11 @@ class GameBoard extends LayerControl {
     }
     ++this.usedMoves;
     this.usedMovesScreen.textContent = this.usedMoves;
-    console.log('usedMoves ', this.usedMoves);
   }
 
+  // Display the active difficulty on the screen
   showActiveDifficulty() {
+    // Set the font size of the difficulty screen depending on the difficulty (set only for intermediate)
     if (leaderboard.difficulty === 'intermediate') {
       this.difficultyScreen.style.setProperty(
         '--difficulty-font-size',
@@ -476,6 +482,7 @@ class GameBoard extends LayerControl {
     this.difficultyScreen.innerHTML = `<p>${leaderboard.difficulty}</p>`;
   }
 
+  // Rotate game board for the mobile screens, when the difficulty is expert. This is done to fit the board on the screen. The board is rotated 90deg and the cells are rotated -90deg to make the board look the same as on the desktop.
   mobileRotateExpertBoard() {
     const gameBoard = this.bindElementById(GAME_BOARD_ID);
     const cells = document.querySelectorAll('.cell');
@@ -498,6 +505,7 @@ class GameBoard extends LayerControl {
     }
   }
 
+  // Resize the side menu for the mobile screens dynamically.
   mobileSideMenuResize() {
     if (
       window.innerWidth < MOBILE_WIDTH &&
@@ -511,6 +519,7 @@ class GameBoard extends LayerControl {
     }
   }
 
+  // Show the modal when user wants to go back to the main menu, and set listeners for yes and now buttons. If yes, go back to the main menu, if no, close the modal.
   backToMenuOpenModal() {
     // Listener for the back to menu modal button accept.
     this.buttons.toMenuAccept.addEventListener('click', () => {
@@ -525,6 +534,7 @@ class GameBoard extends LayerControl {
     this.visibilityToggle(this.toMenuModal, SCREEN_VISIBLE);
   }
 
+  // Go back to the main menu, reset the timer, reset the game board and close the end game modal with statistics.
   backToMenu() {
     this.visibilityToggle(this.elementById, SCREEN_HIDDEN);
     this.visibilityToggle(mainMenu.elementById, SCREEN_VISIBLE);
@@ -533,6 +543,7 @@ class GameBoard extends LayerControl {
     endGameModal.closeModal();
   }
 
+  // Get random integer between min and max
   getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
