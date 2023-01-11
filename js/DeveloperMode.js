@@ -2,6 +2,7 @@ import { LayerControl } from './LayerControl.js';
 import { gameBoard } from './GameBoard.js';
 import { leaderboard } from './GameLeaderboard.js';
 import { MOBILE_WIDTH } from './GameBoard.js';
+import { CELL_STATE } from './Cell.js';
 
 export let DEV_MODE = false;
 class DeveloperMode extends LayerControl {
@@ -78,12 +79,26 @@ class DeveloperMode extends LayerControl {
     document.addEventListener('keydown', this.addCheatsListener);
   }
 
+  // Removes the event listener for key presses.
   cheatsOff() {
     document.removeEventListener('keydown', this.addCheatsListener);
   }
 
+  // Sets the DEV_MODE state to false so that the bombs are not highlighted on the board. Used when game is restarted to hide dev mode.
   setDevModeFalse() {
     DEV_MODE = false;
+  }
+
+  hideHighlightedBombs() {
+    gameBoard.cells.flat().forEach((cell) => {
+      if (
+        cell.cellElement.dataset.cellState === CELL_STATE.BOMB ||
+        cell.cellElement.dataset.cellState === CELL_STATE.BOMB_MARKED
+      ) {
+        cell.cellElement.style = '';
+      }
+    });
+    developerMode.setDevModeFalse();
   }
 }
 

@@ -134,25 +134,27 @@ class GameBoard extends LayerControl {
     // If user clicked on a bomb, game ends and all bombs are shown. The bomb that was clicked on is shown as exploded (red color). The timer stops and the cells listeners are removed. The End Game Modal is shown. All bombs become unhighlighted if developer mode is on.
     if (!isWin) {
       timer.stopTimer();
+      // Reveal all bombs when the game ends (bomb icon if square not flagged and bomb crossed out if square is flagged)
       this.revealAllBombs();
       // When user clicks on a highlighted bomb (developerMode), game ends and all bombs become unhighlighted.
       if (DEV_MODE) {
-        this.cells.flat().forEach((cell) => {
-          if (
-            cell.cellElement.dataset.cellState === CELL_STATE.BOMB ||
-            cell.cellElement.dataset.cellState === CELL_STATE.BOMB_MARKED
-          ) {
-            cell.cellElement.style = '';
-          }
-        });
-        developerMode.setDevModeFalse();
+        developerMode.hideHighlightedBombs();
       }
+      // If user clicked on a bomb, it is shown as exploded (red color).
       cell.dataset.cellState = CELL_STATE.BOMB_EXPLODED;
+      // Remove the event listeners from the cells
       this.removeCellsListeners();
+      // Open the End Game Modal with the lose message
       endGameModal.showModalEndGame();
     }
     // If user won the game, it stops the timer, removes the event listeners from the cells, opens the End Game Modal with the win message and the time it took to win the game and the number of moves it took to win the game.
     if (isWin) {
+      // Reveal all bombs when the game ends (bomb icon if square not flagged and bomb crossed out if square is flagged)
+      this.revealAllBombs();
+      // When user wins the game, all bombs become unhighlighted if developer mode is on.
+      if (DEV_MODE) {
+        developerMode.hideHighlightedBombs();
+      }
       timer.stopTimer();
       this.removeCellsListeners();
       endGameModal.showModalEndGame(true, timer.endTime, this.usedMoves);
@@ -442,7 +444,7 @@ class GameBoard extends LayerControl {
     }
   }
 
-  // Reveal all bombs when the game ends
+  // Sets the cellState of the the 'bomb' (css styles display the bomb on the board) or 'bomb-marked' (css styles display the bomb crossed out on the board)
   revealAllBombs() {
     this.cells.flat().forEach(({ cellElement }) => {
       if (
