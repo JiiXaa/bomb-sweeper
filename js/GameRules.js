@@ -15,6 +15,11 @@ class GameRules extends LayerControl {
     });
     document.addEventListener('keydown', (e) => {
       if (e.key == 'Escape') {
+        // If the rules screen is hidden, return
+        if (this.elementById.classList.contains('hidden')) {
+          return;
+        }
+        // If the rules screen is visible, hide it and show the main menu
         this.visibilityToggle(this.elementById, SCREEN_HIDDEN);
         this.visibilityToggle(mainMenu.elementById, SCREEN_VISIBLE);
       }

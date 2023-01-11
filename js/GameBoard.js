@@ -77,7 +77,12 @@ class GameBoard extends LayerControl {
     // Listener for the ESC key to go back to the main menu.
     document.addEventListener('keydown', (e) => {
       if (e.key == 'Escape') {
-        this.backToMenu();
+        // If main menu is visible ESC key should not do anything
+        if (this.elementById.classList.contains('hidden')) {
+          return;
+        }
+        // If game board is visible ESC key should open the modal asking user if want to go back to the main menu.
+        this.backToMenuOpenModal();
       }
     });
   }
@@ -190,7 +195,7 @@ class GameBoard extends LayerControl {
     this.sidemenu.style.setProperty('--rows', this.rowsCount);
 
     // Change the size of the modals for game board on mobile
-    this.mobileResize();
+    this.mobileSideMenuResize();
     this.mobileRotateExpertBoard();
     // Prevent the context menu from opening when right clicking on the game board
     this.sidemenu.addEventListener('contextmenu', (e) => {
@@ -280,7 +285,7 @@ class GameBoard extends LayerControl {
     timer.resetTimer();
     this.showActiveDifficulty();
     // Change the size of the modals for game board on mobile
-    this.mobileResize();
+    this.mobileSideMenuResize();
     this.mobileRotateExpertBoard();
     if (
       (window.innerWidth < MOBILE_WIDTH &&
@@ -480,7 +485,7 @@ class GameBoard extends LayerControl {
     }
   }
 
-  mobileResize() {
+  mobileSideMenuResize() {
     if (
       window.innerWidth < MOBILE_WIDTH &&
       leaderboard.difficulty === 'beginner'

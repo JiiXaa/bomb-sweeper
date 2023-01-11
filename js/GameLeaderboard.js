@@ -19,6 +19,11 @@ class GameLeaderboard extends LayerControl {
     // Listener for escape key to return to main menu
     document.addEventListener('keydown', (e) => {
       if (e.key == 'Escape') {
+        // If the leaderboard screen is hidden, return
+        if (this.elementById.classList.contains('hidden')) {
+          return;
+        }
+        // If the leaderboard screen is visible, hide it and show the main menu
         this.visibilityToggle(this.elementById, SCREEN_HIDDEN);
         this.visibilityToggle(mainMenu.elementById, SCREEN_VISIBLE);
       }
