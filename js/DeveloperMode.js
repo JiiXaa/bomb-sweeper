@@ -16,6 +16,7 @@ class DeveloperMode extends LayerControl {
     super();
   }
 
+  // This method is called from the Game class. It listens for key presses and if the key sequence is 'bombs' the bombs are highlighted on the board. If the key sequence is 'clear' the bombs are cleared from the board.
   addCheatsListener = (e) => {
     const key = e.key;
     let currentTime = Date.now();

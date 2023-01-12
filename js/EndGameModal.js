@@ -38,9 +38,7 @@ class EndGameModal extends LayerControl {
   }
 
   closeModal() {
-    console.log('close modal end game');
     this.opacityToggle(this.elementById, SCREEN_HIDDEN);
-    // this.visibilityToggle(gameBoard.elementById, SCREEN_VISIBLE);
   }
 
   setModalContent(content) {

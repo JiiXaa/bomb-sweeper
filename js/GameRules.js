@@ -9,10 +9,12 @@ class GameRules extends LayerControl {
 
   constructor() {
     super(GAME_RULES_ID);
+    // Listener for back to menu button. When clicked, hide the rules screen and show the main menu.
     this.backToMenu.addEventListener('click', () => {
       this.visibilityToggle(this.elementById, SCREEN_HIDDEN);
       this.visibilityToggle(mainMenu.elementById, SCREEN_VISIBLE);
     });
+    // Listener for escape key to return to main menu. When pressed, hide the rules screen and show the main menu.
     document.addEventListener('keydown', (e) => {
       if (e.key == 'Escape') {
         // If the rules screen is hidden, return

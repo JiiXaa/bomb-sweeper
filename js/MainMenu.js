@@ -17,10 +17,9 @@ class MainMenu extends LayerControl {
   constructor() {
     super(MAIN_MENU_ID);
     this.bindMenuElements();
-    // leaderboard.saveScoreLS({ name: 'test', score: 999 });
-    // console.log(leaderboard.getScoresLS());
   }
 
+  // Bind the menu buttons to their respective functions.
   bindMenuElements() {
     const playButton = this.bindElementById(PLAY_GAME_BUTTON_ID);
     const rulesButton = this.bindElementById(GAME_RULES_BUTTON_ID);
@@ -33,21 +32,21 @@ class MainMenu extends LayerControl {
     );
   }
 
+  // Load the game screen and hide the main menu.
   loadGameScreen() {
-    console.log('loading game screen');
     this.visibilityToggle(this.elementById, SCREEN_HIDDEN);
     this.visibilityToggle(gameBoard.elementById, SCREEN_VISIBLE);
     gameBoard.difficulty = 'beginner';
   }
 
+  // Load the rules screen and hide the main menu.
   loadRulesScreen() {
-    console.log('loading game rules screen');
     this.visibilityToggle(this.elementById, SCREEN_HIDDEN);
     this.visibilityToggle(gameRules.elementById, SCREEN_VISIBLE);
   }
 
+  // Load the leaderboard screen and hide the main menu.
   loadLeaderboardScreen() {
-    console.log('loading game leaderboard screen');
     leaderboard.displayAllScores();
     this.visibilityToggle(this.elementById, SCREEN_HIDDEN);
     this.visibilityToggle(leaderboard.elementById, SCREEN_VISIBLE);
