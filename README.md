@@ -82,30 +82,56 @@ Class based project (Object Oriented Programming paradigm) seemed to be good cho
 
 ### App Design
 
-- used Coolors for creating color scheme: <br>
+- #### **Color scheme**
 
-  - The game should have pleasant and vibrant colors, therefore I have used shades of most common colors using a split [complimentary approach](http://www.paletton.com/wiki/index.php?title=Split_complementary_color_scheme) of the color theory and manually customising it to fit the needs of the application. The colors chosen are "Space Cadet" (#2B2D42), "Honey Yellow" (#F7B32B), "Verdigris" (#42B3B1), Amaranth Red (#D90429).
+  - used Coolors for creating color scheme: <br>
+
+    The game should have pleasant and vibrant colors, therefore I have used shades of most common colors using a split [complimentary approach](http://www.paletton.com/wiki/index.php?title=Split_complementary_color_scheme) of the color theory and manually customising it to fit the needs of the application. The colors chosen are "Space Cadet" (#2B2D42), "Honey Yellow" (#F7B32B), "Verdigris" (#42B3B1), Amaranth Red (#D90429). </br> </br>
     <img width="618" alt="Color palette chosen for the application" src="https://raw.githubusercontent.com/JiiXaa/bomb-sweeper/main/.github/screenshots/color-palette.png">
 
-- Google fonts: main font - Ubuntu
-- Utilized CSS Reset shared by [Andy Bell](https://piccalil.li/blog/a-modern-css-reset/).
-- Used CSS custom properties (variables) to avoid DRY principle. Also provided me with easy way for manipulating HTML elements with use of JavaScript. </br>
-  Example of dynamic board generation (rowsCount and colsCount variables are set depending on the game difficulty chosen by the user and the board's size is dictated by those values):
+- #### **Typography**
+
+  - Used Google fonts: </br>
+    main font - 'Ubuntu' </br>
+    <img width="142" alt="Ubuntu font sample" src="https://raw.githubusercontent.com/JiiXaa/bomb-sweeper/main/.github/screenshots/font-menu.png"> </br>
+    game's board font - 'Press Start 2P'</br>
+    <img width="170" alt="Press Start 2P font sample" src="https://raw.githubusercontent.com/JiiXaa/bomb-sweeper/main/.github/screenshots/font-game.png">
+
+- #### **Imagery**
+
+  - All images are used only in the 'Rules' section of the game. These are screenshots of the actual game, added purely to complement the rules text explanation as a visual representation of the parts of the game. </br>
+    example screenshot image: </br>
+    <img width="1522" alt="Expert board game in progress" src="https://raw.githubusercontent.com/JiiXaa/bomb-sweeper/main/img/expert-board.png"> </br></br>
+
+- #### **Technical design decisions**
+
+  - The whole application is very simple from the design perspective, it only needed three components: 'game', 'rules' and 'leader board'. Because of that, I have decided to design it as a SPA (single-page application). JavaScript is used to manipulate the HTML elements and render the relevant content to the user. The user is provided with easy and intuitive ways to navigate between the game's elements with the use of buttons indicating their purpose.
+    </br>
+    Quit to menu from the game screen: </br>
+    <img width="425" alt="Expert board game in progress" src="https://raw.githubusercontent.com/JiiXaa/bomb-sweeper/main/img/quit-example.png"> </br></br>
+    When user press the menu button confirmation pop-up is shown: </br>
+    <img width="567" alt="Expert board game in progress" src="https://raw.githubusercontent.com/JiiXaa/bomb-sweeper/main/img/quit-confirmation.png"> </br></br>
+    Also the user can use 'ESC' key to leave current page and 'main menu' is shown.
+  - Utilized CSS Reset shared by [Andy Bell](https://piccalil.li/blog/a-modern-css-reset/).
+  - Used CSS custom properties (variables) to avoid DRY principle. Also provided me with easy way for manipulating HTML elements with use of JavaScript. </br>
+    Example of dynamic board generation (rowsCount and colsCount variables are set depending on the game difficulty chosen by the user and the board's size is dictated by those values):
+
   ```javascript
   gameBoard.style.setProperty('--rows', this.rowsCount);
   gameBoard.style.setProperty('--cols', this.colsCount);
   ```
-- CSS styles developed Desktop first as the game is targeted mostly to PC/Desktop gamers. But game is fully responsive and playable on smaller devices (mobiles, tablets).
-- Text selection changes it to red color to match "exploding" theme.
+
+  - CSS styles developed Desktop first as the game is targeted mostly to PC/Desktop gamers. But game is fully responsive and playable on smaller devices (mobiles, tablets).
+  - Text selection changes it to red color to match "exploding" theme.
+    <img width="425" alt="Page text selection example" src="https://raw.githubusercontent.com/JiiXaa/bomb-sweeper/main/img/text-selection.png"> </br>
 
 ### **Mobile Functionality**
 
 For the mobile devices / tablets the game is utilizing built in functionality where **one tap** on the device's screen is equivalent to the LMB (left mouse button) click and **press and hold** on the device's screen is equivalent to the RMB (right mouse button).
 
-# **rough notes** (early development only!)
-
 ## **Possible features to add in future:**
 
+- **First to address:** One of the biggest challenges was to implement the game's board CSS styles for mobile devices as the board is quite big on the 'intermediate' and 'expert' difficulties. For both difficulties shortest length of the board is 16 squares. To fit the whole board on all mobile devices I have set the cell size to '21px' which seems a little bit small. The project was mainly focused towards practising JavaScript and not on the design thus I decided to leave it for future application upgrades.
 - Add feature where user can change name in the input and that name would be displayed in the leader board scores. That enable to distinguish different players for competitive gameplay. **GameLeaderboard.js** is prepared to accept user name parameter in the addHighScoreLS method. Its default value is set to "User" if user name is not provided.
 - Extra feature hardcore mode with the timer counting to zero and explode bombs if not game is not finished before time is over, that would set difficulty on another level.
 - For hardcore mode change colors of the game to more aggressive.
