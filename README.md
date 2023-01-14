@@ -106,11 +106,11 @@ Class based project (Object Oriented Programming paradigm) seemed to be good cho
 - #### **Technical design decisions**
 
   - The whole application is very simple from the design perspective, it only needed three components: 'game', 'rules' and 'leader board'. Because of that, I have decided to design it as a SPA (single-page application). JavaScript is used to manipulate the HTML elements and render the relevant content to the user. The user is provided with easy and intuitive ways to navigate between the game's elements with the use of buttons indicating their purpose.
-    </br>
+    </br></br>
     Quit to menu from the game screen: </br>
-    <img width="425" alt="Expert board game in progress" src="https://raw.githubusercontent.com/JiiXaa/bomb-sweeper/main/img/quit-example.png"> </br></br>
+    <img width="425" alt="Quit to menu from game level example" src="https://raw.githubusercontent.com/JiiXaa/bomb-sweeper/main/.github/screenshots/quit-example.png"> </br></br>
     When user press the menu button confirmation pop-up is shown: </br>
-    <img width="567" alt="Expert board game in progress" src="https://raw.githubusercontent.com/JiiXaa/bomb-sweeper/main/img/quit-confirmation.png"> </br></br>
+    <img width="567" alt="Quit to menu confirmation pop-up" src="https://raw.githubusercontent.com/JiiXaa/bomb-sweeper/main/.github/screenshots/quit-confirmation.png"> </br></br>
     Also the user can use 'ESC' key to leave current page and 'main menu' is shown.
   - Utilized CSS Reset shared by [Andy Bell](https://piccalil.li/blog/a-modern-css-reset/).
   - Used CSS custom properties (variables) to avoid DRY principle. Also provided me with easy way for manipulating HTML elements with use of JavaScript. </br>
