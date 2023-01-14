@@ -1,6 +1,12 @@
 # Bomb Sweeper
 
-## Work in progress (for the Code Institute as second Milestone Project)
+## About
+
+Bomb Sweeper is a game where you have to find all the bombs on the board. The game is played on a grid of squares. Some squares contain bombs, others don't. If you click on a square containing a bomb, you lose. If you manage to click all the squares (without clicking on any bombs) you win. Clicking a square which doesn't have a bomb reveals the number of neighbouring squares containing bombs. Use this information plus some guess work to avoid the bombs. To reveal a square, left-click on it. To mark a square you think is a bomb, use right-click. </br> </br>
+Game has three difficulties with following board setup: </br>
+**Beginner:** 8 / 8 squares with 10 hidden bombs. </br>
+**Intermediate:** 16 / 16 squares with hidden 40 bombs. </br>
+**Expert:** 16:30 squares with 99 hidden bombs.
 
 ## Contents
 
@@ -30,7 +36,7 @@
 
 ### OOP Approach
 
-Class based project (Object Oriented Programming paradigm) seem to be good choice because: - Code is cleaner, functions (methods) are stored in objects. - it provides encapsulation thus better readability. - Strict Mode out of the box - Good practice.
+Class based project (Object Oriented Programming paradigm) seemed to be good choice because: - Code is cleaner, functions (methods) are stored in objects. - it provides encapsulation thus better readability. - Strict Mode out of the box - Good practice.
 
 ### Pseudocode
 
@@ -76,8 +82,11 @@ Class based project (Object Oriented Programming paradigm) seem to be good choic
 
 ### App Design
 
-- used Coolors for color scheme <br>
-  temporary pallette: https://coolors.co/2b2d42-f7b32b-edf2f4-6ac8c6-d90429
+- used Coolors for creating color scheme: <br>
+
+  - The game should have pleasant and vibrant colors, therefore I have used shades of most common colors using a split [complimentary approach](http://www.paletton.com/wiki/index.php?title=Split_complementary_color_scheme) of the color theory and manually customising it to fit the needs of the application. The colors chosen are "Space Cadet" (#2B2D42), "Honey Yellow" (#F7B32B), "Verdigris" (#42B3B1), Amaranth Red (#D90429).
+    <img width="618" alt="Lighthouse audit result for desktop screen size" src="https://raw.githubusercontent.com/JiiXaa/bomb-sweeper/main/.github/screenshots/color-palette.png">
+
 - Google fonts: main font - Ubuntu
 - Utilized CSS Reset shared by [Andy Bell](https://piccalil.li/blog/a-modern-css-reset/).
 - Used CSS custom properties (variables) to avoid DRY principle. Also provided me with easy way for manipulating HTML elements with use of JavaScript. </br>
