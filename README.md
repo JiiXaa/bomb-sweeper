@@ -85,7 +85,7 @@ Class based project (Object Oriented Programming paradigm) seemed to be good cho
 - used Coolors for creating color scheme: <br>
 
   - The game should have pleasant and vibrant colors, therefore I have used shades of most common colors using a split [complimentary approach](http://www.paletton.com/wiki/index.php?title=Split_complementary_color_scheme) of the color theory and manually customising it to fit the needs of the application. The colors chosen are "Space Cadet" (#2B2D42), "Honey Yellow" (#F7B32B), "Verdigris" (#42B3B1), Amaranth Red (#D90429).
-    <img width="618" alt="Lighthouse audit result for desktop screen size" src="https://raw.githubusercontent.com/JiiXaa/bomb-sweeper/main/.github/screenshots/color-palette.png">
+    <img width="618" alt="Color palette chosen for the application" src="https://raw.githubusercontent.com/JiiXaa/bomb-sweeper/main/.github/screenshots/color-palette.png">
 
 - Google fonts: main font - Ubuntu
 - Utilized CSS Reset shared by [Andy Bell](https://piccalil.li/blog/a-modern-css-reset/).
