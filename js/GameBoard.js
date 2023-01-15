@@ -25,14 +25,14 @@ const toMenuAccept = 'to-menu-yes-js';
 const toMenuCancel = 'to-menu-no-js';
 
 // Mobile
-export const MOBILE_WIDTH = 800;
+export const MOBILE_WIDTH = 640;
 
 class GameBoard extends LayerControl {
   difficulties = {
     beginner: {
-      rows: 16,
-      cols: 30,
-      bombs: 99,
+      rows: 8,
+      cols: 8,
+      bombs: 10,
     },
     intermediate: {
       rows: 16,
@@ -87,20 +87,6 @@ class GameBoard extends LayerControl {
         this.backToMenuOpenModal();
       }
     });
-    this.handleNewGameClick(
-      this.difficulties.expert.rows,
-      this.difficulties.expert.cols,
-      this.difficulties.expert.bombs,
-      'expert'
-    );
-    this.revealCell(this.cells[0][0].cellElement);
-    this.revealCell(this.cells[0][1].cellElement);
-    this.revealCell(this.cells[0][5].cellElement);
-    this.revealCell(this.cells[1][4].cellElement);
-    this.revealCell(this.cells[2][4].cellElement);
-    this.revealCell(this.cells[3][3].cellElement);
-    this.revealCell(this.cells[3][8].cellElement);
-    this.revealCell(this.cells[7][6].cellElement);
   }
 
   initializeGameBoard() {
@@ -328,7 +314,6 @@ class GameBoard extends LayerControl {
   handleCellLeftClick = (e) => {
     this.countUsedMoves(e.target);
     this.revealCell(e.target);
-    console.log(e.target);
   };
 
   // right click on cell event handler

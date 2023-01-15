@@ -17,8 +17,6 @@ class MainMenu extends LayerControl {
   constructor() {
     super(MAIN_MENU_ID);
     this.bindMenuElements();
-    // Code for the am i responsive screenshot. Remove when done.
-    this.loadGameScreen();
   }
 
   // Bind the menu buttons to their respective functions.
