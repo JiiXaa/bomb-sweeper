@@ -1,5 +1,7 @@
 # Bomb Sweeper
 
+<img width="960" alt="Responsive showcase screenshot" src="https://raw.githubusercontent.com/JiiXaa/bomb-sweeper/main/.github/screenshots/amiresponsive.jpg">
+
 **Link to** **[live site](https://jiixaa.github.io/bomb-sweeper/)**
 
 ## About
@@ -13,13 +15,21 @@ Game has three difficulties with following board setup: </br>
 ## Contents
 
 - [**User Experience**](#user-experience)
+
   - [**User Stories**](#user-stories)
+
 - [**Design Choices**](#design-choices)
+
   - [**OOP Approach**](#oop-approach)
   - [**Pseudocode**](#pseudocode)
   - [**App Design**](#app-design)
   - [**Mobile Functionality**](#mobile-functionality)
-  - [**Possible features to add in future**](#possible-features-to-add-in-future)
+
+- [**Technologies Used**](#technologies-used)
+- [**Possible features to add in future**](#possible-features-to-add-in-future)
+- [**Testing**](#testing)
+- [**Deployment**](#deployment)
+- [**Credits**](#credits)
 
 ## User Experience
 
@@ -33,6 +43,8 @@ Game has three difficulties with following board setup: </br>
 - As a player, if bomb exploded I want to know position of remaining bombs, and my correctly predicted (flagged) ones.
 - As a player, if win the game I want to know how many clicks and seconds it took to complete.
 - As a frequent player I want to be able to see and compare my previous scores.
+
+[Back to contents](#contents)
 
 ## Design Choices
 
@@ -82,6 +94,8 @@ Class based project (Object Oriented Programming paradigm) seemed to be good cho
 
   - [] Add feature where user can change name in the input and that name would be displayed in the leader board scores. That enable to distinguish different players for competitive gameplay. **GameLeaderboard.js** is prepared to accept user name parameter in the addHighScoreLS method. Its default value is set to "User" if user name is not provided.
 
+  [Back to contents](#contents)
+
 ### App Design
 
 - #### **Color scheme**
@@ -91,6 +105,8 @@ Class based project (Object Oriented Programming paradigm) seemed to be good cho
     The game should have pleasant and vibrant colors, therefore I have used shades of most common colors using a split [complimentary approach](http://www.paletton.com/wiki/index.php?title=Split_complementary_color_scheme) of the color theory and manually customising it to fit the needs of the application. The colors chosen are "Space Cadet" (#2B2D42), "Honey Yellow" (#F7B32B), "Verdigris" (#42B3B1), Amaranth Red (#D90429). </br> </br>
     <img width="618" alt="Color palette chosen for the application" src="https://raw.githubusercontent.com/JiiXaa/bomb-sweeper/main/.github/screenshots/color-palette.png">
 
+  [Back to contents](#contents)
+
 - #### **Typography**
 
   - Used Google fonts: </br>
@@ -99,11 +115,15 @@ Class based project (Object Oriented Programming paradigm) seemed to be good cho
     game's board font - 'Press Start 2P'</br>
     <img width="170" alt="Press Start 2P font sample" src="https://raw.githubusercontent.com/JiiXaa/bomb-sweeper/main/.github/screenshots/font-game.png">
 
+  [Back to contents](#contents)
+
 - #### **Imagery**
 
   - All images are used only in the 'Rules' section of the game. These are screenshots of the actual game, added purely to complement the rules text explanation as a visual representation of the parts of the game. </br>
     example screenshot image: </br>
     <img width="1522" alt="Expert board game in progress" src="https://raw.githubusercontent.com/JiiXaa/bomb-sweeper/main/img/expert-board.png"> </br></br>
+
+  [Back to contents](#contents)
 
 - #### **Technical design decisions**
 
@@ -131,9 +151,81 @@ Class based project (Object Oriented Programming paradigm) seemed to be good cho
 
 For the mobile devices / tablets the game is utilizing built in functionality where **one tap** on the device's screen is equivalent to the LMB (left mouse button) click and **press and hold** on the device's screen is equivalent to the RMB (right mouse button).
 
-## **Possible features to add in future:**
+[Back to contents](#contents)
+
+## Technologies Used
+
+[HTML5](https://en.wikipedia.org/wiki/HTML5)
+[CSS](https://en.wikipedia.org/wiki/CSS)
+[JavaScript](https://www.javascript.com/)
+
+## Possible features to add in future:
 
 - **First to address:** One of the biggest challenges was to implement the game's board CSS styles for mobile devices as the board is quite big on the 'intermediate' and 'expert' difficulties. For both difficulties shortest length of the board is 16 squares. To fit the whole board on all mobile devices I have set the cell size to '21px' which seems a little bit small. The project was mainly focused towards practising JavaScript and not on the design thus I decided to leave it for future application upgrades.
 - Add feature where user can change name in the input and that name would be displayed in the leader board scores. That enable to distinguish different players for competitive gameplay. **GameLeaderboard.js** is prepared to accept user name parameter in the addHighScoreLS method. Its default value is set to "User" if user name is not provided.
 - Extra feature hardcore mode with the timer counting to zero and explode bombs if not game is not finished before time is over, that would set difficulty on another level.
 - For hardcore mode change colors of the game to more aggressive.
+
+## Testing
+
+Full testing process and results can be found [here](https://github.com/JiiXaa/bomb-sweeper/blob/main/docs/TESTING.md).
+
+## Deployment
+
+### Publishing
+
+This website was published using [GitHub Pages](https://pages.github.com/). The procedure is outlined below.
+
+1. Go to the GitHub website and log in.
+2. On the left-hand side, you'll see all your repositories, select the appropriate one. ([Repository](https://github.com/JiiXaa/bomb-sweeper) used for this project).
+3. Under the name of your chosen Repository you will see a ribbon of selections, click on 'Settings' located on the right hand side.
+
+<img width="35" src="https://raw.githubusercontent.com/JiiXaa/bomb-sweeper/main/.github/screenshots/pages.png">
+
+4. Scroll down until you see 'GitHub Pages' heading.
+5. Under the 'Source' click on the dropdown and select 'master branch'
+6. The page will reload and you'll see the link of your published page displayed under 'GitHub' pages.
+7. It takes a few minutes for the site to be published, wait until the background of your link changes to a green color before trying to open it.
+
+### Forking
+
+If you wish to contribute to this website you can Fork it without affecting the main branch by following the procedure outlined below.
+
+1. Go to the GitHub website and log in.
+2. Locate the [Repository](https://github.com/JiiXaa/bomb-sweeper) used for this project.
+3. On the right-hand side of the Repository name, you'll see the 'Fork' button. It's located next to the 'Star' and 'Watch' buttons.
+
+   <img width="35" src="https://raw.githubusercontent.com/JiiXaa/bomb-sweeper/main/.github/screenshots/fork.png">
+
+4. This will create a copy in your personal repository.
+5. Once you're finished making changes you can locate the 'New Pull Request' button just above the file listing in the original repository.
+
+### Cloning
+
+If you wish to clone or download this repository to your local device you can follow the procedure outlined below.
+
+1. Go to the GitHub website and log in.
+2. Locate the [Repository](https://github.com/JiiXaa/bomb-sweeper) used for this project.
+3. Under the Repository name locate 'Clone or Download' button in green.
+
+  <img width="35" src="https://raw.githubusercontent.com/JiiXaa/bomb-sweeper/main/.github/screenshots/clone.png">
+
+4. To clone the repository using HTTPS click the link under "Clone with HTTPS".
+5. Open your Terminal and go to a directory where you want the cloned directory to be copied in.
+6. Type 'Git Clone' and paste the URL you copied from the GitHub.
+7. To create your local clone press 'Enter'
+
+<a name="bugs"></a>
+
+## Known Bugs
+
+There are no identified bugs as at now.
+Constant manual tests were done as the features were added. Fixed, and checked with appropriate commit messages.
+
+## Credits
+
+- My mentor Dick Vlaanderen for his advice and guidance during this project.
+- Google search engine for limitless resources about web development.
+- [Stackoverflow](https://stackoverflow.com/) community for general advices and solution to problems I have encountered.
+
+[Back to contents](#contents)
