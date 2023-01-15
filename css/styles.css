@@ -384,7 +384,7 @@ span::selection {
   margin-bottom: 2px;
   border-top: 2px solid var(--black-color);
   border-bottom: 2px solid var(--black-color);
-  border-radius: none;
+  border-radius: 0;
   background-color: var(--alert-color);
   color: var(--black-color);
   cursor: pointer;
@@ -1355,7 +1355,7 @@ span::selection {
     margin-bottom: 1px;
     border-top: 2px solid var(--black-color);
     border-bottom: 2px solid var(--black-color);
-    border-radius: none;
+    border-radius: 0;
     background-color: var(--alert-color);
     color: var(--black-color);
     cursor: pointer;
@@ -1469,7 +1469,7 @@ span::selection {
   .rules--vertical-block {
     display: flex;
     flex-direction: column;
-    justify-content: baseline;
+    justify-content: flex-start;
   }
 
   .rules--vertical-block > p {
