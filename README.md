@@ -1,5 +1,7 @@
 # Bomb Sweeper
 
+**Link to** **[live site](https://jiixaa.github.io/bomb-sweeper/)**
+
 ## About
 
 Bomb Sweeper is a game where you have to find all the bombs on the board. The game is played on a grid of squares. Some squares contain bombs, others don't. If you click on a square containing a bomb, you lose. If you manage to click all the squares (without clicking on any bombs) you win. Clicking a square which doesn't have a bomb reveals the number of neighbouring squares containing bombs. Use this information plus some guess work to avoid the bombs. To reveal a square, left-click on it. To mark a square you think is a bomb, use right-click. </br> </br>
@@ -40,7 +42,7 @@ Class based project (Object Oriented Programming paradigm) seemed to be good cho
 
 ### Pseudocode
 
-1. [x] Create Initial Utility Class with features:
+1. [x] Create Initial Utility Class (**LayerControl.js**) with features:
 
 - [x] selecting element from the DOM for easy manipulation,
 - [x] toggle of the elements visibility,
@@ -123,7 +125,7 @@ Class based project (Object Oriented Programming paradigm) seemed to be good cho
 
   - CSS styles developed Desktop first as the game is targeted mostly to PC/Desktop gamers. But game is fully responsive and playable on smaller devices (mobiles, tablets).
   - Text selection changes it to red color to match "exploding" theme.
-    <img width="425" alt="Page text selection example" src="https://raw.githubusercontent.com/JiiXaa/bomb-sweeper/main/img/text-selection.png"> </br>
+    <img width="425" alt="Page text selection example" src="https://raw.githubusercontent.com/JiiXaa/bomb-sweeper/main/.github/screenshots/text-selection.png"> </br>
 
 ### **Mobile Functionality**
 

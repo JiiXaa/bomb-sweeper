@@ -87,6 +87,20 @@ class GameBoard extends LayerControl {
         this.backToMenuOpenModal();
       }
     });
+    this.handleNewGameClick(
+      this.difficulties.expert.rows,
+      this.difficulties.expert.cols,
+      this.difficulties.expert.bombs,
+      'expert'
+    );
+    this.revealCell(this.cells[0][0].cellElement);
+    this.revealCell(this.cells[0][1].cellElement);
+    this.revealCell(this.cells[0][5].cellElement);
+    this.revealCell(this.cells[1][4].cellElement);
+    this.revealCell(this.cells[2][4].cellElement);
+    this.revealCell(this.cells[3][3].cellElement);
+    this.revealCell(this.cells[3][8].cellElement);
+    this.revealCell(this.cells[7][6].cellElement);
   }
 
   initializeGameBoard() {
@@ -314,6 +328,7 @@ class GameBoard extends LayerControl {
   handleCellLeftClick = (e) => {
     this.countUsedMoves(e.target);
     this.revealCell(e.target);
+    console.log(e.target);
   };
 
   // right click on cell event handler
