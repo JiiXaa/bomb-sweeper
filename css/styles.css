@@ -608,7 +608,7 @@ span::selection {
   background-color: var(--white-color-10);
 }
 
-.scores-container h1 {
+.scores-container h2 {
   text-decoration: underline;
   font-size: 2.5rem;
   margin-bottom: 1rem;
@@ -687,7 +687,7 @@ span::selection {
   background-color: var(--main-bg-color);
 }
 
-.rules-container h1 {
+.rules-container h2 {
   font-size: 2.5rem;
   margin-bottom: 1rem;
   color: var(--alert-color);
@@ -988,7 +988,7 @@ span::selection {
     padding: 1.5rem 6rem 3rem;
   }
 
-  .scores-container h1 {
+  .scores-container h2 {
     font-size: 2rem;
   }
 
