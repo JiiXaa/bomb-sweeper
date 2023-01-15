@@ -155,9 +155,9 @@ For the mobile devices / tablets the game is utilizing built in functionality wh
 
 ## Technologies Used
 
-[HTML5](https://en.wikipedia.org/wiki/HTML5)
-[CSS](https://en.wikipedia.org/wiki/CSS)
-[JavaScript](https://www.javascript.com/)
+[HTML5](https://en.wikipedia.org/wiki/HTML5) <br>
+[CSS](https://en.wikipedia.org/wiki/CSS) <br>
+[JavaScript](https://www.javascript.com/) <br>
 
 ## Possible features to add in future:
 
