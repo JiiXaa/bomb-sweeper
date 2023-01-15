@@ -1477,6 +1477,7 @@ span::selection {
     display: flex;
     justify-content: center;
     flex-direction: column;
+
   }
 
   .vertical-block--inner {
@@ -1485,6 +1486,7 @@ span::selection {
     justify-content: space-between;
     align-items: center;
     padding: 1rem 0.5rem;
+    width: 100%;
   }
 
   .vertical-block--inner-code {
@@ -1503,8 +1505,8 @@ span::selection {
 
   /* Leader board image */
   .rules-img-leaderboard {
-    height: 50%;
-    width: 50%;
+    height: 80%;
+    width: 80%;
     margin: 0 auto;
     margin-bottom: 1rem;
   }
