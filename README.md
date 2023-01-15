@@ -180,7 +180,7 @@ This website was published using [GitHub Pages](https://pages.github.com/). The 
 2. On the left-hand side, you'll see all your repositories, select the appropriate one. ([Repository](https://github.com/JiiXaa/bomb-sweeper) used for this project).
 3. Under the name of your chosen Repository you will see a ribbon of selections, click on 'Settings' located on the right hand side.
 
-<img width="35" src="https://raw.githubusercontent.com/JiiXaa/bomb-sweeper/main/.github/screenshots/pages.png">
+<img width="600" src="https://raw.githubusercontent.com/JiiXaa/bomb-sweeper/main/.github/screenshots/pages.png">
 
 4. Scroll down until you see 'GitHub Pages' heading.
 5. Under the 'Source' click on the dropdown and select 'master branch'
@@ -195,7 +195,7 @@ If you wish to contribute to this website you can Fork it without affecting the 
 2. Locate the [Repository](https://github.com/JiiXaa/bomb-sweeper) used for this project.
 3. On the right-hand side of the Repository name, you'll see the 'Fork' button. It's located next to the 'Star' and 'Watch' buttons.
 
-   <img width="35" src="https://raw.githubusercontent.com/JiiXaa/bomb-sweeper/main/.github/screenshots/fork.png">
+   <img width="350" src="https://raw.githubusercontent.com/JiiXaa/bomb-sweeper/main/.github/screenshots/fork.png">
 
 4. This will create a copy in your personal repository.
 5. Once you're finished making changes you can locate the 'New Pull Request' button just above the file listing in the original repository.
@@ -208,7 +208,7 @@ If you wish to clone or download this repository to your local device you can fo
 2. Locate the [Repository](https://github.com/JiiXaa/bomb-sweeper) used for this project.
 3. Under the Repository name locate 'Clone or Download' button in green.
 
-  <img width="35" src="https://raw.githubusercontent.com/JiiXaa/bomb-sweeper/main/.github/screenshots/clone.png">
+    <img width="350" src="https://raw.githubusercontent.com/JiiXaa/bomb-sweeper/main/.github/screenshots/clone.png">
 
 4. To clone the repository using HTTPS click the link under "Clone with HTTPS".
 5. Open your Terminal and go to a directory where you want the cloned directory to be copied in.
