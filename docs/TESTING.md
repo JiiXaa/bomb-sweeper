@@ -1,5 +1,3 @@
-[Back to Main README](https://github.com/JiiXaa/bomb-sweeper#testing)
-
 # Testing
 
 ## Contents
@@ -15,6 +13,8 @@ The Bomb Sweeper game has been tested the following criteria:
 - [Testing User Stories](#testing-user-stories)
 - [Manual Testing](#manual-testing)
 
+
+[Back to Main README](https://github.com/JiiXaa/bomb-sweeper#testing)
 ## Code Validation
 
 ## Lighthouse
@@ -49,6 +49,8 @@ I used lighthouse in chrome developer tools to test each of the pages for:
 - To test the ease of navigation and game play, this application was shared with few friends of different ages and different levels of computer/mobile device knowledge. There were no issues identified regarding the simplicity of navigating the game.
 - The testers also verified that all buttons, links, game logic work correctly, intuitively and as expected.
 
+[Back to contents](#contents)
+
 ## Browser Compatibility
 
 - Browser Compatibility
@@ -61,6 +63,7 @@ I used lighthouse in chrome developer tools to test each of the pages for:
 
 - The website was exhaustively tested for responsiveness on [Chrome DevTools](https://developers.google.com/web/tools/chrome-devtools). Different viewport sizes were simulated ranging from as small as iPhone 5 (320px) to large desktop sizes (1200px and above).
 
+[Back to contents](#contents)
 ## Testing User Stories
 - As a first time player, I want to know the game instructions/rules.
   - Game instructions are easily accessible from the main menu. The rules section contains a detailed explanation of how to play the game with appropriate images showing what to expect.
@@ -79,6 +82,7 @@ I used lighthouse in chrome developer tools to test each of the pages for:
 - As a frequent player I want to be able to see and compare my previous scores.
   - The game tracks the 5 best scores for each difficulty (beginner, intermediate, expert) and can be seen in the Leader Board section of the game. Scores are stored in the localStorage.
 
+  [Back to contents](#contents)
 ## Manual Testing
 
 - **Main Menu Section:** <br>
@@ -108,3 +112,5 @@ I used lighthouse in chrome developer tools to test each of the pages for:
 
 - Application's other features: <br>
   [x] The default text color when selected is replaced with a red shade. It works on every page.
+    
+[Back to contents](#contents)  ||  [Back to Main README](https://github.com/JiiXaa/bomb-sweeper#testing)
