@@ -25,14 +25,14 @@ const toMenuAccept = 'to-menu-yes-js';
 const toMenuCancel = 'to-menu-no-js';
 
 // Mobile
-export const MOBILE_WIDTH = 640;
+export const MOBILE_WIDTH = 800;
 
 class GameBoard extends LayerControl {
   difficulties = {
     beginner: {
-      rows: 8,
-      cols: 8,
-      bombs: 10,
+      rows: 16,
+      cols: 30,
+      bombs: 99,
     },
     intermediate: {
       rows: 16,
@@ -104,8 +104,8 @@ class GameBoard extends LayerControl {
   }
 
   initializeGameBoard() {
-    // this.addButtonsListeners();
-    // this.startNewGame();
+    this.addButtonsListeners();
+    this.startNewGame();
   }
 
   startNewGame(
