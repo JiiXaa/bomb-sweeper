@@ -87,30 +87,30 @@ I used lighthouse in chrome developer tools to test each of the pages for:
 
 - **Main Menu Section:** <br>
    All three buttons were clicked and checked if navigate to the proper section of the application. <br>
-  [x] 'Play' button opens the game where player can start the game. <br>
-  [x] 'Rules' button opens the rules section where user can find instructions/images how to play the game. <br>
-  [x] 'Leaderboard' button opens the leaderboard section where best scores are displayed.
+  - [x] 'Play' button opens the game where player can start the game. <br>
+  - [x] 'Rules' button opens the rules section where user can find instructions/images how to play the game. <br>
+  - [x] 'Leaderboard' button opens the leaderboard section where best scores are displayed.
 - **Game Section:** <br>
-  [x] The left mouse click on the game board's square reveals either the number of surrounding bombs or exploded bombs if it happens to contain one of the hidden bombs. <br>
-  [x] The right-click on the board's square places flag on it. If the cell already contains a flag, the flag gets removed instead. <br>
-  [x] When game starts, timer starts counting from zero and stops when game is either win or lost. <br>
-  [x] Every click (left mouse button) on the cell is getting added to moves count and displayed for user to see. <br>
-  [x] The game tracks and displays how many flags are available to place and how many were already placed by the user. <br>
-  [x] 'Beginner' button on left mouse click resets the game and set the difficulty of the game to beginner. <br>
-  [x] 'Intermediate' button on left mouse click resets the game and set the difficulty of the game to intermediate. <br>
-  [x] 'Expert' button on left mouse click resets the game and set the difficulty of the game to expert. <br>
-  [x] 'Menu' button on the left mouse click opens the pop-up with information that quitting the game will result in losing a progress of the current game. Users can either accept and leave to the main menu or decline and go back to the game. <br>
-  [x] ESC button pressed on keyboard opens the pop-up with information that quitting the game will result in losing a progress of the current game. <br>
+  - [x] The left mouse click on the game board's square reveals either the number of surrounding bombs or exploded bombs if it happens to contain one of the hidden bombs. <br>
+  - [x] The right-click on the board's square places flag on it. If the cell already contains a flag, the flag gets removed instead. <br>
+  - [x] When game starts, timer starts counting from zero and stops when game is either win or lost. <br>
+  - [x] Every click (left mouse button) on the cell is getting added to moves count and displayed for user to see. <br>
+  - [x] The game tracks and displays how many flags are available to place and how many were already placed by the user. <br>
+  - [x] 'Beginner' button on left mouse click resets the game and set the difficulty of the game to beginner. <br>
+  - [x] 'Intermediate' button on left mouse click resets the game and set the difficulty of the game to intermediate. <br>
+  - [x] 'Expert' button on left mouse click resets the game and set the difficulty of the game to expert. <br>
+  - [x] 'Menu' button on the left mouse click opens the pop-up with information that quitting the game will result in losing a progress of the current game. Users can either accept and leave to the main menu or decline and go back to the game. <br>
+  - [x] ESC button pressed on keyboard opens the pop-up with information that quitting the game will result in losing a progress of the current game. <br>
 - **Rules Section:** <br>
-  [x] All images and game instruction are displayed correctly on desktop and mobile devices. <br>
-  [x] 'Menu' button on left mouse click redirects the user to the main menu. <br>
-  [x] ESC button pressed on keyboard redirects the user to the main menu. <br>
+  - [x] All images and game instruction are displayed correctly on desktop and mobile devices. <br>
+  - [x] 'Menu' button on left mouse click redirects the user to the main menu. <br>
+  - [x] ESC button pressed on keyboard redirects the user to the main menu. <br>
 - **Leader Board Section:** <br>
-  [x] Scores are stored in the localStorage for all 3 difficulties and displayed in the separate elements.
-  [x] 'Back To Menu' button on left mouse click redirects the user to the main menu. <br>
-  [x] ESC button pressed on keyboard redirects the user to the main menu. <br>
+  - [x] Scores are stored in the localStorage for all 3 difficulties and displayed in the separate elements.
+  - [x] 'Back To Menu' button on left mouse click redirects the user to the main menu. <br>
+  - [x] ESC button pressed on keyboard redirects the user to the main menu. <br>
 
 - Application's other features: <br>
-  [x] The default text color when selected is replaced with a red shade. It works on every page.
+  - [x] The default text color when selected is replaced with a red shade. It works on every page.
     
 [Back to contents](#contents)  ||  [Back to Main README](https://github.com/JiiXaa/bomb-sweeper#testing)
