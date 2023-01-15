@@ -104,8 +104,8 @@ class GameBoard extends LayerControl {
   }
 
   initializeGameBoard() {
-    this.addButtonsListeners();
-    this.startNewGame();
+    // this.addButtonsListeners();
+    // this.startNewGame();
   }
 
   startNewGame(

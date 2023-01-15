@@ -38,7 +38,6 @@ class MainMenu extends LayerControl {
   loadGameScreen() {
     this.visibilityToggle(this.elementById, SCREEN_HIDDEN);
     this.visibilityToggle(gameBoard.elementById, SCREEN_VISIBLE);
-    gameBoard.difficulty = 'beginner';
   }
 
   // Load the rules screen and hide the main menu.
