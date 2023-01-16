@@ -10,7 +10,7 @@ Bomb Sweeper is a game where you have to find all the bombs on the board. The ga
 Game has three difficulties with following board setup: </br>
 **Beginner:** 8 / 8 squares with 10 hidden bombs. </br>
 **Intermediate:** 16 / 16 squares with hidden 40 bombs. </br>
-**Expert:** 16:30 squares with 99 hidden bombs.
+**Expert:** 16 / 30 squares with 99 hidden bombs.
 
 ## Contents
 
@@ -50,7 +50,13 @@ Game has three difficulties with following board setup: </br>
 
 ### OOP Approach
 
-Class based project (Object Oriented Programming paradigm) seemed to be good choice because: - Code is cleaner, functions (methods) are stored in objects. - it provides encapsulation thus better readability. - Strict Mode out of the box - Good practice.
+Class based project (Object Oriented Programming paradigm) seemed to be good choice because:
+- code is cleaner, functions (methods) are stored in objects,
+- it provides encapsulation thus better readability,
+- 'Strict Mode' out of the box,
+- Good practice.
+
+The game is developed as a SPA (single page application), and navigating through the game is controlled by JavaScript.
 
 ### Pseudocode
 
@@ -61,14 +67,14 @@ Class based project (Object Oriented Programming paradigm) seemed to be good cho
 
 2. [x] Create Main Menu Class with features:
 
-- [x] Load Game depending on set difficulty
+- [x] Load Game depending on difficulty set by the user
   - [x] Used Google Search to find rules of minesweeper for difficulty levels: <br>
         "There are three difficulty levels for Minesweeper: beginner, intermediate, and expert. Beginner has a total of ten mines and the board size is either 8 × 8, 9 × 9, or 10 × 10. Intermediate has 40 mines and also varies in size between 13 × 15 and 16 × 16. Finally, expert has 99 mines and is always 16 × 30 (or 30 × 16)."
 - [x] Options, where user can change level of difficulty (default set to beginner)
 
   - **Possible feature to add in future**:
-  - [] Extra feature hardcore mode with the timer counting to zero and explode bombs if not game is not finished before time is over, that would set difficulty on another level.
-  - [] For hardcore mode change colors of the game to more aggressive.
+  - [] A hardcore mode with the timer counting down to zero and exploding bombs if the game is not finished before time is over. That would set the difficulty on another level.
+  - [] For hardcore mode change colors of the game to more aggressive theme.
 
 3. [x] Game Logic Class
 
@@ -77,18 +83,19 @@ Class based project (Object Oriented Programming paradigm) seemed to be good cho
 - [x] Right Mouse Button on a board's cell marks the user choice/prediction for bomb location
 - Win/Lose condition:
   - [x] **lose**: when user click on the cell with bomb - reveal all bombs for user to see their locations.
-    - [x] also show "lose" paragraph on the screen (possible: change game's logo to red? / sound of the bomb?)
+    - [x] also show "lose" paragraph on the screen
   - [x] **win** after all bombs are marked correctly and rest of cell's are revealed.
-    - [x] also show "win" paragraph on the screen (possible: change game's logo to green? / sound for the win condition)
+    - [x] also show "win" paragraph on the screen
 - [x] Show how many bombs are selected/guessed (count shown with flag emoji, decreasing/increasing depending on the user selection)
 - [x] New Game Buttons for all three difficulties (reset whole game)
-- [x] Game tracks player moves count and time of the current game (in seconds)
-- [x] Developer Mode: when key sequence 'bombs' is pressed it shows/highlight bomb locations, it mostly implemented to speed up development process but also wanted add it as it reminds me of old games cheat codes.
-      It is possible to clear highlighted bombs with key sequence: 'clear'.
-- [x] Leader board stored in localStorage to persist 5 best scores for each difficulty.
+- [x] Game tracks player moves count and time of the current game (in seconds). Data is displayed for user to see.
+- [x] Developer Mode: when the key sequence 'bombs' is pressed, it shows/highlights bombs locations. It was primarily implemented to speed up the development process but I also wanted to add it as it reminds me of old game cheat codes.
+
+  It is possible to clear highlighted bombs with the key sequence: 'clear'.
+- [x] Leader board is stored in localStorage to persist 5 best scores for each difficulty.
   - [x] Display scores on the LeaderBoard page (component) for user to see previous scores.
 - [x] **First click never can be a bomb hit:** <br>
-      The game board is generated randomly before the player clicks any squares. If the player happens to click a bomb square on their very first click, the bomb at this square is removed and a new bomb is placed in the random square. If there is already a bomb in the that square it tries to find other random square with no bomb on it. Once this change is made, the game proceeds as if the initial clicked square was empty. This is done to ensure that the player will not lose on their very first click.
+      The game board is generated randomly before the player clicks any squares. If the player happens to click a bomb square on their very first click, the bomb at this square is removed and a new bomb is placed in the random square. If there is already a bomb in that square, game tries to find other random square with no bomb on it. Once this change is made, the game proceeds as if the initial clicked square was empty. This is done to ensure that the player will not lose on their very first click.
 
   **Possible feature to add in future**
 
@@ -120,14 +127,15 @@ Class based project (Object Oriented Programming paradigm) seemed to be good cho
 - #### **Imagery**
 
   - All images are used only in the 'Rules' section of the game. These are screenshots of the actual game, added purely to complement the rules text explanation as a visual representation of the parts of the game. </br>
-    example screenshot image: </br>
+
+    Example screenshot image: </br>
     <img width="1522" alt="Expert board game in progress" src="https://raw.githubusercontent.com/JiiXaa/bomb-sweeper/main/img/expert-board.png"> </br></br>
 
   [Back to contents](#contents)
 
 - #### **Technical design decisions**
 
-  - The whole application is very simple from the design perspective, it only needed three components: 'game', 'rules' and 'leader board'. Because of that, I have decided to design it as a SPA (single-page application). JavaScript is used to manipulate the HTML elements and render the relevant content to the user. The user is provided with easy and intuitive ways to navigate between the game's elements with the use of buttons indicating their purpose.
+  - The whole application is very simple from the design perspective, it only needed three components: 'game', 'rules' and 'leader board'. Because of that, I have decided to develop it as a SPA (single-page application). JavaScript is used to manipulate the HTML elements and render the relevant content to the user. The user is provided with easy and intuitive ways to navigate between the game's elements with the use of buttons indicating their purpose.
     </br></br>
     Quit to menu from the game screen: </br>
     <img width="425" alt="Quit to menu from game level example" src="https://raw.githubusercontent.com/JiiXaa/bomb-sweeper/main/.github/screenshots/quit-example.png"> </br></br>
@@ -143,7 +151,7 @@ Class based project (Object Oriented Programming paradigm) seemed to be good cho
   gameBoard.style.setProperty('--cols', this.colsCount);
   ```
 
-  - CSS styles developed Desktop first as the game is targeted mostly to PC/Desktop gamers. But game is fully responsive and playable on smaller devices (mobiles, tablets).
+  - CSS styles are developed 'Desktop' first as the game is targeted mostly to PC/Desktop gamers. But game is fully responsive and playable on smaller devices (mobiles, tablets).
   - Text selection changes it to red color to match "exploding" theme.
     <img width="425" alt="Page text selection example" src="https://raw.githubusercontent.com/JiiXaa/bomb-sweeper/main/.github/screenshots/text-selection.png"> </br>
 
@@ -219,7 +227,7 @@ If you wish to clone or download this repository to your local device you can fo
 
 ## Known Bugs
 
-There are no identified bugs as at now.
+There are no identified bugs as of now.
 Constant manual tests were done as the features were added. Fixed, and checked with appropriate commit messages.
 
 ## Credits
