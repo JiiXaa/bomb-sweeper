@@ -464,7 +464,7 @@ span::selection {
   background-position: center;
   background-repeat: no-repeat;
   background-color: var(--selected-color);
-  background-size: 2.2rem;
+  background-size: 4.7rem;
   -webkit-box-shadow: inset 0px 0px 5px var(--grey-color);
   -moz-box-shadow: inset 0px 0px 5px var(--grey-color);
   box-shadow: inset 0px 0px 5px var(--grey-color);
