@@ -2,7 +2,7 @@
 
 ## Contents
 
-The Bomb Sweeper game has been tested the following criteria:
+The Bomb Sweeper game has been tested by the following criteria:
 
 - [Lighthouse Audit](#lighthouse)
 - [Code Validation](#code-validation)
@@ -41,9 +41,9 @@ I used lighthouse in chrome developer tools to test each of the pages for:
 
 ### W3C CSS Validator
 
-<img width="600" src="https://raw.githubusercontent.com/JiiXaa/bomb-sweeper/main/.github/screenshots/css-validation.jpg">
-
 **All styles passed the CSS validator without errors.**
+
+<img width="600" src="https://raw.githubusercontent.com/JiiXaa/bomb-sweeper/main/.github/screenshots/css-validation.jpg">
 
 ### Usability Testing
 - To test the ease of navigation and game play, this application was shared with few friends of different ages and different levels of computer/mobile device knowledge. There were no issues identified regarding the simplicity of navigating the game.
