@@ -43,6 +43,7 @@ Game has three difficulties with following board setup: </br>
 - As a player, if bomb exploded I want to know position of remaining bombs, and my correctly predicted (flagged) ones.
 - As a player, if win the game I want to know how many clicks and seconds it took to complete.
 - As a frequent player I want to be able to see and compare my previous scores.
+- If user uses wrong URL or go to the not existing page it automatically gets redirected to the main menu (index.html)
 
 [Back to contents](#contents)
 

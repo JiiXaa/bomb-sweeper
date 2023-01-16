@@ -81,6 +81,8 @@ I used lighthouse in chrome developer tools to test each of the pages for:
   - When the user wins the game, a pop-up shows how long it took (how many seconds), and how many moves it took.
 - As a frequent player I want to be able to see and compare my previous scores.
   - The game tracks the 5 best scores for each difficulty (beginner, intermediate, expert) and can be seen in the Leader Board section of the game. Scores are stored in the localStorage.
+- If user uses wrong URL or go to the not existing page it automatically gets redirected to the main menu (index.html)
+  The application redirects any wrong URLs / not existing pages to the main menu (index.html)
 
   [Back to contents](#contents)
 ## Manual Testing
@@ -112,5 +114,5 @@ I used lighthouse in chrome developer tools to test each of the pages for:
 
 - Application's other features: <br>
   - [x] The default text color when selected is replaced with a red shade. It works on every page.
-    
+  - [x] If user uses wrong URL / page which does not exists it automatically gets redirected to the main menu (index.html)
 [Back to contents](#contents)  ||  [Back to Main README](https://github.com/JiiXaa/bomb-sweeper#testing)
