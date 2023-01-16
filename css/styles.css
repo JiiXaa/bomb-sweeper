@@ -460,7 +460,7 @@ span::selection {
 
 /* Bomb guessed/marked */
 .game-board > [data-cell-state='bomb-marked'] {
-  background-image: url(bomb-sweeper/img/bomb-solid.svg);
+  background-image: url(/bomb-sweeper/img/bomb-crossed.svg);
   background-position: center;
   background-repeat: no-repeat;
   background-color: var(--selected-color);
