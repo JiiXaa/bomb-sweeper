@@ -106,6 +106,20 @@ The game is developed as a SPA (single page application), and navigating through
 
 ### App Design
 
+- #### **Wireframes**
+
+  - Wireframes were created using Balsamiq, however the layout and design was followed very loosely and changed during the mockup stage.
+
+  Main Menu: <br>
+    <img width="600" src="https://raw.githubusercontent.com/JiiXaa/bomb-sweeper/main/.github/screenshots/wireframe-menu.png">
+
+  Game Board: <br>
+    <img width="600" src="https://raw.githubusercontent.com/JiiXaa/bomb-sweeper/main/.github/screenshots/wireframe-desktop.png">
+
+  Mobile Game Board: <br>
+    <img width="300" src="https://raw.githubusercontent.com/JiiXaa/bomb-sweeper/main/.github/screenshots/wireframe-mobile.png">
+
+
 - #### **Color scheme**
 
   - used Coolors for creating color scheme: <br>
